@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Bitcoin Puzzle - Mapa 3D secp256k1</title>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a0f; color: #e0e0e0; font-family: 'Courier New', monospace; }
+        .header { text-align: center; padding: 20px; background: linear-gradient(135deg, #1a1a2e, #16213e); border-bottom: 2px solid #f7931a; }
+        .header h1 { color: #f7931a; font-size: 24px; }
+        .header p { color: #888; font-size: 12px; margin-top: 5px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px; }
+        .full { grid-column: 1 / -1; }
+        .chart-box { background: #111; border: 1px solid #333; border-radius: 8px; padding: 10px; }
+        .chart-box h2 { color: #f7931a; font-size: 14px; margin-bottom: 5px; text-align: center; }
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 10px; }
+        .stat { background: #111; border: 1px solid #333; border-radius: 8px; padding: 15px; text-align: center; }
+        .stat .val { color: #f7931a; font-size: 24px; font-weight: bold; }
+        .stat .label { color: #888; font-size: 11px; margin-top: 5px; }
+        .analysis { background: #111; border: 1px solid #333; border-radius: 8px; padding: 15px; margin: 10px; }
+        .analysis h2 { color: #f7931a; font-size: 16px; margin-bottom: 10px; }
+        .analysis pre { color: #aaa; font-size: 11px; line-height: 1.6; white-space: pre-wrap; }
+        .highlight { color: #00ff88; }
+        .warn { color: #ff6b6b; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>BITCOIN PUZZLE - ANALISE 3D secp256k1</h1>
+        <p>Mapeamento de 82 puzzles resolvidos | Busca por padroes de geracao</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat">
+            <div class="val">82</div>
+            <div class="label">PUZZLES RESOLVIDOS</div>
+        </div>
+        <div class="stat">
+            <div class="val">51.7%</div>
+            <div class="label">POSICAO MEDIA NO RANGE</div>
+        </div>
+        <div class="stat">
+            <div class="val">51.6%</div>
+            <div class="label">HAMMING WEIGHT MEDIO</div>
+        </div>
+        <div class="stat">
+            <div class="val">2.25</div>
+            <div class="label">ENTROPIA MEDIA (bytes)</div>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="chart-box full">
+            <h2>MAPA 3D: Puzzle # x Posicao no Range x Hamming Weight</h2>
+            <div id="chart3d" style="height:600px;"></div>
+        </div>
+
+        <div class="chart-box full">
+            <h2>MAPA 3D: Puzzle # x Entropia x Media dos Nibbles</h2>
+            <div id="chart3d_2" style="height:600px;"></div>
+        </div>
+
+        <div class="chart-box">
+            <h2>Posicao Normalizada no Range (%)</h2>
+            <div id="chartPos" style="height:400px;"></div>
+        </div>
+
+        <div class="chart-box">
+            <h2>Hamming Weight Ratio (%)</h2>
+            <div id="chartHamming" style="height:400px;"></div>
+        </div>
+
+        <div class="chart-box">
+            <h2>Delta entre Posicoes Consecutivas</h2>
+            <div id="chartDelta" style="height:400px;"></div>
+        </div>
+
+        <div class="chart-box">
+            <h2>Entropia por Byte da Chave</h2>
+            <div id="chartEntropy" style="height:400px;"></div>
+        </div>
+
+        <div class="chart-box">
+            <h2>Ultimo Nibble (4 bits) da Chave</h2>
+            <div id="chartNibble" style="height:400px;"></div>
+        </div>
+
+        <div class="chart-box">
+            <h2>Distribuicao da Posicao no Range</h2>
+            <div id="chartHist" style="height:400px;"></div>
+        </div>
+
+        <div class="chart-box full">
+            <h2>Heatmap: Nibbles de cada Chave Resolvida</h2>
+            <div id="chartHeatmap" style="height:500px;"></div>
+        </div>
+    </div>
+
+    <div class="analysis">
+        <h2>ANALISE DE PADROES</h2>
+        <div id="analysisText"></div>
+    </div>
+
+    <script>
+    const puzzleNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130];
+    const normPositions = [50.0, 100.0, 100.0, 0.0, 33.33, 54.84, 19.05, 75.59, 82.75, 0.39, 12.81, 31.02, 27.35, 28.71, 63.99, 57.2, 46.21, 51.57, 36.39, 64.66, 72.78, 43.41, 33.49, 72.0, 97.8, 62.54, 66.82, 69.6, 49.28, 92.44, 95.8, 44.05, 66.18, 64.53, 17.07, 23.36, 45.89, 6.94, 17.77, 82.56, 32.63, 31.67, 68.48, 75.13, 13.67, 46.11, 70.06, 35.86, 45.35, 8.56, 82.86, 87.25, 50.18, 10.74, 66.79, 22.73, 91.85, 38.76, 82.17, 96.9, 23.67, 69.5, 95.01, 92.98, 65.71, 25.62, 79.78, 49.01, 0.72, 64.4, 19.32, 82.89, 9.03, 40.23, 28.87, 36.98, 43.39, 67.98, 51.49, 38.33, 77.03, 62.2];
+    const entropies = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.585, 1.585, 1.585, 1.585, 1.585, 1.585, 1.585, 1.585, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.3219, 2.3219, 2.3219, 2.3219, 2.3219, 2.3219, 2.3219, 2.3219, 2.585, 2.585, 2.585, 2.585, 2.585, 2.585, 2.585, 2.585, 2.5216, 2.8074, 2.8074, 2.8074, 2.8074, 2.8074, 2.8074, 2.8074, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.1699, 3.1699, 3.1699, 3.1699, 3.1699, 3.1699, 3.3219, 3.3219, 3.4594, 3.585, 3.585, 3.7004, 3.8074, 3.6645, 3.9069, 3.9069, 4.0, 3.9698];
+    const hammingRatios = [100.0, 100.0, 100.0, 25.0, 60.0, 50.0, 42.86, 37.5, 66.67, 20.0, 36.36, 66.67, 30.77, 35.71, 60.0, 50.0, 64.71, 33.33, 63.16, 50.0, 52.38, 54.55, 52.17, 37.5, 68.0, 42.31, 51.85, 50.0, 55.17, 53.33, 67.74, 46.88, 48.48, 47.06, 42.86, 47.22, 59.46, 44.74, 51.28, 55.0, 51.22, 45.24, 55.81, 50.0, 42.22, 41.3, 51.06, 64.58, 51.02, 48.0, 37.25, 57.69, 45.28, 59.26, 56.36, 60.71, 50.88, 43.1, 55.93, 53.33, 47.54, 54.84, 57.14, 46.88, 44.62, 57.58, 46.27, 48.53, 50.72, 48.57, 44.0, 46.25, 45.88, 47.78, 50.53, 53.0, 55.24, 50.0, 51.3, 49.17, 46.4, 50.0];
+    const keysHex = ["1", "3", "7", "8", "15", "31", "4c", "e0", "1d3", "202", "483", "a7b", "1460", "2930", "68f3", "c936", "1764f", "3080d", "5749f", "d2c55", "1ba534", "2de40f", "556e52", "dc2a04", "1fa5ee5", "340326e", "6ac3875", "d916ce8", "17e2551e", "3d94cd64", "7d4fe747", "b862a62e", "1a96ca8d8", "34a65911d", "4aed21170", "9de820a7c", "1757756a93", "22382facd0", "4b5f8303e9", "e9ae4933d6", "153869acc5b", "2a221c58d8f", "6bd3b27c591", "e02b35a358f", "122fca143c05", "2ec18388d544", "6cd610b53cba", "ade6d7ce3b9b", "174176b015f4d", "22bd43c2e9354", "75070a1a009d4", "efae164cb9e3c", "180788e47e326c", "236fb6d5ad1f43", "6abe1f9b67e114", "9d18b63ac4ffdf", "1eb25c90795d61c", "2c675b852189a21", "7496cbb87cab44f", "fc07a1825367bbe", "13c96a3742f64906", "363d541eb611abee", "7cce5efdaccf6808", "f7051f27b09112d4", "1a838b13505b26867", "2832ed74f2b5e35ee", "730fc235c1942c1ae", "bebb3940cd0fc1491", "101d83275fb2bc7e0c", "349b84b6431a6c4ef1", "4c5ce114686a1336e07", "ea1a5c66dcc11b5ad180", "11720c4f018d51b8cebba8", "2ce00bb2136a445c71e85bf", "527a792b183c7f64a0e8b1f4", "af55fc59c335c8ec67ed24826", "16f14fc2054cd87ee6396b33df3", "35c0d7234df7deb0f20cf7062444", "60f4d11574f5deee49961d9609ac6", "b10f22572c497a836ea187f2e1fc23", "1c533b6bb7f0804e09960225e44877ac", "33e7665705359f04f28b88cf897c603c9"];
+    const deltas = [0, 50.0, 0.0, -100.0, 33.33, 21.51, -35.79, 56.54, 7.16, -82.36, 12.42, 18.21, -3.67, 1.36, 35.28, -6.79, -10.99, 5.36, -15.18, 28.27, 8.12, -29.37, -9.92, 38.51, 25.8, -35.26, 4.28, 2.78, -20.32, 43.16, 3.36, -51.75, 22.13, -1.65, -47.46, 6.29, 22.53, -38.95, 10.83, 64.79, -49.93, -0.96, 36.81, 6.65, -61.46, 32.44, 23.95, -34.2, 9.49, -36.79, 74.3, 4.39, -37.07, -39.44, 56.05, -44.06, 69.12, -53.09, 43.41, 14.73, -73.23, 45.83, 25.51, -2.03, -27.27, -40.09, 54.16, -30.77, -48.29, 63.68, -45.08, 63.57, -73.86, 31.2, -11.36, 8.11, 6.41, 24.59, -16.49, -13.16, 38.7, -14.83];
+    const nibbleMeans = [1.0, 3.0, 7.0, 8.0, 3.0, 2.0, 8.0, 7.0, 5.67, 1.33, 5.0, 9.33, 2.75, 3.5, 8.0, 7.5, 6.6, 4.8, 8.0, 7.4, 5.67, 8.0, 6.17, 6.83, 9.14, 4.57, 7.29, 9.0, 6.12, 8.0, 8.88, 7.38, 8.56, 5.78, 5.78, 8.33, 6.0, 6.7, 7.2, 8.5, 7.45, 7.09, 7.27, 6.91, 5.58, 6.83, 7.5, 10.25, 5.77, 6.46, 5.08, 9.62, 6.71, 7.64, 7.86, 9.64, 7.13, 5.93, 8.73, 7.47, 6.06, 7.31, 10.19, 5.81, 5.59, 8.0, 6.59, 7.65, 6.89, 7.0, 6.16, 7.55, 7.05, 6.87, 7.17, 8.28, 7.59, 6.89, 7.76, 6.93, 6.56, 7.18];
+    const nibbleStds = [0.0, 0.0, 0.0, 0.0, 2.0, 1.0, 4.0, 7.0, 5.25, 0.94, 2.16, 1.7, 2.38, 3.35, 4.42, 3.35, 4.67, 5.04, 3.9, 4.32, 3.64, 6.14, 3.72, 5.05, 5.11, 4.2, 2.81, 4.21, 4.96, 4.0, 4.17, 3.97, 3.34, 3.91, 5.12, 4.5, 2.53, 5.24, 4.77, 4.13, 3.55, 4.78, 4.02, 4.79, 4.99, 4.2, 4.39, 3.29, 4.61, 4.43, 4.43, 4.5, 4.32, 4.83, 4.75, 4.5, 4.57, 3.6, 3.26, 4.53, 3.99, 4.86, 4.07, 5.19, 3.41, 4.97, 4.94, 5.16, 5.12, 4.26, 4.34, 4.67, 4.95, 4.81, 4.41, 4.22, 4.94, 5.21, 4.78, 4.86, 4.42, 4.29];
+    const lowNibbles = [1, 3, 7, 8, 5, 1, 12, 0, 3, 2, 3, 11, 0, 0, 3, 6, 15, 13, 15, 5, 4, 15, 2, 4, 5, 14, 5, 8, 14, 4, 7, 14, 8, 13, 0, 12, 3, 0, 9, 6, 11, 15, 1, 15, 5, 4, 10, 11, 13, 4, 4, 12, 12, 3, 4, 15, 12, 1, 15, 14, 6, 14, 8, 4, 7, 14, 14, 1, 12, 1, 7, 0, 8, 15, 4, 6, 3, 4, 6, 3, 12, 9];
+
+    const layout3d = {
+        paper_bgcolor: '#111',
+        plot_bgcolor: '#111',
+        font: { color: '#ccc', family: 'Courier New' },
+        margin: { l: 0, r: 0, t: 30, b: 0 },
+        scene: {
+            xaxis: { title: 'Puzzle #', color: '#888', gridcolor: '#222' },
+            yaxis: { title: 'Posicao no Range (%)', color: '#888', gridcolor: '#222' },
+            zaxis: { title: 'Hamming Weight (%)', color: '#888', gridcolor: '#222' },
+            bgcolor: '#0a0a0f'
+        }
+    };
+
+    const layout2d = {
+        paper_bgcolor: '#111',
+        plot_bgcolor: '#111',
+        font: { color: '#ccc', family: 'Courier New', size: 10 },
+        margin: { l: 50, r: 20, t: 10, b: 40 },
+        xaxis: { title: 'Puzzle #', color: '#888', gridcolor: '#222' },
+        yaxis: { color: '#888', gridcolor: '#222' }
+    };
+
+    // === 3D MAP 1 ===
+    Plotly.newPlot('chart3d', [{
+        type: 'scatter3d',
+        mode: 'markers+text',
+        x: puzzleNums,
+        y: normPositions,
+        z: hammingRatios,
+        text: puzzleNums.map((n,i) => '#' + n),
+        textposition: 'top center',
+        textfont: { size: 8, color: '#888' },
+        marker: {
+            size: 6,
+            color: normPositions,
+            colorscale: [[0,'#1a1aff'],[0.25,'#00ccff'],[0.5,'#00ff88'],[0.75,'#ffaa00'],[1,'#ff3333']],
+            colorbar: { title: 'Pos %', thickness: 15 },
+            opacity: 0.9
+        },
+        hovertemplate: 'Puzzle #%{x}<br>Posicao: %{y}%<br>Hamming: %{z}%<br>Key: %{customdata}<extra></extra>',
+        customdata: keysHex
+    },
+    {
+        type: 'scatter3d',
+        mode: 'lines',
+        x: puzzleNums,
+        y: normPositions,
+        z: hammingRatios,
+        line: { color: '#f7931a', width: 1, dash: 'dot' },
+        opacity: 0.3,
+        showlegend: false,
+        hoverinfo: 'skip'
+    }], layout3d);
+
+    // === 3D MAP 2 ===
+    const layout3d_2 = JSON.parse(JSON.stringify(layout3d));
+    layout3d_2.scene.yaxis.title = 'Entropia (bytes)';
+    layout3d_2.scene.zaxis.title = 'Media Nibbles';
+
+    Plotly.newPlot('chart3d_2', [{
+        type: 'scatter3d',
+        mode: 'markers',
+        x: puzzleNums,
+        y: entropies,
+        z: nibbleMeans,
+        marker: {
+            size: 5,
+            color: puzzleNums,
+            colorscale: 'Viridis',
+            colorbar: { title: 'Puzzle #', thickness: 15 },
+            opacity: 0.9
+        },
+        hovertemplate: 'Puzzle #%{x}<br>Entropia: %{y}<br>Nibble Mean: %{z}<extra></extra>'
+    }], layout3d_2);
+
+    // === POSICAO ===
+    Plotly.newPlot('chartPos', [{
+        type: 'scatter',
+        mode: 'markers+lines',
+        x: puzzleNums,
+        y: normPositions,
+        marker: { color: '#f7931a', size: 5 },
+        line: { color: '#f7931a', width: 1 }
+    },
+    {
+        type: 'scatter',
+        mode: 'lines',
+        x: [puzzleNums[0], puzzleNums[puzzleNums.length-1]],
+        y: [50, 50],
+        line: { color: '#ff3333', dash: 'dash', width: 1 },
+        name: 'Centro (50%)'
+    }], {...layout2d, showlegend: false});
+
+    // === HAMMING ===
+    Plotly.newPlot('chartHamming', [{
+        type: 'scatter',
+        mode: 'markers+lines',
+        x: puzzleNums,
+        y: hammingRatios,
+        marker: { color: '#00ff88', size: 5 },
+        line: { color: '#00ff88', width: 1 }
+    },
+    {
+        type: 'scatter',
+        mode: 'lines',
+        x: [puzzleNums[0], puzzleNums[puzzleNums.length-1]],
+        y: [50, 50],
+        line: { color: '#ff3333', dash: 'dash', width: 1 },
+        name: 'Esperado (50%)'
+    }], {...layout2d, showlegend: false});
+
+    // === DELTA ===
+    const deltaColors = deltas.map(d => d >= 0 ? '#00ff88' : '#ff6b6b');
+    Plotly.newPlot('chartDelta', [{
+        type: 'bar',
+        x: puzzleNums,
+        y: deltas,
+        marker: { color: deltaColors }
+    }], {...layout2d, showlegend: false});
+
+    // === ENTROPY ===
+    Plotly.newPlot('chartEntropy', [{
+        type: 'scatter',
+        mode: 'markers+lines',
+        x: puzzleNums,
+        y: entropies,
+        marker: { color: '#aa88ff', size: 5 },
+        line: { color: '#aa88ff', width: 1 }
+    }], {...layout2d, showlegend: false});
+
+    // === LOW NIBBLE ===
+    const nibbleCounts = Array(16).fill(0);
+    lowNibbles.forEach(n => nibbleCounts[n]++);
+    Plotly.newPlot('chartNibble', [{
+        type: 'bar',
+        x: Array.from({length:16}, (_,i) => '0x'+i.toString(16).toUpperCase()),
+        y: nibbleCounts,
+        marker: { color: nibbleCounts.map(c => c > nibbleCounts.reduce((a,b)=>a+b,0)/16 ? '#f7931a' : '#555') }
+    }], {...layout2d, showlegend: false});
+
+    // === HISTOGRAM ===
+    Plotly.newPlot('chartHist', [{
+        type: 'histogram',
+        x: normPositions,
+        nbinsx: 20,
+        marker: { color: '#f7931a', line: { color: '#000', width: 1 } }
+    }], {...layout2d, xaxis: {...layout2d.xaxis, title: 'Posicao no Range (%)'}, yaxis: {...layout2d.yaxis, title: 'Frequencia'}, showlegend: false});
+
+    // === HEATMAP ===
+    const heatmapData = [];
+    const heatmapLabels = [];
+    const maxNibbles = 34;
+    for (let i = 0; i < keysHex.length; i++) {
+        const nibs = keysHex[i].split('').map(c => parseInt(c, 16));
+        while (nibs.length < maxNibbles) nibs.unshift(-1);
+        heatmapData.push(nibs.slice(-maxNibbles));
+        heatmapLabels.push('#' + puzzleNums[i]);
+    }
+
+    Plotly.newPlot('chartHeatmap', [{
+        type: 'heatmap',
+        z: heatmapData,
+        y: heatmapLabels,
+        colorscale: [[0,'#0a0a0f'],[0.0625,'#1a1a3e'],[0.125,'#1a2a5e'],[0.25,'#0066aa'],[0.5,'#00aa66'],[0.75,'#aaaa00'],[1,'#ff3333']],
+        zmin: 0,
+        zmax: 15,
+        colorbar: { title: 'Nibble', thickness: 15 }
+    }], {
+        ...layout2d,
+        margin: { l: 60, r: 20, t: 10, b: 40 },
+        xaxis: { title: 'Nibble Position (MSB -> LSB)', color: '#888', gridcolor: '#222' },
+        yaxis: { color: '#888', gridcolor: '#222', autorange: 'reversed' }
+    });
+
+    // === ANALYSIS ===
+    const avgPos = normPositions.reduce((a,b)=>a+b,0) / normPositions.length;
+    const stdPos = Math.sqrt(normPositions.map(p => (p-avgPos)**2).reduce((a,b)=>a+b,0) / normPositions.length);
+    const avgHW = hammingRatios.reduce((a,b)=>a+b,0) / hammingRatios.length;
+
+    const posBelow30 = normPositions.filter(p => p < 30).length;
+    const posAbove70 = normPositions.filter(p => p > 70).length;
+    const posMid = normPositions.filter(p => p >= 30 && p <= 70).length;
+
+    const runs = [];
+    let currentRun = { dir: normPositions[1] > normPositions[0] ? 'up' : 'down', len: 1 };
+    for (let i = 2; i < normPositions.length; i++) {
+        const dir = normPositions[i] > normPositions[i-1] ? 'up' : 'down';
+        if (dir === currentRun.dir) currentRun.len++;
+        else { runs.push(currentRun); currentRun = { dir, len: 1 }; }
+    }
+    runs.push(currentRun);
+    const maxRun = Math.max(...runs.map(r => r.len));
+
+    let autocorr = 0;
+    const n = normPositions.length;
+    for (let i = 0; i < n - 1; i++) {
+        autocorr += (normPositions[i] - avgPos) * (normPositions[i+1] - avgPos);
+    }
+    const variance = normPositions.map(p => (p - avgPos)**2).reduce((a,b)=>a+b,0);
+    autocorr = variance > 0 ? autocorr / variance : 0;
+
+    const analysisHTML = `
+<pre>
+<span class="highlight">== ESTATISTICAS DE POSICAO NO RANGE ==</span>
+Media:              ${avgPos.toFixed(2)}%  (esperado ~50% para uniforme)
+Desvio Padrao:      ${stdPos.toFixed(2)}%  (esperado ~28.87% para uniforme)
+Autocorrelacao(1):  ${autocorr.toFixed(4)}  (esperado ~0 para independente)
+
+Distribuicao:
+  < 30%:   ${posBelow30} puzzles (${(posBelow30/n*100).toFixed(1)}%)
+  30-70%:  ${posMid} puzzles (${(posMid/n*100).toFixed(1)}%)
+  > 70%:   ${posAbove70} puzzles (${(posAbove70/n*100).toFixed(1)}%)
+
+<span class="highlight">== ANALISE DE SEQUENCIA ==</span>
+Maior sequencia monotonica:  ${maxRun} puzzles consecutivos
+Total de runs:               ${runs.length}
+
+<span class="highlight">== HAMMING WEIGHT ==</span>
+Media:  ${avgHW.toFixed(2)}%  (esperado ~50% para aleatorio)
+${Math.abs(avgHW - 50) > 5 ? '<span class="warn">ANOMALIA: Desvio significativo do esperado!</span>' : 'Dentro do esperado para chaves aleatorias.'}
+
+<span class="highlight">== ULTIMO NIBBLE ==</span>
+Distribuicao dos ultimos 4 bits:
+${Array.from({length:16}, (_,i) => '  0x' + i.toString(16).toUpperCase() + ': ' + nibbleCounts[i] + ' (' + (nibbleCounts[i]/n*100).toFixed(1) + '%)').join('\n')}
+Esperado por nibble: ${(100/16).toFixed(1)}%
+${Math.max(...nibbleCounts) > n/16 * 2 ? '<span class="warn">ANOMALIA: Distribuicao nao uniforme nos ultimos nibbles!</span>' : 'Distribuicao razoavelmente uniforme.'}
+
+<span class="highlight">== OBSERVACOES ==</span>
+- O criador afirmou usar "chaves consecutivas de uma wallet deterministica"
+- Chaves foram mascaradas com 000...0001 para definir a dificuldade
+- Se a wallet e BIP32/HD, as chaves derivadas teriam correlacao via HMAC-SHA512
+- Padroes nos nibbles ou posicoes podem indicar o esquema de derivacao
+- Autocorrelacao ${Math.abs(autocorr) > 0.3 ? '<span class="warn">SIGNIFICATIVA</span> - possivel correlacao entre chaves adjacentes' : 'baixa - chaves parecem independentes entre si'}
+</pre>`;
+
+    document.getElementById('analysisText').innerHTML = analysisHTML;
+    </script>
+</body>
+</html>

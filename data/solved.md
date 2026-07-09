@@ -1,0 +1,1638 @@
+Bitcoin Puzzle #1 SOLVED
+ 
+Key Range (Bits):
+20...21
+Key Range (HEX):
+1:1
+Bitcoin Address:
+C
+1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH
+ 0
+ 0.25000029
+ 195
+Public Key:
+ 0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798
+Private Key:
+0000000000000000000000000000000000000000000000000000000000000001
+% of the Range:
+100%
+Solved:
+2015-01-15 by 1HdtWQ
+Bitcoin Puzzle #2 SOLVED
+ 
+Key Range (Bits):
+21...22
+Key Range (HEX):
+2:3
+Bitcoin Address:
+C
+1CUNEBjYrCn2y1SdiUMohaKUi4wpP326Lb
+ 0
+ 0.00226546
+ 12
+Public Key:
+ 02f9308a019258c31049344f85f89d5229b531c845836f99b08601f113bce036f9
+Private Key:
+0000000000000000000000000000000000000000000000000000000000000003
+% of the Range:
+50%
+Solved:
+2015-01-15 by 1aaRgu
+Bitcoin Puzzle #3 SOLVED
+ 
+Key Range (Bits):
+22...23
+Key Range (HEX):
+4:7
+Bitcoin Address:
+C
+19ZewH8Kk1PDbSNdJ97FP4EiCjTRaZMZQA
+ 0
+ 0.0031
+ 4
+Public Key:
+ 025cbdf0646e5db4eaa398f365f2ea7a0e3d419b7e0330e39ce92bddedcac4f9bc
+Private Key:
+0000000000000000000000000000000000000000000000000000000000000007
+% of the Range:
+75%
+Solved:
+2015-01-15 by 1aaRgu
+Bitcoin Puzzle #4 SOLVED
+ 
+Key Range (Bits):
+23...24
+Key Range (HEX):
+8:f
+Bitcoin Address:
+C
+1EhqbyUMvvs7BfL8goY6qcPbD6YKfPqb7e
+ 0
+ 0.00401601
+ 4
+Public Key:
+ 022f01e5e15cca351daff3843fb70f3c2f0a1bdd05e5af888a67784ef3e10a2a01
+Private Key:
+0000000000000000000000000000000000000000000000000000000000000008
+% of the Range:
+0%
+Solved:
+2015-01-15 by 1aaRgu
+Bitcoin Puzzle #5 SOLVED
+ 
+Key Range (Bits):
+24...25
+Key Range (HEX):
+10:1f
+Bitcoin Address:
+C
+1E6NuFjCi27W5zoXg8TRdcSRq84zJeBW3k
+ 0
+ 0.005
+ 2
+Public Key:
+ 02352bbf4a4cdd12564f93fa332ce333301d9ad40271f8107181340aef25be59d5
+Private Key:
+0000000000000000000000000000000000000000000000000000000000000015
+% of the Range:
+31.25%
+Solved:
+2015-01-15 by 1aaRgu
+Bitcoin Puzzle #6 SOLVED
+ 
+Key Range (Bits):
+25...26
+Key Range (HEX):
+20:3f
+Bitcoin Address:
+C
+1PitScNLyp2HCygzadCh7FveTnfmpPbfp8
+ 0
+ 0.00618097
+ 6
+Public Key:
+ 03f2dac991cc4ce4b9ea44887e5c7c0bce58c80074ab9d4dbaeb28531b7739f530
+Private Key:
+0000000000000000000000000000000000000000000000000000000000000031
+% of the Range:
+53.13%
+Solved:
+2015-01-15 by 1aaRgu
+Bitcoin Puzzle #7 SOLVED
+ 
+Key Range (Bits):
+26...27
+Key Range (HEX):
+40:7f
+Bitcoin Address:
+C
+1McVt1vMtCC7yn5b9wgX1833yCcLXzueeC
+ 0
+ 0.007
+ 2
+Public Key:
+ 0296516a8f65774275278d0d7420a88df0ac44bd64c7bae07c3fe397c5b3300b23
+Private Key:
+000000000000000000000000000000000000000000000000000000000000004c
+% of the Range:
+18.75%
+Solved:
+2015-01-15 by 1aaRgu
+Bitcoin Puzzle #8 SOLVED
+ 
+Key Range (Bits):
+27...28
+Key Range (HEX):
+80:ff
+Bitcoin Address:
+C
+1M92tSqNmQLYw33fuBvjmeadirh1ysMBxK
+ 0
+ 0.008
+ 2
+Public Key:
+ 0308bc89c2f919ed158885c35600844d49890905c79b357322609c45706ce6b514
+Private Key:
+00000000000000000000000000000000000000000000000000000000000000e0
+% of the Range:
+75%
+Solved:
+2015-01-15 by 1aaRgu
+Bitcoin Puzzle #9 SOLVED
+ 
+Key Range (Bits):
+28...29
+Key Range (HEX):
+100:1ff
+Bitcoin Address:
+C
+1CQFwcjw1dwhtkVWBttNLDtqL7ivBonGPV
+ 0
+ 0.0181
+ 6
+Public Key:
+ 0243601d61c836387485e9514ab5c8924dd2cfd466af34ac95002727e1659d60f7
+Private Key:
+00000000000000000000000000000000000000000000000000000000000001d3
+% of the Range:
+82.42%
+Solved:
+2015-01-15 by 1aaRgu
+Bitcoin Puzzle #10 SOLVED
+ 
+Key Range (Bits):
+29...210
+Key Range (HEX):
+200:3ff
+Bitcoin Address:
+C
+1LeBZP5QCwwgXRtmVUvTVrraqPUokyLHqe
+ 0
+ 0.01012795
+ 4
+Public Key:
+ 03a7a4c30291ac1db24b4ab00c442aa832f7794b5a0959bec6e8d7fee802289dcd
+Private Key:
+0000000000000000000000000000000000000000000000000000000000000202
+% of the Range:
+0.39%
+Solved:
+2015-01-15 by 18dy6J
+Bitcoin Puzzle #11 SOLVED
+ 
+Key Range (Bits):
+210...211
+Key Range (HEX):
+400:7ff
+Bitcoin Address:
+C
+1PgQVLmst3Z314JrQn5TNiys8Hc38TcXJu
+ 0
+ 0.011
+ 2
+Public Key:
+ 038b05b0603abd75b0c57489e451f811e1afe54a8715045cdf4888333f3ebc6e8b
+Private Key:
+0000000000000000000000000000000000000000000000000000000000000483
+% of the Range:
+12.79%
+Solved:
+2015-01-15 by 1KEUP6
+Bitcoin Puzzle #12 SOLVED
+ 
+Key Range (Bits):
+211...212
+Key Range (HEX):
+800:fff
+Bitcoin Address:
+C
+1DBaumZxUkM4qMQRt2LVWyFJq5kDtSZQot
+ 0
+ 0.01200961
+ 4
+Public Key:
+ 038b00fcbfc1a203f44bf123fc7f4c91c10a85c8eae9187f9d22242b4600ce781c
+Private Key:
+0000000000000000000000000000000000000000000000000000000000000a7b
+% of the Range:
+31.01%
+Solved:
+2015-01-15 by 1LzgnU
+Bitcoin Puzzle #13 SOLVED
+ 
+Key Range (Bits):
+212...213
+Key Range (HEX):
+1000:1fff
+Bitcoin Address:
+C
+1Pie8JkxBT6MGPz9Nvi3fsPkr2D8q3GBc1
+ 0
+ 0.01306258
+ 4
+Public Key:
+ 03aadaaab1db8d5d450b511789c37e7cfeb0eb8b3e61a57a34166c5edc9a4b869d
+Private Key:
+0000000000000000000000000000000000000000000000000000000000001460
+% of the Range:
+27.34%
+Solved:
+2015-01-15 by 112a7w
+Bitcoin Puzzle #14 SOLVED
+ 
+Key Range (Bits):
+213...214
+Key Range (HEX):
+2000:3fff
+Bitcoin Address:
+C
+1ErZWg5cFCe4Vw5BzgfzB74VNLaXEiEkhk
+ 0
+ 0.014
+ 2
+Public Key:
+ 03b4f1de58b8b41afe9fd4e5ffbdafaeab86c5db4769c15d6e6011ae7351e54759
+Private Key:
+0000000000000000000000000000000000000000000000000000000000002930
+% of the Range:
+28.71%
+Solved:
+2015-01-15 by 1EaFXz
+Bitcoin Puzzle #15 SOLVED
+ 
+Key Range (Bits):
+214...215
+Key Range (HEX):
+4000:7fff
+Bitcoin Address:
+C
+1QCbW9HWnwQWiQqVo5exhAnmfqKRrCRsvW
+ 0
+ 0.015
+ 2
+Public Key:
+ 02fea58ffcf49566f6e9e9350cf5bca2861312f422966e8db16094beb14dc3df2c
+Private Key:
+00000000000000000000000000000000000000000000000000000000000068f3
+% of the Range:
+63.98%
+Solved:
+2015-01-15 by 1363mv
+Bitcoin Puzzle #16 SOLVED
+ 
+Key Range (Bits):
+215...216
+Key Range (HEX):
+8000:ffff
+Bitcoin Address:
+C
+1BDyrQ6WoF8VN3g9SAS1iKZcPzFfnDVieY
+ 0
+ 0.01601
+ 4
+Public Key:
+ 029d8c5d35231d75eb87fd2c5f05f65281ed9573dc41853288c62ee94eb2590b7a
+Private Key:
+000000000000000000000000000000000000000000000000000000000000c936
+% of the Range:
+57.2%
+Solved:
+2015-01-15 by 187Jz6
+Bitcoin Puzzle #17 SOLVED
+ 
+Key Range (Bits):
+216...217
+Key Range (HEX):
+10000:1ffff
+Bitcoin Address:
+C
+1HduPEXZRdG26SUT5Yk83mLkPyjnZuJ7Bm
+ 0
+ 0.017
+ 2
+Public Key:
+ 033f688bae8321b8e02b7e6c0a55c2515fb25ab97d85fda842449f7bfa04e128c3
+Private Key:
+000000000000000000000000000000000000000000000000000000000001764f
+% of the Range:
+46.21%
+Solved:
+2015-01-15 by 1NjGUd
+Bitcoin Puzzle #18 SOLVED
+ 
+Key Range (Bits):
+217...218
+Key Range (HEX):
+20000:3ffff
+Bitcoin Address:
+C
+1GnNTmTVLZiqQfLbAdp9DVdicEnB5GoERE
+ 0
+ 0.018
+ 2
+Public Key:
+ 020ce4a3291b19d2e1a7bf73ee87d30a6bdbc72b20771e7dfff40d0db755cd4af1
+Private Key:
+000000000000000000000000000000000000000000000000000000000003080d
+% of the Range:
+51.57%
+Solved:
+2015-01-15 by 1Hm4wH
+Bitcoin Puzzle #19 SOLVED
+ 
+Key Range (Bits):
+218...219
+Key Range (HEX):
+40000:7ffff
+Bitcoin Address:
+C
+1NWmZRpHH4XSPwsW6dsS3nrNWfL1yrJj4w
+ 0
+ 0.019
+ 2
+Public Key:
+ 0385663c8b2f90659e1ccab201694f4f8ec24b3749cfe5030c7c3646a709408e19
+Private Key:
+000000000000000000000000000000000000000000000000000000000005749f
+% of the Range:
+36.39%
+Solved:
+2015-01-15 by 1DzcaG
+Bitcoin Puzzle #20 SOLVED
+ 
+Key Range (Bits):
+219...220
+Key Range (HEX):
+80000:fffff
+Bitcoin Address:
+C
+1HsMJxNiV7TLxmoF6uJNkydxPFDog4NQum
+ 0
+ 0.02004182
+ 4
+Public Key:
+ 033c4a45cbd643ff97d77f41ea37e843648d50fd894b864b0d52febc62f6454f7c
+Private Key:
+00000000000000000000000000000000000000000000000000000000000d2c55
+% of the Range:
+64.66%
+Solved:
+2015-01-15 by 1JLtZF
+Bitcoin Puzzle #21 SOLVED
+ 
+Key Range (Bits):
+220...221
+Key Range (HEX):
+100000:1fffff
+Bitcoin Address:
+C
+14oFNXucftsHiUMY8uctg6N487riuyXs4h
+ 0
+ 0.02201813
+ 8
+Public Key:
+ 031a746c78f72754e0be046186df8a20cdce5c79b2eda76013c647af08d306e49e
+Private Key:
+00000000000000000000000000000000000000000000000000000000001ba534
+% of the Range:
+72.78%
+Solved:
+2015-01-15 by 1aaRgu
+Bitcoin Puzzle #22 SOLVED
+ 
+Key Range (Bits):
+221...222
+Key Range (HEX):
+200000:3fffff
+Bitcoin Address:
+C
+1CfZWK1QTQE3eS9qn61dQjV89KDjZzfNcv
+ 0
+ 0.022
+ 2
+Public Key:
+ 023ed96b524db5ff4fe007ce730366052b7c511dc566227d929070b9ce917abb43
+Private Key:
+00000000000000000000000000000000000000000000000000000000002de40f
+% of the Range:
+43.41%
+Solved:
+2015-01-15 by 12x45A
+Bitcoin Puzzle #23 SOLVED
+ 
+Key Range (Bits):
+222...223
+Key Range (HEX):
+400000:7fffff
+Bitcoin Address:
+C
+1L2GM8eE7mJWLdo3HZS6su1832NX2txaac
+ 0
+ 0.023
+ 2
+Public Key:
+ 03f82710361b8b81bdedb16994f30c80db522450a93e8e87eeb07f7903cf28d04b
+Private Key:
+0000000000000000000000000000000000000000000000000000000000556e52
+% of the Range:
+33.49%
+Solved:
+2015-01-15 by 1aaRgu
+Bitcoin Puzzle #24 SOLVED
+ 
+Key Range (Bits):
+223...224
+Key Range (HEX):
+800000:ffffff
+Bitcoin Address:
+C
+1rSnXMr63jdCuegJFuidJqWxUPV7AtUf7
+ 0
+ 0.024
+ 2
+Public Key:
+ 036ea839d22847ee1dce3bfc5b11f6cf785b0682db58c35b63d1342eb221c3490c
+Private Key:
+0000000000000000000000000000000000000000000000000000000000dc2a04
+% of the Range:
+72%
+Solved:
+2015-01-15 by 12x45A
+Bitcoin Puzzle #25 SOLVED
+ 
+Key Range (Bits):
+224...225
+Key Range (HEX):
+1000000:1ffffff
+Bitcoin Address:
+C
+15JhYXn6Mx3oF4Y7PcTAv2wVVAuCFFQNiP
+ 0
+ 0.025
+ 2
+Public Key:
+ 03057fbea3a2623382628dde556b2a0698e32428d3cd225f3bd034dca82dd7455a
+Private Key:
+0000000000000000000000000000000000000000000000000000000001fa5ee5
+% of the Range:
+97.8%
+Solved:
+2015-01-15 by 12x45A
+Bitcoin Puzzle #26 SOLVED
+ 
+Key Range (Bits):
+225...226
+Key Range (HEX):
+2000000:3ffffff
+Bitcoin Address:
+C
+1JVnST957hGztonaWK6FougdtjxzHzRMMg
+ 0
+ 0.026
+ 2
+Public Key:
+ 024e4f50a2a3eccdb368988ae37cd4b611697b26b29696e42e06d71368b4f3840f
+Private Key:
+000000000000000000000000000000000000000000000000000000000340326e
+% of the Range:
+62.54%
+Solved:
+2015-01-15 by 12x45A
+Bitcoin Puzzle #27 SOLVED
+ 
+Key Range (Bits):
+226...227
+Key Range (HEX):
+4000000:7ffffff
+Bitcoin Address:
+C
+128z5d7nN7PkCuX5qoA4Ys6pmxUYnEy86k
+ 0
+ 0.027
+ 2
+Public Key:
+ 031a864bae3922f351f1b57cfdd827c25b7e093cb9c88a72c1cd893d9f90f44ece
+Private Key:
+0000000000000000000000000000000000000000000000000000000006ac3875
+% of the Range:
+66.82%
+Solved:
+2015-01-15 by 12x45A
+Bitcoin Puzzle #28 SOLVED
+ 
+Key Range (Bits):
+227...228
+Key Range (HEX):
+8000000:fffffff
+Bitcoin Address:
+C
+12jbtzBb54r97TCwW3G1gCFoumpckRAPdY
+ 0
+ 0.028
+ 2
+Public Key:
+ 03e9e661838a96a65331637e2a3e948dc0756e5009e7cb5c36664d9b72dd18c0a7
+Private Key:
+000000000000000000000000000000000000000000000000000000000d916ce8
+% of the Range:
+69.6%
+Solved:
+2015-01-15 by 12x45A
+Bitcoin Puzzle #29 SOLVED
+ 
+Key Range (Bits):
+228...229
+Key Range (HEX):
+10000000:1fffffff
+Bitcoin Address:
+C
+19EEC52krRUK1RkUAEZmQdjTyHT7Gp1TYT
+ 0
+ 0.029
+ 2
+Public Key:
+ 026caad634382d34691e3bef43ed4a124d8909a8a3362f91f1d20abaaf7e917b36
+Private Key:
+0000000000000000000000000000000000000000000000000000000017e2551e
+% of the Range:
+49.28%
+Solved:
+2015-01-15 by 12x45A
+Bitcoin Puzzle #30 SOLVED
+ 
+Key Range (Bits):
+229...230
+Key Range (HEX):
+20000000:3fffffff
+Bitcoin Address:
+C
+1LHtnpd8nU5VHEMkG2TMYYNUjjLc992bps
+ 0
+ 0.0303
+ 4
+Public Key:
+ 030d282cf2ff536d2c42f105d0b8588821a915dc3f9a05bd98bb23af67a2e92a5b
+Private Key:
+000000000000000000000000000000000000000000000000000000003d94cd64
+% of the Range:
+92.44%
+Solved:
+2015-01-16 by 18sLsb
+Bitcoin Puzzle #31 SOLVED
+ 
+Key Range (Bits):
+230...231
+Key Range (HEX):
+40000000:7fffffff
+Bitcoin Address:
+C
+1LhE6sCTuGae42Axu1L1ZB7L96yi9irEBE
+ 0
+ 0.031
+ 2
+Public Key:
+ 0387dc70db1806cd9a9a76637412ec11dd998be666584849b3185f7f9313c8fd28
+Private Key:
+000000000000000000000000000000000000000000000000000000007d4fe747
+% of the Range:
+95.8%
+Solved:
+2015-01-16 by 12x45A
+Bitcoin Puzzle #32 SOLVED
+ 
+Key Range (Bits):
+231...232
+Key Range (HEX):
+80000000:ffffffff
+Bitcoin Address:
+C
+1FRoHA9xewq7DjrZ1psWJVeTer8gHRqEvR
+ 0
+ 0.032
+ 2
+Public Key:
+ 0209c58240e50e3ba3f833c82655e8725c037a2294e14cf5d73a5df8d56159de69
+Private Key:
+00000000000000000000000000000000000000000000000000000000b862a62e
+% of the Range:
+44.05%
+Solved:
+2015-01-16 by 12x45A
+Bitcoin Puzzle #33 SOLVED
+ 
+Key Range (Bits):
+232...233
+Key Range (HEX):
+100000000:1ffffffff
+Bitcoin Address:
+C
+187swFMjz1G54ycVU56B7jZFHFTNVQFDiu
+ 0
+ 0.033
+ 2
+Public Key:
+ 03a355aa5e2e09dd44bb46a4722e9336e9e3ee4ee4e7b7a0cf5785b283bf2ab579
+Private Key:
+00000000000000000000000000000000000000000000000000000001a96ca8d8
+% of the Range:
+66.18%
+Solved:
+2015-01-16 by 18sLsb
+Bitcoin Puzzle #34 SOLVED
+ 
+Key Range (Bits):
+233...234
+Key Range (HEX):
+200000000:3ffffffff
+Bitcoin Address:
+C
+1PWABE7oUahG2AFFQhhvViQovnCr4rEv7Q
+ 0
+ 0.034
+ 2
+Public Key:
+ 033cdd9d6d97cbfe7c26f902faf6a435780fe652e159ec953650ec7b1004082790
+Private Key:
+000000000000000000000000000000000000000000000000000000034a65911d
+% of the Range:
+64.53%
+Solved:
+2015-01-17 by 1MLjeM
+Bitcoin Puzzle #35 SOLVED
+ 
+Key Range (Bits):
+234...235
+Key Range (HEX):
+400000000:7ffffffff
+Bitcoin Address:
+C
+1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb
+ 0
+ 0.035
+ 2
+Public Key:
+ 02f6a8148a62320e149cb15c544fe8a25ab483a0095d2280d03b8a00a7feada13d
+Private Key:
+00000000000000000000000000000000000000000000000000000004aed21170
+% of the Range:
+17.07%
+Solved:
+2015-01-17 by 1HtaAw
+Bitcoin Puzzle #36 SOLVED
+ 
+Key Range (Bits):
+235...236
+Key Range (HEX):
+800000000:fffffffff
+Bitcoin Address:
+C
+1Be2UF9NLfyLFbtm3TCbmuocc9N1Kduci1
+ 0
+ 0.036
+ 2
+Public Key:
+ 02b3e772216695845fa9dda419fb5daca28154d8aa59ea302f05e916635e47b9f6
+Private Key:
+00000000000000000000000000000000000000000000000000000009de820a7c
+% of the Range:
+23.36%
+Solved:
+2015-01-17 by 18H8sy
+Bitcoin Puzzle #37 SOLVED
+ 
+Key Range (Bits):
+236...237
+Key Range (HEX):
+1000000000:1fffffffff
+Bitcoin Address:
+C
+14iXhn8bGajVWegZHJ18vJLHhntcpL4dex
+ 0
+ 0.037
+ 2
+Public Key:
+ 027d2c03c3ef0aec70f2c7e1e75454a5dfdd0e1adea670c1b3a4643c48ad0f1255
+Private Key:
+0000000000000000000000000000000000000000000000000000001757756a93
+% of the Range:
+45.89%
+Solved:
+2015-01-18 by 1AQk96
+Bitcoin Puzzle #38 SOLVED
+ 
+Key Range (Bits):
+237...238
+Key Range (HEX):
+2000000000:3fffffffff
+Bitcoin Address:
+C
+1HBtApAFA9B2YZw3G2YKSMCtb3dVnjuNe2
+ 0
+ 0.038
+ 2
+Public Key:
+ 03c060e1e3771cbeccb38e119c2414702f3f5181a89652538851d2e3886bdd70c6
+Private Key:
+00000000000000000000000000000000000000000000000000000022382facd0
+% of the Range:
+6.94%
+Solved:
+2015-01-19 by 18sLsb
+Bitcoin Puzzle #39 SOLVED
+ 
+Key Range (Bits):
+238...239
+Key Range (HEX):
+4000000000:7fffffffff
+Bitcoin Address:
+C
+122AJhKLEfkFBaGAd84pLp1kfE7xK3GdT8
+ 0
+ 0.03911
+ 6
+Public Key:
+ 022d77cd1467019a6bf28f7375d0949ce30e6b5815c2758b98a74c2700bc006543
+Private Key:
+0000000000000000000000000000000000000000000000000000004b5f8303e9
+% of the Range:
+17.77%
+Solved:
+2015-01-21 by 1LXyBa
+Bitcoin Puzzle #40 SOLVED
+ 
+Key Range (Bits):
+239...240
+Key Range (HEX):
+8000000000:ffffffffff
+Bitcoin Address:
+C
+1EeAxcprB2PpCnr34VfZdFrkUWuxyiNEFv
+ 0
+ 0.04
+ 2
+Public Key:
+ 03a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4
+Private Key:
+000000000000000000000000000000000000000000000000000000e9ae4933d6
+% of the Range:
+82.56%
+Solved:
+2015-01-30 by 1ghost
+Bitcoin Puzzle #41 SOLVED
+ 
+Key Range (Bits):
+240...241
+Key Range (HEX):
+10000000000:1ffffffffff
+Bitcoin Address:
+C
+1L5sU9qvJeuwQUdt4y1eiLmquFxKjtHr3E
+ 0
+ 0.041
+ 2
+Public Key:
+ 03b357e68437da273dcf995a474a524439faad86fc9effc300183f714b0903468b
+Private Key:
+00000000000000000000000000000000000000000000000000000153869acc5b
+% of the Range:
+32.63%
+Solved:
+2015-01-30 by 1ghost
+Bitcoin Puzzle #42 SOLVED
+ 
+Key Range (Bits):
+241...242
+Key Range (HEX):
+20000000000:3ffffffffff
+Bitcoin Address:
+C
+1E32GPWgDyeyQac4aJxm9HVoLrrEYPnM4N
+ 0
+ 0.042
+ 2
+Public Key:
+ 03eec88385be9da803a0d6579798d977a5d0c7f80917dab49cb73c9e3927142cb6
+Private Key:
+000000000000000000000000000000000000000000000000000002a221c58d8f
+% of the Range:
+31.67%
+Solved:
+2015-01-30 by 1ghost
+Bitcoin Puzzle #43 SOLVED
+ 
+Key Range (Bits):
+242...243
+Key Range (HEX):
+40000000000:7ffffffffff
+Bitcoin Address:
+C
+1PiFuqGpG8yGM5v6rNHWS3TjsG6awgEGA1
+ 0
+ 0.043
+ 2
+Public Key:
+ 02a631f9ba0f28511614904df80d7f97a4f43f02249c8909dac92276ccf0bcdaed
+Private Key:
+000000000000000000000000000000000000000000000000000006bd3b27c591
+% of the Range:
+68.48%
+Solved:
+2015-01-30 by 1ghost
+Bitcoin Puzzle #44 SOLVED
+ 
+Key Range (Bits):
+243...244
+Key Range (HEX):
+80000000000:fffffffffff
+Bitcoin Address:
+C
+1CkR2uS7LmFwc3T2jV8C1BhWb5mQaoxedF
+ 0
+ 0.044
+ 2
+Public Key:
+ 025e466e97ed0e7910d3d90ceb0332df48ddf67d456b9e7303b50a3d89de357336
+Private Key:
+00000000000000000000000000000000000000000000000000000e02b35a358f
+% of the Range:
+75.13%
+Solved:
+2015-01-30 by 1ghost
+Bitcoin Puzzle #45 SOLVED
+ 
+Key Range (Bits):
+244...245
+Key Range (HEX):
+100000000000:1fffffffffff
+Bitcoin Address:
+C
+1NtiLNGegHWE3Mp9g2JPkgx6wUg4TW7bbk
+ 0
+ 0.045
+ 2
+Public Key:
+ 026ecabd2d22fdb737be21975ce9a694e108eb94f3649c586cc7461c8abf5da71a
+Private Key:
+0000000000000000000000000000000000000000000000000000122fca143c05
+% of the Range:
+13.67%
+Solved:
+2015-01-30 by 1ghost
+Bitcoin Puzzle #46 SOLVED
+ 
+Key Range (Bits):
+245...246
+Key Range (HEX):
+200000000000:3fffffffffff
+Bitcoin Address:
+C
+1F3JRMWudBaj48EhwcHDdpeuy2jwACNxjP
+ 0
+ 0.046
+ 2
+Public Key:
+ 03fd5487722d2576cb6d7081426b66a3e2986c1ce8358d479063fb5f2bb6dd5849
+Private Key:
+00000000000000000000000000000000000000000000000000002ec18388d544
+% of the Range:
+46.11%
+Solved:
+2015-01-30 by 1ghost
+Bitcoin Puzzle #47 SOLVED
+ 
+Key Range (Bits):
+246...247
+Key Range (HEX):
+400000000000:7fffffffffff
+Bitcoin Address:
+C
+1Pd8VvT49sHKsmqrQiP61RsVwmXCZ6ay7Z
+ 0
+ 0.0473496
+ 4
+Public Key:
+ 023a12bd3caf0b0f77bf4eea8e7a40dbe27932bf80b19ac72f5f5a64925a594196
+Private Key:
+00000000000000000000000000000000000000000000000000006cd610b53cba
+% of the Range:
+70.06%
+Solved:
+2015-09-01 by 15L3Hy
+Bitcoin Puzzle #48 SOLVED
+ 
+Key Range (Bits):
+247...248
+Key Range (HEX):
+800000000000:ffffffffffff
+Bitcoin Address:
+C
+1DFYhaB2J9q1LLZJWKTnscPWos9VBqDHzv
+ 0
+ 0.048
+ 2
+Public Key:
+ 0291bee5cf4b14c291c650732faa166040e4c18a14731f9a930c1e87d3ec12debb
+Private Key:
+0000000000000000000000000000000000000000000000000000ade6d7ce3b9b
+% of the Range:
+35.86%
+Solved:
+2015-09-01 by 15L3Hy
+Bitcoin Puzzle #49 SOLVED
+ 
+Key Range (Bits):
+248...249
+Key Range (HEX):
+1000000000000:1ffffffffffff
+Bitcoin Address:
+C
+12CiUhYVTTH33w3SPUBqcpMoqnApAV4WCF
+ 0
+ 0.049
+ 2
+Public Key:
+ 02591d682c3da4a2a698633bf5751738b67c343285ebdc3492645cb44658911484
+Private Key:
+000000000000000000000000000000000000000000000000000174176b015f4d
+% of the Range:
+45.35%
+Solved:
+2015-09-01 by 15L3Hy
+Bitcoin Puzzle #50 SOLVED
+ 
+Key Range (Bits):
+249...250
+Key Range (HEX):
+2000000000000:3ffffffffffff
+Bitcoin Address:
+C
+1MEzite4ReNuWaL5Ds17ePKt2dCxWEofwk
+ 0
+ 0.05000546
+ 4
+Public Key:
+ 03f46f41027bbf44fafd6b059091b900dad41e6845b2241dc3254c7cdd3c5a16c6
+Private Key:
+00000000000000000000000000000000000000000000000000022bd43c2e9354
+% of the Range:
+8.56%
+Solved:
+2015-09-01 by 15L3Hy
+Bitcoin Puzzle #51 SOLVED
+ 
+Key Range (Bits):
+250...251
+Key Range (HEX):
+4000000000000:7ffffffffffff
+Bitcoin Address:
+C
+1NpnQyZ7x24ud82b7WiRNvPm6N8bqGQnaS
+ 0
+ 0.10171886
+ 3
+Public Key:
+ 028c6c67bef9e9eebe6a513272e50c230f0f91ed560c37bc9b033241ff6c3be78f
+Private Key:
+00000000000000000000000000000000000000000000000000075070a1a009d4
+% of the Range:
+82.86%
+Solved:
+2017-04-05 by LBC 
+Bitcoin Puzzle #52 SOLVED
+ 
+Key Range (Bits):
+251...252
+Key Range (HEX):
+8000000000000:fffffffffffff
+Bitcoin Address:
+C
+15z9c9sVpu6fwNiK7dMAFgMYSK4GqsGZim
+ 0
+ 0.052
+ 2
+Public Key:
+ 0374c33bd548ef02667d61341892134fcf216640bc2201ae61928cd0874f6314a7
+Private Key:
+000000000000000000000000000000000000000000000000000efae164cb9e3c
+% of the Range:
+87.25%
+Solved:
+2017-04-21 by LBC 
+Bitcoin Puzzle #53 SOLVED
+ 
+Key Range (Bits):
+252...253
+Key Range (HEX):
+10000000000000:1fffffffffffff
+Bitcoin Address:
+C
+15K1YKJMiJ4fpesTVUcByoz334rHmknxmT
+ 0
+ 0.53
+ 3
+Public Key:
+ 020faaf5f3afe58300a335874c80681cf66933e2a7aeb28387c0d28bb048bc6349
+Private Key:
+00000000000000000000000000000000000000000000000000180788e47e326c
+% of the Range:
+50.18%
+Solved:
+2017-09-04 by LBC 
+Bitcoin Puzzle #54 SOLVED
+ 
+Key Range (Bits):
+253...254
+Key Range (HEX):
+20000000000000:3fffffffffffff
+Bitcoin Address:
+C
+1KYUv7nSvXx4642TKeuC2SNdTk326uUpFy
+ 0
+ 0.54002
+ 5
+Public Key:
+ 034af4b81f8c450c2c870ce1df184aff1297e5fcd54944d98d81e1a545ffb22596
+Private Key:
+00000000000000000000000000000000000000000000000000236fb6d5ad1f43
+% of the Range:
+10.74%
+Solved:
+2017-11-16 by LBC 
+Bitcoin Puzzle #55 SOLVED
+ 
+Key Range (Bits):
+254...255
+Key Range (HEX):
+40000000000000:7fffffffffffff
+Bitcoin Address:
+C
+1LzhS3k3e9Ub8i2W1V8xQFdB8n2MYCHPCa
+ 0
+ 0.60011515
+ 6
+Public Key:
+ 0385a30d8413af4f8f9e6312400f2d194fe14f02e719b24c3f83bf1fd233a8f963
+Private Key:
+000000000000000000000000000000000000000000000000006abe1f9b67e114
+% of the Range:
+66.79%
+Solved:
+2018-05-29 by 1AqEgL 
+Bitcoin Puzzle #56 SOLVED
+ 
+Key Range (Bits):
+255...256
+Key Range (HEX):
+80000000000000:ffffffffffffff
+Bitcoin Address:
+C
+17aPYR1m6pVAacXg1PTDDU7XafvK1dxvhi
+ 0
+ 0.71343285
+ 14
+Public Key:
+ 033f2db2074e3217b3e5ee305301eeebb1160c4fa1e993ee280112f6348637999a
+Private Key:
+000000000000000000000000000000000000000000000000009d18b63ac4ffdf
+% of the Range:
+22.73%
+Solved:
+2018-09-08 by 1AqEgL 
+Bitcoin Puzzle #57 SOLVED
+ 
+Key Range (Bits):
+256...257
+Key Range (HEX):
+100000000000000:1ffffffffffffff
+Bitcoin Address:
+C
+15c9mPGLku1HuW9LRtBf4jcHVpBUt8txKz
+ 0
+ 0.57038752
+ 10
+Public Key:
+ 02a521a07e98f78b03fc1e039bc3a51408cd73119b5eb116e583fe57dc8db07aea
+Private Key:
+00000000000000000000000000000000000000000000000001eb25c90795d61c
+% of the Range:
+91.85%
+Solved:
+2018-11-08 by 1AqEgL 
+Bitcoin Puzzle #58 SOLVED
+ 
+Key Range (Bits):
+257...258
+Key Range (HEX):
+200000000000000:3ffffffffffffff
+Bitcoin Address:
+C
+1Dn8NF8qDyyfHMktmuoQLGyjWmZXgvosXf
+ 0
+ 0.58010392
+ 5
+Public Key:
+ 0311569442e870326ceec0de24eb5478c19e146ecd9d15e4666440f2f638875f42
+Private Key:
+00000000000000000000000000000000000000000000000002c675b852189a21
+% of the Range:
+38.76%
+Solved:
+2018-12-03 by 1DZfjf 
+Bitcoin Puzzle #59 SOLVED
+ 
+Key Range (Bits):
+258...259
+Key Range (HEX):
+400000000000000:7ffffffffffffff
+Bitcoin Address:
+C
+1HAX2n9Uruu9YDt4cqRgYcvtGvZj1rbUyt
+ 0
+ 0.59041
+ 5
+Public Key:
+ 0241267d2d7ee1a8e76f8d1546d0d30aefb2892d231cee0dde7776daf9f8021485
+Private Key:
+00000000000000000000000000000000000000000000000007496cbb87cab44f
+% of the Range:
+82.17%
+Solved:
+2019-02-12 by zielar 
+Bitcoin Puzzle #60 SOLVED
+ 
+Key Range (Bits):
+259...260
+Key Range (HEX):
+800000000000000:fffffffffffffff
+Bitcoin Address:
+C
+1Kn5h2qpgw9mWE5jKpk8PP4qvvJ1QVy8su
+ 0
+ 0.600015
+ 5
+Public Key:
+ 0348e843dc5b1bd246e6309b4924b81543d02b16c8083df973a89ce2c7eb89a10d
+Private Key:
+0000000000000000000000000000000000000000000000000fc07a1825367bbe
+% of the Range:
+96.9%
+Solved:
+2019-02-17 by zielar 
+Bitcoin Puzzle #61 SOLVED
+ 
+Key Range (Bits):
+260...261
+Key Range (HEX):
+1000000000000000:1fffffffffffffff
+Bitcoin Address:
+C
+1AVJKwzs9AskraJLGHAZPiaZcrpDr1U6AB
+ 0
+ 0.61000793
+ 5
+Public Key:
+ 0249a43860d115143c35c09454863d6f82a95e47c1162fb9b2ebe0186eb26f453f
+Private Key:
+00000000000000000000000000000000000000000000000013c96a3742f64906
+% of the Range:
+23.67%
+Solved:
+2019-05-11 by zielar 
+Bitcoin Puzzle #62 SOLVED
+ 
+Key Range (Bits):
+261...262
+Key Range (HEX):
+2000000000000000:3fffffffffffffff
+Bitcoin Address:
+C
+1Me6EfpwZK5kQziBwBfvLiHjaPGxCKLoJi
+ 0
+ 0.620091
+ 7
+Public Key:
+ 03231a67e424caf7d01a00d5cd49b0464942255b8e48766f96602bdfa4ea14fea8
+Private Key:
+000000000000000000000000000000000000000000000000363d541eb611abee
+% of the Range:
+69.5%
+Solved:
+2019-09-08 by bc1q05 
+Bitcoin Puzzle #63 SOLVED
+ 
+Key Range (Bits):
+262...263
+Key Range (HEX):
+4000000000000000:7fffffffffffffff
+Bitcoin Address:
+C
+1NpYjtLira16LfGbGwZJ5JbDPh3ai9bjf4
+ 0
+ 0.63227327
+ 10
+Public Key:
+ 0365ec2994b8cc0a20d40dd69edfe55ca32a54bcbbaa6b0ddcff36049301a54579
+Private Key:
+0000000000000000000000000000000000000000000000007cce5efdaccf6808
+% of the Range:
+95.01%
+Solved:
+2019-07-12 by zielar 
+Bitcoin Puzzle #64 SOLVED
+ 
+Key Range (Bits):
+263...264
+Key Range (HEX):
+8000000000000000:ffffffffffffffff
+Bitcoin Address:
+C
+16jY7qLJnxb7CHZyqBP8qca9d51gAjyXQN
+ 0
+ 0.64040459
+ 17
+Public Key:
+ 03100611c54dfef604163b8358f7b7fac13ce478e02cb224ae16d45526b25d9d4d
+Private Key:
+000000000000000000000000000000000000000000000000f7051f27b09112d4
+% of the Range:
+92.98%
+Solved:
+2022-09-10 by 36X5Cc 
+Bitcoin Puzzle #65 SOLVED
+ 
+Key Range (Bits):
+264...265
+Key Range (HEX):
+10000000000000000:1ffffffffffffffff
+Bitcoin Address:
+C
+18ZMbwUFLMHoZBbfpCjUJQTCMCbktshgpe
+ 0
+ 0.65015705
+ 11
+Public Key:
+ 0230210c23b1a047bc9bdbb13448e67deddc108946de6de639bcc75d47c0216b1b
+Private Key:
+000000000000000000000000000000000000000000000001a838b13505b26867
+% of the Range:
+65.71%
+Solved:
+2019-06-07 by 3GVSoQ 
+Bitcoin Puzzle #66 SOLVED
+ 
+Key Range (Bits):
+265...266
+Key Range (HEX):
+20000000000000000:3ffffffffffffffff
+Bitcoin Address:
+C
+13zb1hQbWVsc2S7ZTZnP2G4undNNpdh5so
+ 0
+ 6.60321602
+ 50
+Public Key:
+ 024ee2be2d4e9f92d2f5a4a03058617dc45befe22938feed5b7a6b7282dd74cbdd
+Private Key:
+000000000000000000000000000000000000000000000002832ed74f2b5e35ee
+% of the Range:
+25.62%
+Solved:
+2024-09-12 by 1Jvv4y 
+Bitcoin Puzzle #67 SOLVED
+ 
+Key Range (Bits):
+266...267
+Key Range (HEX):
+40000000000000000:7ffffffffffffffff
+Bitcoin Address:
+C
+1BY8GQbnueYofwSuFAT3USAhGjPrkxDdW9
+ 0
+ 6.70013241
+ 13
+Public Key:
+ 0212209f5ec514a1580a2937bd833979d933199fc230e204c6cdc58872b7d46f75
+Private Key:
+00000000000000000000000000000000000000000000000730fc235c1942c1ae
+% of the Range:
+79.78%
+Solved:
+2025-02-21 by Kowala 
+Bitcoin Puzzle #68 SOLVED
+ 
+Key Range (Bits):
+267...268
+Key Range (HEX):
+80000000000000000:fffffffffffffffff
+Bitcoin Address:
+C
+1MVDYgVaSN6iKKEsbzRUAYFrYJadLYZvvZ
+ 0
+ 6.80032562
+ 27
+Public Key:
+ 031fe02f1d740637a7127cdfe8a77a8a0cfc6435f85e7ec3282cb6243c0a93ba1b
+Private Key:
+00000000000000000000000000000000000000000000000bebb3940cd0fc1491
+% of the Range:
+49.01%
+Solved:
+2025-04-06 by Kowala 
+Bitcoin Puzzle #69 SOLVED
+ 
+Key Range (Bits):
+268...269
+Key Range (HEX):
+100000000000000000:1fffffffffffffffff
+Bitcoin Address:
+C
+19vkiEajfhuZ8bs8Zu2jgmC6oqZbWqhxhG
+ 0
+ 6.90046533
+ 26
+Public Key:
+ 024babadccc6cfd5f0e5e7fd2a50aa7d677ce0aa16fdce26a0d0882eed03e7ba53
+Private Key:
+0000000000000000000000000000000000000000000000101d83275fb2bc7e0c
+% of the Range:
+0.72%
+Solved:
+2025-04-30 by bc1qlp 
+Bitcoin Puzzle #70 SOLVED
+ 
+Key Range (Bits):
+269...270
+Key Range (HEX):
+200000000000000000:3fffffffffffffffff
+Bitcoin Address:
+C
+19YZECXj3SxEZMoUeJ1yiPsw8xANe7M7QR
+ 0
+ 0.70071362
+ 7
+Public Key:
+ 0290e6900a58d33393bc1097b5aed31f2e4e7cbd3e5466af958665bc0121248483
+Private Key:
+0000000000000000000000000000000000000000000000349b84b6431a6c4ef1
+% of the Range:
+64.4%
+Solved:
+2019-06-09 by pikachunakapika 
+Bitcoin Puzzle #75 SOLVED
+ 
+Key Range (Bits):
+274...275
+Key Range (HEX):
+4000000000000000000:7ffffffffffffffffff
+Bitcoin Address:
+C
+1J36UjUByGroXcCvmj13U6uwaVv9caEeAt
+ 0
+ 0.75001
+ 5
+Public Key:
+ 03726b574f193e374686d8e12bc6e4142adeb06770e0a2856f5e4ad89f66044755
+Private Key:
+0000000000000000000000000000000000000000000004c5ce114686a1336e07
+% of the Range:
+19.32%
+Solved:
+2019-06-10 by pikachunakapika 
+Bitcoin Puzzle #80 SOLVED
+ 
+Key Range (Bits):
+279...280
+Key Range (HEX):
+80000000000000000000:ffffffffffffffffffff
+Bitcoin Address:
+C
+1BCf6rHUW6m3iH2ptsvnjgLruAiPQQepLe
+ 0
+ 0.80001
+ 5
+Public Key:
+ 037e1238f7b1ce757df94faa9a2eb261bf0aeb9f84dbf81212104e78931c2a19dc
+Private Key:
+00000000000000000000000000000000000000000000ea1a5c66dcc11b5ad180
+% of the Range:
+82.89%
+Solved:
+2019-06-11 by pikachunakapika 
+Bitcoin Puzzle #85 SOLVED
+ 
+Key Range (Bits):
+284...285
+Key Range (HEX):
+1000000000000000000000:1fffffffffffffffffffff
+Bitcoin Address:
+C
+1Kh22PvXERd2xpTQk3ur6pPEqFeckCJfAr
+ 0
+ 0.85001
+ 5
+Public Key:
+ 0329c4574a4fd8c810b7e42a4b398882b381bcd85e40c6883712912d167c83e73a
+Private Key:
+00000000000000000000000000000000000000000011720c4f018d51b8cebba8
+% of the Range:
+9.03%
+Solved:
+2019-06-17 by pikachunakapika 
+Bitcoin Puzzle #90 SOLVED
+ 
+Key Range (Bits):
+289...290
+Key Range (HEX):
+20000000000000000000000:3ffffffffffffffffffffff
+Bitcoin Address:
+C
+1L12FHH2FHjvTviyanuiFVfmzCy46RRATU
+ 0
+ 0.90001774
+ 7
+Public Key:
+ 035c38bd9ae4b10e8a250857006f3cfd98ab15a6196d9f4dfd25bc7ecc77d788d5
+Private Key:
+000000000000000000000000000000000000000002ce00bb2136a445c71e85bf
+% of the Range:
+40.23%
+Solved:
+2019-07-01 by pikachunakapika 
+Bitcoin Puzzle #95 SOLVED
+ 
+Key Range (Bits):
+294...295
+Key Range (HEX):
+400000000000000000000000:7fffffffffffffffffffffff
+Bitcoin Address:
+C
+19eVSDuizydXxhohGh8Ki9WY9KsHdSwoQC
+ 0
+ 0.95002
+ 7
+Public Key:
+ 02967a5905d6f3b420959a02789f96ab4c3223a2c4d2762f817b7895c5bc88a045
+Private Key:
+0000000000000000000000000000000000000000527a792b183c7f64a0e8b1f4
+% of the Range:
+28.87%
+Solved:
+2019-07-06 by 1AmDbs 
+Bitcoin Puzzle #100 SOLVED
+ 
+Key Range (Bits):
+299...2100
+Key Range (HEX):
+8000000000000000000000000:fffffffffffffffffffffffff
+Bitcoin Address:
+C
+1KCgMv8fo2TPBpddVi9jqmMmcne9uSNJ5F
+ 0
+ 1.00071026
+ 9
+Public Key:
+ 03d2063d40402f030d4cc71331468827aa41a8a09bd6fd801ba77fb64f8e67e617
+Private Key:
+000000000000000000000000000000000000000af55fc59c335c8ec67ed24826
+% of the Range:
+36.98%
+Solved:
+2019-07-08 by 125CWt 
+Bitcoin Puzzle #105 SOLVED
+ 
+Key Range (Bits):
+2104...2105
+Key Range (HEX):
+100000000000000000000000000:1ffffffffffffffffffffffffff
+Bitcoin Address:
+C
+1CMjscKB3QW7SDyQ4c3C3DEUHiHRhiZVib
+ 0
+ 1.05001
+ 5
+Public Key:
+ 03bcf7ce887ffca5e62c9cabbdb7ffa71dc183c52c04ff4ee5ee82e0c55c39d77b
+Private Key:
+000000000000000000000000000000000000016f14fc2054cd87ee6396b33df3
+% of the Range:
+43.39%
+Solved:
+2019-09-23 by 57fe 
+Bitcoin Puzzle #110 SOLVED
+ 
+Key Range (Bits):
+2109...2110
+Key Range (HEX):
+2000000000000000000000000000:3fffffffffffffffffffffffffff
+Bitcoin Address:
+C
+12JzYkkN76xkwvcPT6AWKZtGX6w2LAgsJg
+ 0
+ 1.10035333
+ 11
+Public Key:
+ 0309976ba5570966bf889196b7fdf5a0f9a1e9ab340556ec29f8bb60599616167d
+Private Key:
+00000000000000000000000000000000000035c0d7234df7deb0f20cf7062444
+% of the Range:
+67.98%
+Solved:
+2020-05-30 by zielar 
+Bitcoin Puzzle #115 SOLVED
+ 
+Key Range (Bits):
+2114...2115
+Key Range (HEX):
+40000000000000000000000000000:7ffffffffffffffffffffffffffff
+Bitcoin Address:
+C
+1NLbHuJebVwUZ1XqDjsAyfTRUPwDQbemfv
+ 0
+ 1.15014
+ 9
+Public Key:
+ 0248d313b0398d4923cdca73b8cfa6532b91b96703902fc8b32fd438a3b7cd7f55
+Private Key:
+0000000000000000000000000000000000060f4d11574f5deee49961d9609ac6
+% of the Range:
+51.49%
+Solved:
+2020-06-16 by zielar 
+Bitcoin Puzzle #120 SOLVED
+ 
+Key Range (Bits):
+2119...2120
+Key Range (HEX):
+800000000000000000000000000000:ffffffffffffffffffffffffffffff
+Bitcoin Address:
+C
+17s2b9ksz5y7abUm92cHwG8jEPCzK3dLnT
+ 0
+ 1.20001
+ 5
+Public Key:
+ 02ceb6cbbcdbdf5ef7150682150f4ce2c6f4807b349827dcdbdd1f2efa885a2630
+Private Key:
+0000000000000000000000000000000000b10f22572c497a836ea187f2e1fc23
+% of the Range:
+38.33%
+Solved:
+2023-02-27 by RetiredCoder 
+Bitcoin Puzzle #125 SOLVED
+ 
+Key Range (Bits):
+2124...2125
+Key Range (HEX):
+10000000000000000000000000000000:1fffffffffffffffffffffffffffffff
+Bitcoin Address:
+C
+1PXAyUB8ZoH3WD8n5zoAthYjN15yN5CVq5
+ 0
+ 12.50004706
+ 8
+Public Key:
+ 0233709eb11e0d4439a729f21c2c443dedb727528229713f0065721ba8fa46f00e
+Private Key:
+000000000000000000000000000000001c533b6bb7f0804e09960225e44877ac
+% of the Range:
+77.03%
+Solved:
+2023-07-09 by RetiredCoder 
+Bitcoin Puzzle #130 SOLVED
+ 
+Key Range (Bits):
+2129...2130
+Key Range (HEX):
+200000000000000000000000000000000:3ffffffffffffffffffffffffffffffff
+Bitcoin Address:
+C
+1Fo65aKq8s8iquMt6weF1rku1moWVEd5Ua
+ 0
+ 13.00013257
+ 15
+Public Key:
+ 03633cbe3ec02b9401c5effa144c5b4d22f87940259634858fc7e59b1c09937852
+Private Key:
+000000000000000000000000000000033e7665705359f04f28b88cf897c603c9
+% of the Range:
+62.2%
