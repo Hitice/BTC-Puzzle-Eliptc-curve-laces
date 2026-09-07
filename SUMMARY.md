@@ -1,5 +1,11 @@
 # Resumo Executivo — Tudo que Fizemos, as Provas, e o que NÃO Fizemos
 
+> **Documento histórico, com conclusões corrigidas em 07/09/2026.** As afirmações
+> abaixo sobre nonce pequeno, impossibilidade de lattice com uma assinatura,
+> identificação de gerador e fechamento de famílias não devem orientar novos testes
+> sem a [revisão](breach-review/REVISAO.md). O estado vigente está no
+> [README](README.md) e na [continuação](analysis/GENERATOR_CONTINUATION.md).
+
 > Capstone do workspace. Para o índice navegável e o estado, ver [README.md](README.md).
 > Para o detalhe técnico de cada teste, ver [analysis/FINDINGS.md](analysis/FINDINGS.md).
 

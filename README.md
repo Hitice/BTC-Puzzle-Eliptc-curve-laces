@@ -3,6 +3,12 @@
 > **PONTO DE ENTRADA PARA IA.** Leia este arquivo primeiro. Ele resume o estado da
 > investigação para que você não re-derive nem re-teste o que já foi descartado.
 
+> **Revisão de 07/09/2026:** há conclusões excessivas nas análises originais abaixo.
+> Leia [a revisão](breach-review/REVISAO.md) e a
+> [continuação sobre o gerador](analysis/GENERATOR_CONTINUATION.md) antes de considerar
+> uma hipótese descartada. A [auditoria da seed do Electrum](analysis/ELECTRUM_ENTROPY_AUDIT.md)
+> rastreia uma implementação candidata, ainda sem vínculo demonstrado ao puzzle.
+
 ## O que é
 
 Análise do "Bitcoin Puzzle Challenge" criado por *saatoshi_rising* em 2015: 160 chaves
@@ -12,16 +18,14 @@ fora de brute-force e Kangaroo/BSGS**.
 
 ## Estado atual (one-liner)
 
-**Nenhum atalho encontrado — para padrões fortes/médios, com poder estatístico medido.**
-Todas as hipóteses estatísticas e criptográficas testadas foram descartadas com rigor
-(Monte Carlo, permutação, Bonferroni, análise de poder). As chaves são indistinguíveis de
-aleatório; a derivação é hash-based (BIP32-like); as assinaturas ECDSA não têm fraqueza de
-nonce. **Zona cega honesta:** padrões muito sutis (autocorrelação ρ<0.25, <12 chaves
-afetadas) não são detectáveis com n=82 — mas seriam fracos demais para tornar #71 factível.
-**Enquadramento (5 domínios, ver §13):** o resíduo real não-fechado é empírico — *o gerador de
-2015 produziu chaves algoritmicamente incompressíveis?* — não exclusivamente "a seed". Distinguir
-sempre **teorema** (Shoup, só genérico) de **crença indutiva** (20 anos sem ataque). Ver
-[analysis/FINDINGS.md](analysis/FINDINGS.md) §10 e §13.
+**Nenhuma chave nova recuperada; implementação do gerador ainda não identificada.**
+As 82 chaves do conjunto local foram reconferidas contra endereços e pubkeys.
+A revisão registra resultados negativos para dois modelos restritos de nonce em
+cinco alvos; isso não demonstra segurança geral dos nonces. Estatística não identifica
+BIP32 nem elimina todos os geradores fracos. O novo filtro de MPK do Electrum antigo
+passou pelos controles, mas falta uma MPK candidata vinculada ao desafio. Os demais
+textos e tabelas preservam análises anteriores e devem ser lidos com as correções
+da revisão, inclusive quanto ao status desatualizado do #135 no conjunto local.
 
 ## Estrutura
 

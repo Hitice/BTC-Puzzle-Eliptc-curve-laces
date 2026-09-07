@@ -140,3 +140,10 @@ com fundamento independente. Pubkeys comuns de puzzles não devem ser promovidas
 a MPKs sem justificativa. O filtro cobre somente OldAccount, máscara dos bits baixos,
 ramo fixo e os dois índices iniciais registrados; não cobre BIP32, Armory, índices
 arbitrários, intercalados ou outras máscaras. Nenhuma chave nova foi recuperada.
+
+## Seguimento após publicação dos testes
+
+A [auditoria de entropia](ELECTRUM_ENTROPY_AUDIT.md) rastreou o caminho padrão do
+Electrum 1.9.8 até `os.urandom` nas dependências 0.9 e 0.10 examinadas. Também
+localizou a MPK em metadados de transações incompletas, distinguindo esses arquivos
+da serialização P2PKH transmitida à rede. Nenhuma MPK vinculada ao puzzle foi obtida.
