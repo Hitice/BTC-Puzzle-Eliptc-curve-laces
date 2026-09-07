@@ -1,7 +1,7 @@
 {
  "rule": "Nenhuma hipotese pode ter status 'closed' sem positive_control.executed == true. Sem controle positivo o resultado e 'no-power', nao 'negativo'.",
  "generated": "2026-09-07",
- "commit": "827479b8c9da8570b765d14fe7e946bb38a12fe4",
+ "commit": "45680e30a4c9298e1510f5a86f16d53471db79ea",
  "entry_point": "BRIEFING.md",
  "hypotheses": [
   {
@@ -101,19 +101,27 @@
    "id": "H2-mask-variants",
    "title": "Variantes de mascara e de indice",
    "statement": "O mapeamento chave-filha -> chave-de-puzzle nao e truncamento dos bits baixos com indice consecutivo a partir de 0 ou 1.",
-   "space": "truncamento de bits altos (child >> (256-n)); amostragem por rejeicao; offset de indice arbitrario; ordem invertida (#256 = indice 0); ramo de troco; indices intercalados",
+   "space": "mascaras: low (bits baixos, modelo declarado), high (n bits altos), low_le (filho em little-endian). Mapas de indice: consecutive com offset e stride arbitrarios, reverse (#256 no comeco da carteira), rejection (sorteio sequencial descartando filhos sem o bit n-1 setado). Ramo de troco coberto pelo caminho BIP32 (ex.: m/1/i).",
    "test": {
     "scripts": [
      "master_seed_sweep.py"
     ],
-    "status": "NAO IMPLEMENTADO"
+    "flags": [
+     "--mask",
+     "--index-map",
+     "--index-base",
+     "--index-stride"
+    ],
+    "command": "./analysis/run_sweeps_h2.sh"
    },
    "positive_control": {
     "required": true,
-    "executed": false
+    "executed": true,
+    "result": "PASSOU 20/20 em 2026-09-07: recuperacao da seed sintetica e rejeicao do conjunto adulterado para cada mascara (low/high/low_le) e cada mapa (offset 7, stride 2, reverse, rejection), em bip32 e hashseq.",
+    "evidence": "analysis/sweeps/selftest-h2.json"
    },
    "status": "open",
-   "criticality": "ALTA: se o modelo de mascara estiver errado, TODA cobertura registrada em H3-seed-sweep e vazia."
+   "criticality": "ALTA: a cobertura de H3-seed-sweep so vale para a combinacao (mask, index_map) registrada em cada linha. Confira essas colunas antes de citar cobertura."
   },
   {
    "id": "H3-seed-sweep",
@@ -138,7 +146,8 @@
      "file": "analysis/sweeps/hashseq-sha256-be4-raw32.json",
      "family": "hashseq:sha256/be4",
      "encoder": "raw4be",
-     "index_base": 0,
+     "mask": "low",
+     "index_map": "consecutive(base=0,stride=1)",
      "range": [
       0,
       4294967296
@@ -153,7 +162,8 @@
      "file": "analysis/sweeps/hashseq-sha256-str-ascii-time.json",
      "family": "hashseq:sha256/str",
      "encoder": "ascii",
-     "index_base": 0,
+     "mask": "low",
+     "index_map": "consecutive(base=0,stride=1)",
      "range": [
       1356998400,
       1421345235
@@ -168,7 +178,8 @@
      "file": "analysis/sweeps/hashseq-sha256d-be4-raw32.json",
      "family": "hashseq:sha256d/be4",
      "encoder": "raw4be",
-     "index_base": 0,
+     "mask": "low",
+     "index_map": "consecutive(base=0,stride=1)",
      "range": [
       0,
       4294967296
@@ -183,7 +194,8 @@
      "file": "analysis/sweeps/nearmiss-hashseq-20bit.json",
      "family": "hashseq:sha256/be4",
      "encoder": "raw4be",
-     "index_base": 0,
+     "mask": "low",
+     "index_map": "consecutive(base=0,stride=1)",
      "range": [
       0,
       41943040

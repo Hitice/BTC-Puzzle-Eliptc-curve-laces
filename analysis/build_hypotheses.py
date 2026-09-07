@@ -80,14 +80,24 @@ STATIC = [
  {"id": "H2-mask-variants", "title": "Variantes de mascara e de indice",
   "statement": "O mapeamento chave-filha -> chave-de-puzzle nao e truncamento dos bits baixos "
                "com indice consecutivo a partir de 0 ou 1.",
-  "space": "truncamento de bits altos (child >> (256-n)); amostragem por rejeicao; "
-           "offset de indice arbitrario; ordem invertida (#256 = indice 0); ramo de troco; "
-           "indices intercalados",
-  "test": {"scripts": ["master_seed_sweep.py"], "status": "NAO IMPLEMENTADO"},
-  "positive_control": {"required": True, "executed": False},
+  "space": "mascaras: low (bits baixos, modelo declarado), high (n bits altos), "
+           "low_le (filho em little-endian). Mapas de indice: consecutive com offset e "
+           "stride arbitrarios, reverse (#256 no comeco da carteira), rejection "
+           "(sorteio sequencial descartando filhos sem o bit n-1 setado). "
+           "Ramo de troco coberto pelo caminho BIP32 (ex.: m/1/i).",
+  "test": {"scripts": ["master_seed_sweep.py"],
+           "flags": ["--mask", "--index-map", "--index-base", "--index-stride"],
+           "command": "./analysis/run_sweeps_h2.sh"},
+  "positive_control": {"required": True, "executed": True,
+                       "result": "PASSOU 20/20 em 2026-09-07: recuperacao da seed sintetica "
+                                 "e rejeicao do conjunto adulterado para cada mascara "
+                                 "(low/high/low_le) e cada mapa (offset 7, stride 2, reverse, "
+                                 "rejection), em bip32 e hashseq.",
+                       "evidence": "analysis/sweeps/selftest-h2.json"},
   "status": "open",
-  "criticality": "ALTA: se o modelo de mascara estiver errado, TODA cobertura registrada "
-                 "em H3-seed-sweep e vazia."},
+  "criticality": "ALTA: a cobertura de H3-seed-sweep so vale para a combinacao "
+                 "(mask, index_map) registrada em cada linha. Confira essas colunas "
+                 "antes de citar cobertura."},
 
  {"id": "H3-seed-sweep", "title": "Seed mestre fraca ou enumeravel",
   "statement": "A seed mestre do gerador de 2015 veio de fonte enumeravel (inteiro pequeno, "
@@ -125,7 +135,10 @@ def sweep_coverage():
         if "candidates" not in d:
             continue
         rows.append({"file": os.path.relpath(p, ROOT), "family": d.get("family"),
-                     "encoder": d.get("encoder"), "index_base": d.get("index_base"),
+                     "encoder": d.get("encoder"),
+                     "mask": d.get("mask", "low"),
+                     "index_map": d.get("index_map", "consecutive(base=%s,stride=1)"
+                                        % d.get("index_base", 0)),
                      "range": d.get("range"), "candidates": d.get("candidates"),
                      "anchor_puzzle": d.get("anchor_puzzle"),
                      "anchor_bits": d.get("anchor_bits"),

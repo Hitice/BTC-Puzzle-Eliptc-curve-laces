@@ -69,9 +69,10 @@ cobertura e resultado. **Atualize esse arquivo, não crie novos .md de conclusã
 
 | Ferramenta | O que faz |
 |---|---|
-| `analysis/master_seed_sweep.py` | **o único teste com poder.** Enumera seeds mestres. Âncora: puzzle #130, 129 bits, em **uma** derivação; falso positivo 2⁻¹²⁹. Confirma nas outras 81 chaves. Famílias: `bip32` (caminho arbitrário), `hashseq`, `hashchain`, `electrum1`. Controles 8/8 |
+| `analysis/master_seed_sweep.py` | **o único teste com poder.** Enumera seeds mestres. Âncora: puzzle #130, 129 bits, em **uma** derivação; falso positivo 2⁻¹²⁹. Confirma nas outras 81 chaves. Famílias: `bip32` (caminho arbitrário), `hashseq`, `hashchain`, `electrum1`. Máscaras `--mask low\|high\|low_le`, índices `--index-map consecutive\|reverse\|rejection` com `--index-base`/`--index-stride`. Controles **20/20** |
 | `analysis/secp_fast.py` | secp256k1 com comb de base fixa, 122 µs por `k*G` |
-| `analysis/run_sweeps.sh` | fila de varreduras → `analysis/sweeps/` |
+| `analysis/run_sweeps.sh` | fila base (máscara `low`, índice consecutivo) → `analysis/sweeps/` |
+| `analysis/run_sweeps_h2.sh` | fila das variantes de máscara e índice (H2) |
 | `analysis/creator_tx_forensics.py` | indicadores forenses das transações do criador |
 | `analysis/status.py` | estado atual em um comando |
 
@@ -116,10 +117,14 @@ Detalhe formal, espaço e critério de aceitação em `HYPOTHESES.json`.
 1. **H1 forense** — atribuir o software das transações do criador. Dados já
    extraídos em `data/creator_txs.json`. Falta a pesquisa externa sobre
    comportamento de carteiras da época. Produz evidência que direciona H2 e H3.
-2. **H2 variantes de máscara e índice** — a varredura hoje assume truncamento dos
-   bits **baixos** e `index_base` 0/1. Faltam: truncamento dos bits altos,
-   amostragem por rejeição, offset arbitrário, ordem invertida, ramo de troco.
-   **Se o modelo de máscara estiver errado, todo "0 hits" registrado é vazio.**
+2. **H2 variantes de máscara e índice** — *implementado em 2026-09-07*, controles
+   **20/20**. Máscaras: `low` (declarada pelo criador), `high` (n bits altos),
+   `low_le` (filho em little-endian). Mapas de índice: `consecutive` com offset e
+   stride arbitrários, `reverse` (#256 no começo da carteira), `rejection` (sorteio
+   sequencial descartando filhos sem o bit n-1 setado). Ramo de troco sai pelo
+   caminho BIP32 (`m/1/i`). Falta rodar a cobertura: `./analysis/run_sweeps_h2.sh`.
+   **Cada linha de cobertura vale só para o par (mask, index_map) registrado nela** —
+   confira essas colunas antes de citar cobertura.
 3. **H3 seeds humanas** — `seed = SHA256(frase)` e BIP39 com passphrase escolhida.
    ~8 k/s nesta máquina; wordlist de 10⁷ em ~20 min. Nunca varrido.
 4. **H4 OSINT** — conta `saatoshi_rising`, endereço de financiamento

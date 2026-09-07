@@ -1,0 +1,225 @@
+{
+ "self_test": [
+  {
+   "family": "bip32:m/0/i",
+   "encoder": "raw4be",
+   "index_map": "consecutive(base=0,stride=1)",
+   "mask": "low",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 1165.8,
+   "ok": true
+  },
+  {
+   "family": "bip32:m/0h/i",
+   "encoder": "raw4be",
+   "index_map": "consecutive(base=0,stride=1)",
+   "mask": "low",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 2407.2,
+   "ok": true
+  },
+  {
+   "family": "bip32:m/ih",
+   "encoder": "mt256",
+   "index_map": "consecutive(base=0,stride=1)",
+   "mask": "low",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 84452.0,
+   "ok": true
+  },
+  {
+   "family": "bip32:m/44h/0h/0h/0/i",
+   "encoder": "raw4be",
+   "index_map": "consecutive(base=0,stride=1)",
+   "mask": "low",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 1107.8,
+   "ok": true
+  },
+  {
+   "family": "hashseq:sha256/be4",
+   "encoder": "raw4be",
+   "index_map": "consecutive(base=0,stride=1)",
+   "mask": "low",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 833550.4,
+   "ok": true
+  },
+  {
+   "family": "hashseq:sha256d/str",
+   "encoder": "ascii",
+   "index_map": "consecutive(base=0,stride=1)",
+   "mask": "low",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 638637.9,
+   "ok": true
+  },
+  {
+   "family": "hashchain:sha256",
+   "encoder": "raw4be",
+   "index_map": "consecutive(base=0,stride=1)",
+   "mask": "low",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 7752.4,
+   "ok": true
+  },
+  {
+   "family": "electrum1:branch0",
+   "encoder": "mt128hex",
+   "index_map": "consecutive(base=0,stride=1)",
+   "mask": "low",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 16.8,
+   "ok": true
+  },
+  {
+   "family": "bip32:m/0h/i",
+   "encoder": "raw4be",
+   "index_map": "consecutive(base=0,stride=1)",
+   "mask": "high",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 2020.0,
+   "ok": true
+  },
+  {
+   "family": "hashseq:sha256/be4",
+   "encoder": "raw4be",
+   "index_map": "consecutive(base=0,stride=1)",
+   "mask": "high",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 702781.5,
+   "ok": true
+  },
+  {
+   "family": "bip32:m/0h/i",
+   "encoder": "raw4be",
+   "index_map": "consecutive(base=0,stride=1)",
+   "mask": "low_le",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 2182.4,
+   "ok": true
+  },
+  {
+   "family": "hashseq:sha256/be4",
+   "encoder": "raw4be",
+   "index_map": "consecutive(base=0,stride=1)",
+   "mask": "low_le",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 327992.3,
+   "ok": true
+  },
+  {
+   "family": "bip32:m/0h/i",
+   "encoder": "raw4be",
+   "index_map": "consecutive(base=7,stride=1)",
+   "mask": "low",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 2233.4,
+   "ok": true
+  },
+  {
+   "family": "hashseq:sha256/be4",
+   "encoder": "raw4be",
+   "index_map": "consecutive(base=7,stride=1)",
+   "mask": "low",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 471096.5,
+   "ok": true
+  },
+  {
+   "family": "bip32:m/0h/i",
+   "encoder": "raw4be",
+   "index_map": "consecutive(base=0,stride=2)",
+   "mask": "low",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 2063.9,
+   "ok": true
+  },
+  {
+   "family": "hashseq:sha256/be4",
+   "encoder": "raw4be",
+   "index_map": "consecutive(base=0,stride=2)",
+   "mask": "low",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 464373.8,
+   "ok": true
+  },
+  {
+   "family": "bip32:m/0h/i",
+   "encoder": "raw4be",
+   "index_map": "reverse(base=0,stride=1)",
+   "mask": "low",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 2269.1,
+   "ok": true
+  },
+  {
+   "family": "hashseq:sha256/be4",
+   "encoder": "raw4be",
+   "index_map": "reverse(base=0,stride=1)",
+   "mask": "low",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 736139.9,
+   "ok": true
+  },
+  {
+   "family": "bip32:m/0h/i",
+   "encoder": "raw4be",
+   "index_map": "rejection(base=0,stride=1)",
+   "mask": "low",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 2056.1,
+   "ok": true
+  },
+  {
+   "family": "hashseq:sha256/be4",
+   "encoder": "raw4be",
+   "index_map": "rejection(base=0,stride=1)",
+   "mask": "low",
+   "positive_recovered": true,
+   "tampered_rejected": true,
+   "real_data_no_hit_in_control_range": true,
+   "rate_per_s": 54340.8,
+   "ok": true
+  }
+ ],
+ "all_ok": true
+}
