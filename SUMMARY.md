@@ -1,3 +1,5 @@
+> **HISTÓRICO — NÃO LEIA POR PADRÃO.** O ponto de entrada é [BRIEFING.md](BRIEFING.md). As afirmações de esgotamento de domínios estão corrigidas em `analysis/AUDITORIA_PODER.md`.
+
 # Resumo Executivo — Tudo que Fizemos, as Provas, e o que NÃO Fizemos
 
 > **Documento histórico, com conclusões corrigidas em 07/09/2026.** As afirmações

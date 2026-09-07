@@ -1,0 +1,161 @@
+{
+  "input_sha256": "54c355ba271d52083ddb0c68d4dd385002de50bfb89cb4ed772ec9983d9ebd8b",
+  "known_keys": 82,
+  "self_tests": {
+    "java_runtime": "openjdk version \"21.0.11\" 2026-04-21",
+    "java_fixture_sha256": "53d2ab4965aec501b85e92f99acd46c46f97f6a280b891c91a4397740adcacd4",
+    "java_generated_keys_compared": 1920,
+    "controls": [
+      {
+        "seed": 0,
+        "model": "bigint256",
+        "original_state_recovered": true,
+        "validation_matches": 81,
+        "validation_total": 81,
+        "synthetic_71_prediction_correct": true,
+        "tampered_validation_rejected": true
+      },
+      {
+        "seed": 0,
+        "model": "bigint_i",
+        "original_state_recovered": true,
+        "validation_matches": 81,
+        "validation_total": 81,
+        "synthetic_71_prediction_correct": true,
+        "tampered_validation_rejected": true
+      },
+      {
+        "seed": 0,
+        "model": "bigint_i_minus_1",
+        "original_state_recovered": true,
+        "validation_matches": 81,
+        "validation_total": 81,
+        "synthetic_71_prediction_correct": true,
+        "tampered_validation_rejected": true
+      },
+      {
+        "seed": 0,
+        "model": "int32_be",
+        "original_state_recovered": true,
+        "validation_matches": 81,
+        "validation_total": 81,
+        "synthetic_71_prediction_correct": true,
+        "tampered_validation_rejected": true
+      },
+      {
+        "seed": 12345,
+        "model": "bigint256",
+        "original_state_recovered": true,
+        "validation_matches": 81,
+        "validation_total": 81,
+        "synthetic_71_prediction_correct": true,
+        "tampered_validation_rejected": true
+      },
+      {
+        "seed": 12345,
+        "model": "bigint_i",
+        "original_state_recovered": true,
+        "validation_matches": 81,
+        "validation_total": 81,
+        "synthetic_71_prediction_correct": true,
+        "tampered_validation_rejected": true
+      },
+      {
+        "seed": 12345,
+        "model": "bigint_i_minus_1",
+        "original_state_recovered": true,
+        "validation_matches": 81,
+        "validation_total": 81,
+        "synthetic_71_prediction_correct": true,
+        "tampered_validation_rejected": true
+      },
+      {
+        "seed": 12345,
+        "model": "int32_be",
+        "original_state_recovered": true,
+        "validation_matches": 81,
+        "validation_total": 81,
+        "synthetic_71_prediction_correct": true,
+        "tampered_validation_rejected": true
+      },
+      {
+        "seed": -1,
+        "model": "bigint256",
+        "original_state_recovered": true,
+        "validation_matches": 81,
+        "validation_total": 81,
+        "synthetic_71_prediction_correct": true,
+        "tampered_validation_rejected": true
+      },
+      {
+        "seed": -1,
+        "model": "bigint_i",
+        "original_state_recovered": true,
+        "validation_matches": 81,
+        "validation_total": 81,
+        "synthetic_71_prediction_correct": true,
+        "tampered_validation_rejected": true
+      },
+      {
+        "seed": -1,
+        "model": "bigint_i_minus_1",
+        "original_state_recovered": true,
+        "validation_matches": 81,
+        "validation_total": 81,
+        "synthetic_71_prediction_correct": true,
+        "tampered_validation_rejected": true
+      },
+      {
+        "seed": -1,
+        "model": "int32_be",
+        "original_state_recovered": true,
+        "validation_matches": 81,
+        "validation_total": 81,
+        "synthetic_71_prediction_correct": true,
+        "tampered_validation_rejected": true
+      }
+    ]
+  },
+  "real_results": [
+    {
+      "model": "bigint256",
+      "anchor_puzzle": 70,
+      "state_suffixes_checked": 65536,
+      "anchor_survivors": 0,
+      "candidates": [],
+      "status": "incompatible"
+    },
+    {
+      "model": "bigint_i",
+      "anchor_puzzle": 70,
+      "state_suffixes_checked": 65536,
+      "anchor_survivors": 0,
+      "candidates": [],
+      "status": "incompatible"
+    },
+    {
+      "model": "bigint_i_minus_1",
+      "anchor_puzzle": 70,
+      "state_suffixes_checked": 65536,
+      "anchor_survivors": 0,
+      "candidates": [],
+      "status": "incompatible"
+    },
+    {
+      "model": "int32_be",
+      "anchor_puzzle": 70,
+      "state_suffixes_checked": 65536,
+      "anchor_survivors": 0,
+      "candidates": [],
+      "status": "incompatible"
+    }
+  ],
+  "elapsed_seconds": 2.890863584005274,
+  "limitations": [
+    "No historical evidence linking java.util.Random to the puzzle.",
+    "Only the four raw output layouts are tested; not SecureRandom or hashed outputs.",
+    "Zero anchor survivors excludes any 48-bit state for that key/layout, even with per-key reseeding.",
+    "Cross-key predictions additionally assume an uninterrupted stream from puzzle 1.",
+    "Synthetic recovery is not a recovered Bitcoin puzzle key."
+  ]
+}

@@ -1,3 +1,5 @@
+> **HISTÓRICO — NÃO LEIA POR PADRÃO.** O ponto de entrada é [BRIEFING.md](../BRIEFING.md). Estado-da-arte de 2025; parcialmente desatualizado (#135 já foi resolvido).
+
 # Fronteira — Criptoanálise Real, Mitos, e Como Participar de Verdade
 
 > Survey honesto do estado-da-arte (jun/2026) separando o que é real do que é fantasia.

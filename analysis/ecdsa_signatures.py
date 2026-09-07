@@ -281,10 +281,12 @@ def analyze_signatures(all_sigs, puzzle_label):
         r_bits = r.bit_length()
         r_hex = sig["r_hex"]
 
-        # Check for small r (would indicate small k)
+        # CORRIGIDO 2026-09-07: r = x(k*G) mod n NAO e k. r pequeno nao implica
+        # nonce pequeno e nonce pequeno nao implica r pequeno (k=1 -> r de 255 bits).
+        # O tamanho de r e reportado como observacao, sem inferencia sobre k.
         if r_bits < 200:
-            print(f"  !!! r PEQUENO DETECTADO: {r_bits} bits (txid: {sig['txid'][:16]}...)")
-            print(f"      Pode indicar nonce k pequeno!")
+            print(f"  Nota: r com {r_bits} bits (txid: {sig['txid'][:16]}...)")
+            print(f"      NAO e evidencia sobre o tamanho do nonce k.")
 
         # Check leading zeros in r
         leading_zeros = len(r_hex) - len(r_hex.lstrip('0'))
@@ -313,8 +315,9 @@ def analyze_signatures(all_sigs, puzzle_label):
     print(f"  Comprimento medio de s: {avg_sbits:.1f} bits")
 
     # --- 4. Byte-level bias in r (nonce bias detection) ---
-    print(f"\n  [4] DISTRIBUICAO DE BYTES DO NONCE (via r)")
-    print(f"  (r = k*G mod p, onde k e o nonce)")
+    print(f"\n  [4] DISTRIBUICAO DE BYTES DE r")
+    print(f"  (r = x(k*G) mod n; e a coordenada x de um ponto, NAO o nonce k.")
+    print(f"   Um vies aqui nao se traduz em vies do nonce.)")
 
     all_r_bytes = []
     for sig in all_sigs:
@@ -420,13 +423,13 @@ def cross_puzzle_analysis(all_puzzle_sigs):
                   f"s_bits=[{min(s_bits)}-{max(s_bits)}]")
 
     # Nonce bias: MSB analysis across all
-    print(f"\n  [C] MSB DO NONCE (primeiro byte de r) - GLOBAL")
+    print(f"\n  [C] MSB DE r (primeiro byte) - GLOBAL  [NAO e o MSB do nonce]")
     msb_all = [sig["r"].to_bytes(32, 'big')[0] for sig in all_sigs]
     high = sum(1 for b in msb_all if b >= 0x80)
     low = sum(1 for b in msb_all if b < 0x80)
     print(f"  MSB >= 0x80: {high} ({high/len(msb_all)*100:.1f}%)")
     print(f"  MSB <  0x80: {low} ({low/len(msb_all)*100:.1f}%)")
-    print(f"  (esperado ~50/50 para nonces aleatorios)")
+    print(f"  (esperado ~50/50 para r uniformes; nao diz nada sobre k)")
 
     # Top/bottom 4 bits of all r values
     print(f"\n  [D] TOP 4 BITS DE r (global)")

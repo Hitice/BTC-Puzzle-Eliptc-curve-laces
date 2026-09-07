@@ -1,3 +1,5 @@
+> **HISTÓRICO — NÃO LEIA POR PADRÃO.** O ponto de entrada é [BRIEFING.md](../BRIEFING.md). Especulação teórica; não gera teste executável.
+
 # Reformulações — Tentativa de Linguagem Matemática Inédita para P = kG
 
 > Nota de pesquisa especulativa. Regras: não usar teoria de grupos, algoritmos publicados, nem

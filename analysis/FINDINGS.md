@@ -1,3 +1,5 @@
+> **HISTÓRICO — NÃO LEIA POR PADRÃO.** O ponto de entrada é [BRIEFING.md](../BRIEFING.md). Conclusões aqui foram medidas com poder zero contra a hipótese do gerador; ver `analysis/AUDITORIA_PODER.md`.
+
 # Análise Estatística Completa — Bitcoin Puzzle Challenge
 
 **Data:** 2026-06-20  

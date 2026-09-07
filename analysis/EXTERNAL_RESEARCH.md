@@ -1,3 +1,5 @@
+> **HISTÓRICO — NÃO LEIA POR PADRÃO.** O ponto de entrada é [BRIEFING.md](../BRIEFING.md). Leia só a seção 4 (front-running / mineração privada) se for lidar com broadcast.
+
 # Pesquisa Externa Consolidada — Fóruns, Reddit, BitcoinTalk, GitHub
 
 > Inteligência coletada de fontes públicas (jun/2026) e cruzada com nossos achados

@@ -1,0 +1,128 @@
+{
+  "version": "V8 3.14.5 recurrence and scaling; not the simplified V8 blog example",
+  "source": "https://raw.githubusercontent.com/v8/v8/3.14.5/src/v8.cc",
+  "input_sha256": "54c355ba271d52083ddb0c68d4dd385002de50bfb89cb4ed772ec9983d9ebd8b",
+  "z3_version": "5.1.0",
+  "timeout_ms_per_query": 15000,
+  "anchor": 130,
+  "known_low_bits_used": 128,
+  "native_control": {
+    "native_words_and_double_conversion_checked": 300,
+    "native_fixture_sha256": "38cfc4a5c339c4cde9e51b4b074f1ae04181930cd970c8c28ea322edf021734a",
+    "native_projection_positive_controls": [
+      {
+        "after_first_call_states_checked": 4747191,
+        "survivors": 1,
+        "scope": "Exhaustive necessary-condition projection; not full MWC state recovery",
+        "witness_a_after_first_call": 18273
+      },
+      {
+        "after_first_call_states_checked": 4747191,
+        "survivors": 1,
+        "scope": "Exhaustive necessary-condition projection; not full MWC state recovery",
+        "witness_a_after_first_call": 404495788
+      },
+      {
+        "after_first_call_states_checked": 4746326,
+        "survivors": 1,
+        "scope": "Exhaustive necessary-condition projection; not full MWC state recovery",
+        "witness_a_after_first_call": 1197586590
+      }
+    ],
+    "native_projection_real": {
+      "after_first_call_states_checked": 4747191,
+      "survivors": 0,
+      "scope": "Exhaustive necessary-condition projection; not full MWC state recovery",
+      "witness_a_after_first_call": null
+    }
+  },
+  "controls": [
+    {
+      "model": "word32_be",
+      "fixed_positive": "sat",
+      "fixed_tampered": "unsat",
+      "free_recovery": {
+        "solver_status": "sat",
+        "elapsed_seconds": 0.056192540971096605,
+        "witness_state_hex": [
+          "12345678",
+          "87654321"
+        ],
+        "witness_replayed": true
+      }
+    },
+    {
+      "model": "word32_le",
+      "fixed_positive": "sat",
+      "fixed_tampered": "unsat",
+      "free_recovery": {
+        "solver_status": "sat",
+        "elapsed_seconds": 0.05340370803605765,
+        "witness_state_hex": [
+          "e8575675",
+          "87654321"
+        ],
+        "witness_replayed": true
+      }
+    },
+    {
+      "model": "word16_be",
+      "fixed_positive": "sat",
+      "fixed_tampered": "unsat",
+      "free_recovery": {
+        "solver_status": "sat",
+        "elapsed_seconds": 0.6353852920001373,
+        "witness_state_hex": [
+          "59955677",
+          "9968f2e7"
+        ],
+        "witness_replayed": true
+      }
+    },
+    {
+      "model": "byte8",
+      "fixed_positive": "sat",
+      "fixed_tampered": "unsat",
+      "free_recovery": {
+        "solver_status": "unknown",
+        "elapsed_seconds": 15.025291458994616,
+        "reason": "timeout"
+      }
+    }
+  ],
+  "real_results": [
+    {
+      "model": "word32_be",
+      "solver_status": "unsat",
+      "elapsed_seconds": 0.046516250004060566
+    },
+    {
+      "model": "word32_le",
+      "solver_status": "unsat",
+      "elapsed_seconds": 0.04888179199770093
+    },
+    {
+      "model": "word16_be",
+      "solver_status": "unsat",
+      "elapsed_seconds": 0.21745808300329372
+    },
+    {
+      "model": "byte8",
+      "solver_status": "unknown",
+      "elapsed_seconds": 15.017348749970552,
+      "reason": "timeout"
+    }
+  ],
+  "limitations": [
+    "No evidence linking this V8 version to the puzzle.",
+    "Only consecutive raw outputs and four layouts; not ARC4, hashes, HD derivation, or reseeding inside the observed segment.",
+    "A sat witness is arithmetic compatibility, not a recovered puzzle key.",
+    "unknown/timeout is inconclusive."
+  ],
+  "byte_projection": {
+    "solver_status": "unknown",
+    "elapsed_seconds": 15.01046416698955,
+    "scope": "Necessary conditions on state a only; sat is not a full witness",
+    "reason": "timeout"
+  }
+}

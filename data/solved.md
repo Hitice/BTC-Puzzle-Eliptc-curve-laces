@@ -1,3 +1,5 @@
+> **HISTÓRICO — NÃO LEIA POR PADRÃO.** O ponto de entrada é [BRIEFING.md](../BRIEFING.md). Dump humano; use `data/puzzles.json`.
+
 Bitcoin Puzzle #1 SOLVED
  
 Key Range (Bits):

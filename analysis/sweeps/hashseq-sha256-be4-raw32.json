@@ -1,0 +1,17 @@
+{
+ "family": "hashseq:sha256/be4",
+ "encoder": "raw4be",
+ "index_base": 0,
+ "range": [
+  0,
+  4294967296
+ ],
+ "candidates": 4294967296,
+ "anchor_puzzle": 130,
+ "anchor_bits": 129,
+ "confirm_puzzles": 81,
+ "elapsed_s": 819.514,
+ "rate_per_s": 5240870.1,
+ "hits": [],
+ "hits_detail": []
+}

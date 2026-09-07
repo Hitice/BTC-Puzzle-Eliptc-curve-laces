@@ -1,3 +1,5 @@
+> **HISTÓRICO — NÃO LEIA POR PADRÃO.** O ponto de entrada é [BRIEFING.md](../BRIEFING.md). Scrape de site; os fatos úteis estão no BRIEFING seção 4 e em `data/puzzles.json`.
+
 🔥 ~1000 BTC Bitcoin Challenge
 Status: PARTIALLY SOLVED
 Prize: 988.498 BTC (total), 71.998 (won), 916.5 BTC (remaining)

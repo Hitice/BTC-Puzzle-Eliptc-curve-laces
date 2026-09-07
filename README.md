@@ -1,5 +1,9 @@
 # Bitcoin Puzzle — Workspace de Análise
 
+> **Se você é uma IA começando agora: leia [BRIEFING.md](BRIEFING.md) e pare por aí.**
+> Ele é auto-suficiente (~1,8 k tokens). Este README é o índice histórico (~2,3 k) e
+> o conjunto completo de documentos custa ~44 k tokens.
+
 > **PONTO DE ENTRADA PARA IA.** Leia este arquivo primeiro. Ele resume o estado da
 > investigação para que você não re-derive nem re-teste o que já foi descartado.
 
@@ -8,6 +12,13 @@
 > [continuação sobre o gerador](analysis/GENERATOR_CONTINUATION.md) antes de considerar
 > uma hipótese descartada. A [auditoria da seed do Electrum](analysis/ELECTRUM_ENTROPY_AUDIT.md)
 > rastreia uma implementação candidata, ainda sem vínculo demonstrado ao puzzle.
+>
+> **Auditoria de poder (07/09/2026):** os resultados negativos sobre derivação e
+> geradores **não têm poder** contra a hipótese que dizem fechar — demonstrado
+> executando os detectores do repo sobre um gerador comprovadamente fraco, que eles
+> aprovaram. Leia [analysis/AUDITORIA_PODER.md](analysis/AUDITORIA_PODER.md) **antes**
+> da tabela "Hipóteses já descartadas" abaixo. `data/puzzles.json` foi corrigido:
+> **#135 está resolvido**.
 
 ## O que é
 
@@ -19,6 +30,8 @@ fora de brute-force e Kangaroo/BSGS**.
 ## Estado atual (one-liner)
 
 **Nenhuma chave nova recuperada; implementação do gerador ainda não identificada.**
+O único teste com poder contra a hipótese do gerador é enumerar a SEED mestre —
+`analysis/master_seed_sweep.py` faz isso (âncora de 129 bits no #130, controles 8/8).
 As 82 chaves do conjunto local foram reconferidas contra endereços e pubkeys.
 A revisão registra resultados negativos para dois modelos restritos de nonce em
 cinco alvos; isso não demonstra segurança geral dos nonces. Estatística não identifica
@@ -39,8 +52,13 @@ Puzzle/
 │   ├── solved.md                     <- dump bruto dos resolvidos (humano)
 │   ├── unsolved.md                   <- dump bruto dos não resolvidos (humano)
 │   ├── challenge.md                  <- descrição original do desafio
-│   └── signatures.json               <- assinaturas ECDSA extraídas da blockchain
+│   ├── signatures.json               <- assinaturas ECDSA do gasto de 2019 (20 endereços)
+│   └── puzzles_161_256.json          <- pubkeys + assinaturas dos #161-#256 (gasto de 2017)
 ├── analysis/                         <- investigação
+│   ├── AUDITORIA_PODER.md            <- LEIA PRIMEIRO: erros remanescentes + poder dos negativos
+│   ├── master_seed_sweep.py          <- varredura de SEED MESTRE (BIP32/Electrum v1/hash) — o teste com poder
+│   ├── secp_fast.py                  <- secp256k1 com comb de base fixa (122 us por k*G)
+│   ├── run_sweeps.sh                 <- fila de varreduras -> analysis/sweeps/
 │   ├── FINDINGS.md                   <- CONCLUSÕES internas consolidadas (leia antes de testar)
 │   ├── EXTERNAL_RESEARCH.md          <- inteligência de fóruns/Reddit/GitHub + cross-ref
 │   ├── FRONTIER.md                   <- estado-da-arte, mito-vs-fato, como participar
@@ -79,10 +97,17 @@ Schema por puzzle:
   "privkey_hex": "0000...", "privkey_int": 123, "position_in_range": 0.64  // só solved
 }
 ```
-`meta.unsolved_with_pubkey` lista os puzzles atacáveis por Kangaroo/BSGS: **[135,140,145,150,155,160]**.
+`meta.unsolved_with_pubkey` lista os puzzles atacáveis por Kangaroo/BSGS: **[140,145,150,155,160]**
+(#135 saiu da lista: foi resolvido e os fundos foram gastos — verificado on-chain em 07/09/2026).
 `meta.smallest_unsolved` = **71** (menor range não resolvido = alvo de brute-force).
 
 ## Hipóteses já descartadas (NÃO re-testar sem dado novo)
+
+> **Leia antes:** as linhas sobre derivação, LCG, autocorrelação, periodicidade,
+> bias modular e gerador fraco hash/índice foram medidas com **poder zero** contra
+> uma seed mestre fraca — um conjunto sintético de BIP32 com seed de 32 bits passa
+> por todas elas. Ver [AUDITORIA_PODER.md](analysis/AUDITORIA_PODER.md) §4. "Descartado"
+> aqui significa "aquele modelo específico não bate", não "o gerador é forte".
 
 | Hipótese | Veredito | Onde |
 |----------|----------|------|

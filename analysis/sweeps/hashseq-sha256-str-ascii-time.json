@@ -1,0 +1,21 @@
+{
+ "family": "hashseq:sha256/str",
+ "encoder": "ascii",
+ "index_base": 0,
+ "range": [
+  1356998400,
+  1421345235
+ ],
+ "candidates": 64346835,
+ "anchor_puzzle": 130,
+ "anchor_bits": 129,
+ "confirm_puzzles": 81,
+ "elapsed_s": 14.404,
+ "rate_per_s": 4467438.4,
+ "hits": [],
+ "near_miss_bits": 0,
+ "near_miss_observed": 0,
+ "near_miss_expected": null,
+ "near_miss": [],
+ "hits_detail": []
+}

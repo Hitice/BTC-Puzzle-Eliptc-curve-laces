@@ -1,3 +1,5 @@
+> **HISTÓRICO — NÃO LEIA POR PADRÃO.** O ponto de entrada é [BRIEFING.md](../BRIEFING.md). Dump humano; use `data/puzzles.json`.
+
 # Bitcoin Puzzle — Tabela de Puzzles Não Resolvidos
 
 | # | Bits | Key Range (HEX) | Endereço Bitcoin | Saldo (BTC) | Txs | Chave Pública |
