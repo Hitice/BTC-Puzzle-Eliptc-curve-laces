@@ -1,7 +1,7 @@
 {
  "rule": "Nenhuma hipotese pode ter status 'closed' sem positive_control.executed == true. Sem controle positivo o resultado e 'no-power', nao 'negativo'.",
  "generated": "2026-09-07",
- "commit": "45680e30a4c9298e1510f5a86f16d53471db79ea",
+ "commit": "3c4fc982bc951e1ec218f557c42fd986f69c4af7",
  "entry_point": "BRIEFING.md",
  "hypotheses": [
   {

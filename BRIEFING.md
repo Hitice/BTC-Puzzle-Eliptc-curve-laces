@@ -81,9 +81,14 @@ BIP32 com um `k*G` ~16 k/s · `electrum1` ~250/s.
 
 ```bash
 python3 analysis/status.py                      # estado
-python3 analysis/master_seed_sweep.py --self-test   # controles, ~40 s
-./analysis/run_sweeps.sh                        # fila padrão
+python3 analysis/master_seed_sweep.py --self-test   # controles, ~80 s
+./analysis/run_sweeps.sh                        # fila padrão (4 jobs, nice 19)
+./analysis/sweep_ctl.sh {status|pause|resume|stop|nice}   # controle da fila
 ```
+
+As filas rodam com `nice -n 19` e 4 processos por padrão, para não travar a
+máquina. `pause` usa SIGSTOP: congela na hora, sem perder progresso; `resume`
+retoma de onde parou. Ajuste com `JOBS=8 ./analysis/run_sweeps.sh`.
 
 ## 7. NÃO leia estes arquivos (e por quê)
 

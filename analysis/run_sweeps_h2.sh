@@ -4,10 +4,10 @@
 set -e
 cd "$(dirname "$0")/.."
 O=analysis/sweeps
-J=${JOBS:-8}
+J=${JOBS:-4}
 T0=1356998400
 T1=1421345235
-run() { echo "### $* :: $(date -u +%FT%TZ)"; python3 analysis/master_seed_sweep.py --jobs $J "$@" ; }
+run() { echo "### $* :: $(date -u +%FT%TZ)"; nice -n 19 python3 analysis/master_seed_sweep.py --jobs $J "$@" ; }
 
 # --- variantes de mascara, gerador indexado, todas as seeds de 32 bits ---
 run --family hashseq --encoder raw4be --mask high   --range 0-0x100000000 --output $O/h2-hashseq-mask-high.json

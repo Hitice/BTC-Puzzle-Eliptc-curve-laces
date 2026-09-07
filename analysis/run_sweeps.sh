@@ -4,12 +4,12 @@
 set -e
 cd "$(dirname "$0")/.."
 O=analysis/sweeps
-J=${JOBS:-8}
+J=${JOBS:-4}
 # Janela de tempo plausivel: 2013-01-01 ate a tx de financiamento (2015-01-15).
 T0=1356998400
 T1=1421345235
 
-run() { echo "### $* :: $(date -u +%FT%TZ)"; python3 analysis/master_seed_sweep.py --jobs $J "$@" ; }
+run() { echo "### $* :: $(date -u +%FT%TZ)"; nice -n 19 python3 analysis/master_seed_sweep.py --jobs $J "$@" ; }
 
 # 1) gerador ingenuo indexado, TODAS as seeds de 32 bits
 run --family hashseq --hash sha256  --index-enc be4 --encoder raw4be --range 0-0x100000000 --output $O/hashseq-sha256-be4-raw32.json
