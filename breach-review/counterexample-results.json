@@ -1,0 +1,37 @@
+{
+  "purpose": "Counterexamples to overbroad inferences, not actual puzzle solutions",
+  "small_nonce_control": {
+    "nonce": 1,
+    "r_bits": 255,
+    "r_hex": "79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798",
+    "signature_validated": true,
+    "repository_small_r_condition": false,
+    "original_function_output": "\n======================================================================\n  ANALISE: SYNTHETIC k=1\n  Total de assinaturas extraidas: 1\n======================================================================\n\n  [1] VERIFICACAO DE REUTILIZACAO DE NONCE (r duplicado)\n  Todos os 1 valores de r sao unicos. Sem reutilizacao.\n\n  [2] ANALISE DOS VALORES DE r\n\n  Comprimento medio de r: 255.0 bits (esperado ~256)\n  Min: 255 bits, Max: 255 bits\n\n  [3] ANALISE DOS VALORES DE s\n  s <= N/2 (low-s): 1/1\n  (BIP-62 exige low-s; indica software moderno se todos low-s)\n  Comprimento medio de s: 255.0 bits\n\n  [4] DISTRIBUICAO DE BYTES DO NONCE (via r)\n  (r = k*G mod p, onde k e o nonce)\n  Total bytes analisados: 32\n  Chi2 = 240.00 (df=255)\n  Z-score = -0.664 (NORMAL)\n\n  MSB dos valores de r:\n    0x79: 1x\n\n  [5] TIPO DE SIGHASH\n  SIGHASH_ALL: 1x\n\n  [6] CONSISTENCIA DE CHAVE PUBLICA\n  Chaves publicas distintas: 1\n    039177359a2d163bf3f8543ab47b9bb9bcebe771b227df6cc407f4dba7afc35b91\n\n  [7] TAMANHO DAS ASSINATURAS DER\n    70 bytes: 1x\n",
+    "original_small_r_alarm": false
+  },
+  "weak_seed_control": {
+    "model": "mask_i(SHA256(seed_16bit_big_endian || i_32bit_big_endian))",
+    "fixed_seed": 12345,
+    "seed_candidates_enumerated": 65536,
+    "training_indices": [
+      32,
+      50,
+      70
+    ],
+    "recovered_seeds": [
+      12345
+    ],
+    "held_out_exact_matches": 79,
+    "held_out_total": 79,
+    "synthetic_71_prediction_correct": true,
+    "limitation": "No evidence that this model generated the actual puzzle keys.",
+    "original_function_output": "==========================================================================\n1+2. INDEX-HASH e SEED-HASH:  chave_i ?= H([seed||] encoding(i))\n==========================================================================\n  Melhor 'acerto' confinado a ranges pequenos (máx #4 bits): [1, 2, 3, 4]\n      ripemd160/enc=str0pad/seed=b'\\x00' — bate só em puzzles minúsculos,\n      NENHUM com >=30 bits. Artefato de comparação múltipla (esperado).\n      -> Index/seed-hash REJEITADO.\n",
+    "original_function_rejected_family": true
+  },
+  "hidden_state_hash_chain_control": {
+    "model": "state_(i+1)=SHA256(state_i); key_i=mask_i(state_i)",
+    "transitions_tested": 41,
+    "masked_key_chain_matches": 0,
+    "true_hidden_state_chain_matches": 41
+  }
+}

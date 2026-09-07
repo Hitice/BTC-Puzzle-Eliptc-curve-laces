@@ -1,0 +1,155 @@
+{
+  "purpose": "New bounded tests of explicit nonce weaknesses, not a general ECDSA solver",
+  "curve": "secp256k1",
+  "self_tests": {
+    "exact_enumeration_control": "101 coefficient values checked against exhaustive reference",
+    "positive_controls": [
+      {
+        "model": "small_nonce",
+        "private_key_recovered": true,
+        "signature_count": 1,
+        "coefficient_box_points": 1,
+        "public_key_checks": 1
+      },
+      {
+        "model": "zero_low_bits",
+        "private_key_recovered": true,
+        "signature_count": 1,
+        "coefficient_box_points": 2,
+        "public_key_checks": 1
+      }
+    ],
+    "negative_controls": "both models correctly reject outside-model nonce"
+  },
+  "work_bits": 10,
+  "signatures_validated": 5,
+  "results": [
+    {
+      "puzzle": 140,
+      "model": "small_nonce",
+      "nonce_variable_bits": 127,
+      "zero_low_bits": 0,
+      "key_interval_unknown_bits": 139,
+      "status": "complete",
+      "coefficient_box_points": 3698,
+      "congruence_candidates": 2048,
+      "public_key_checks": 2048,
+      "matches": []
+    },
+    {
+      "puzzle": 140,
+      "model": "zero_low_bits",
+      "nonce_variable_bits": 127,
+      "zero_low_bits": 129,
+      "key_interval_unknown_bits": 139,
+      "status": "complete",
+      "coefficient_box_points": 2442,
+      "congruence_candidates": 2049,
+      "public_key_checks": 2049,
+      "matches": []
+    },
+    {
+      "puzzle": 145,
+      "model": "small_nonce",
+      "nonce_variable_bits": 122,
+      "zero_low_bits": 0,
+      "key_interval_unknown_bits": 144,
+      "status": "complete",
+      "coefficient_box_points": 3672,
+      "congruence_candidates": 2050,
+      "public_key_checks": 2050,
+      "matches": []
+    },
+    {
+      "puzzle": 145,
+      "model": "zero_low_bits",
+      "nonce_variable_bits": 122,
+      "zero_low_bits": 134,
+      "key_interval_unknown_bits": 144,
+      "status": "complete",
+      "coefficient_box_points": 2728,
+      "congruence_candidates": 2047,
+      "public_key_checks": 2047,
+      "matches": []
+    },
+    {
+      "puzzle": 150,
+      "model": "small_nonce",
+      "nonce_variable_bits": 117,
+      "zero_low_bits": 0,
+      "key_interval_unknown_bits": 149,
+      "status": "complete",
+      "coefficient_box_points": 4144,
+      "congruence_candidates": 2043,
+      "public_key_checks": 2043,
+      "matches": []
+    },
+    {
+      "puzzle": 150,
+      "model": "zero_low_bits",
+      "nonce_variable_bits": 117,
+      "zero_low_bits": 139,
+      "key_interval_unknown_bits": 149,
+      "status": "complete",
+      "coefficient_box_points": 3622,
+      "congruence_candidates": 2048,
+      "public_key_checks": 2048,
+      "matches": []
+    },
+    {
+      "puzzle": 155,
+      "model": "small_nonce",
+      "nonce_variable_bits": 112,
+      "zero_low_bits": 0,
+      "key_interval_unknown_bits": 154,
+      "status": "complete",
+      "coefficient_box_points": 3105,
+      "congruence_candidates": 2049,
+      "public_key_checks": 2049,
+      "matches": []
+    },
+    {
+      "puzzle": 155,
+      "model": "zero_low_bits",
+      "nonce_variable_bits": 112,
+      "zero_low_bits": 144,
+      "key_interval_unknown_bits": 154,
+      "status": "complete",
+      "coefficient_box_points": 4026,
+      "congruence_candidates": 2047,
+      "public_key_checks": 2047,
+      "matches": []
+    },
+    {
+      "puzzle": 160,
+      "model": "small_nonce",
+      "nonce_variable_bits": 107,
+      "zero_low_bits": 0,
+      "key_interval_unknown_bits": 159,
+      "status": "complete",
+      "coefficient_box_points": 2862,
+      "congruence_candidates": 2048,
+      "public_key_checks": 2048,
+      "matches": []
+    },
+    {
+      "puzzle": 160,
+      "model": "zero_low_bits",
+      "nonce_variable_bits": 107,
+      "zero_low_bits": 149,
+      "key_interval_unknown_bits": 159,
+      "status": "complete",
+      "coefficient_box_points": 2025,
+      "congruence_candidates": 2025,
+      "public_key_checks": 2025,
+      "matches": []
+    }
+  ],
+  "elapsed_seconds": 24.260558038,
+  "coverage": "Both s signs; all lattice points in each specified rectangle. Resource overflow raises an error.",
+  "limitations": [
+    "Only two nonce families are tested.",
+    "Negative results do not prove full nonce security.",
+    "A synthetic recovery is not a recovered Bitcoin puzzle key."
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "review_date": "2026-09-07",
+  "repository_url": "https://github.com/Hitice/BTC-Puzzle-Eliptc-curve-laces",
+  "repository_commit": "43961e513a5949f3d6f621bee70620db00dc5468",
+  "repository_files_sha256": {
+    "SUMMARY.md": "70168c64c3b810d8a6a10cdf692b6e389956c452a5f98b7a3be7670eb7668af4",
+    "analysis/FINDINGS.md": "3f83ce7d2c69dcbeb30d0bacd040489903b9da71172032a51ea2703a72f46589",
+    "analysis/ecdsa_signatures.py": "dc4469bce4072c43225ca098476b907595731c5c7fdf79172ed44a332347b8d0",
+    "analysis/weak_generator_scan.py": "ef553cb9933d1974d0d5c0de22f22e5d647435a060fbddc9b3c7ddc93a2762fc",
+    "analysis/bit_security_demo.py": "b66ec81067aa1e58c8fea968979fe2a7641f74bf09154ea3ce36e9316795641e",
+    "analysis/power_and_changepoint.py": "487a3c889208b7dc9e47719168ab33f95798969a4e9ba75c627458d9bb5ac361",
+    "data/puzzles.json": "54c355ba271d52083ddb0c68d4dd385002de50bfb89cb4ed772ec9983d9ebd8b",
+    "data/signatures.json": "a96d1bdb311ec137936e7f92a27ff27f3dc58408dad27090b7a071440a545504"
+  },
+  "cross_checks": {
+    "solved_keys_compared": 82,
+    "solved_key_mismatches": [],
+    "target_signature_r_s_pubkey_matches": [
+      140,
+      145,
+      150,
+      155,
+      160
+    ],
+    "target_rows_exactly_match_previous_verified_audit": true,
+    "previous_audit_known_key_count": 83,
+    "additional_known_key_indices": [
+      135
+    ]
+  },
+  "transaction": {
+    "txid": "17e4e323cfbc68d7f0071cad09364e8193eedf8fefbcbd8a21b4b65717a4b3d3",
+    "input_indices_zero_based": [
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "source": "Previously verified SIGHASH_ALL reconstruction in bitcoin-puzzle-lab/audit.py and results.json"
+  },
+  "previous_audit_files_sha256": {
+    "audit.py": "58c9d8a3a387d479b655fc7f8b02b7bae93c8f5d76a3f72a3846eb2842f1db2f",
+    "results.json": "1c54516ccf0a80a0a81e4656e30dab8e2f2f89c82d41e7b2ddd7d245ac0f31f7",
+    "data/known-keys.json": "11407cbc99ddaea79b702d193832efe77befee13acd172903fdc04cd54bea864"
+  },
+  "previous_audit_rfc6979_known_key_tests": [
+    {
+      "puzzle": 65,
+      "matches_rfc6979_first_candidate_up_to_sign": true,
+      "effective_nonce_hex": "68592d1aa72720ae7333beb3bd9d6a8e69c0567fb91720318c6289d48227c05d"
+    },
+    {
+      "puzzle": 70,
+      "matches_rfc6979_first_candidate_up_to_sign": true,
+      "effective_nonce_hex": "79577177c7a329a48d26bcf81b5db9e88b458bf8e76665f3a9ff4ab4f0cad08e"
+    },
+    {
+      "puzzle": 75,
+      "matches_rfc6979_first_candidate_up_to_sign": true,
+      "effective_nonce_hex": "123503c481722a0b4161fc681b8c786425664c102101a649d665ca788da72e7f"
+    },
+    {
+      "puzzle": 80,
+      "matches_rfc6979_first_candidate_up_to_sign": true,
+      "effective_nonce_hex": "93c7e4ce32301e1676eeef686e851d3b84a0174f7e9f0c523df966c96a24e886"
+    },
+    {
+      "puzzle": 85,
+      "matches_rfc6979_first_candidate_up_to_sign": true,
+      "effective_nonce_hex": "18fbd62747eb6a108af69ae775878af10075590fc534036710c2cb6121a24710"
+    },
+    {
+      "puzzle": 90,
+      "matches_rfc6979_first_candidate_up_to_sign": true,
+      "effective_nonce_hex": "0640c641a09b8b28b721f3c861916de8eb1fab230ad5fa33dd0e03739b4936c9"
+    },
+    {
+      "puzzle": 95,
+      "matches_rfc6979_first_candidate_up_to_sign": true,
+      "effective_nonce_hex": "b3591ed9fac56c96f20f13646c6d4a4371c1c34db9126ee203d9ecb823c46930"
+    },
+    {
+      "puzzle": 100,
+      "matches_rfc6979_first_candidate_up_to_sign": true,
+      "effective_nonce_hex": "1ac46997d73e24a7167fa8b9825927cb59d23528c69328ce71de3087a8c79c1f"
+    },
+    {
+      "puzzle": 105,
+      "matches_rfc6979_first_candidate_up_to_sign": true,
+      "effective_nonce_hex": "0129543698812c5d61918bddd6b24712b0d757aecba20a21c7971a3b652142af"
+    },
+    {
+      "puzzle": 110,
+      "matches_rfc6979_first_candidate_up_to_sign": true,
+      "effective_nonce_hex": "caf9bf64e2440011a0c52746068da91cb7f9b1e20b0a4ac0816babbb85c4bcba"
+    },
+    {
+      "puzzle": 115,
+      "matches_rfc6979_first_candidate_up_to_sign": true,
+      "effective_nonce_hex": "9dd8dc8f8073f11e60ac3dd7a371313c847366b5dff74f46c9fac279eb3a2fea"
+    },
+    {
+      "puzzle": 120,
+      "matches_rfc6979_first_candidate_up_to_sign": true,
+      "effective_nonce_hex": "1e0283128ecdd93e9f8fa5b63841bacb2da3338f9178e36e29a13d534c1bd9fb"
+    },
+    {
+      "puzzle": 125,
+      "matches_rfc6979_first_candidate_up_to_sign": true,
+      "effective_nonce_hex": "8edf4133b6490e274b8caa8e14ffa139df1b919f785d988dc54b268f0fc98ca2"
+    },
+    {
+      "puzzle": 130,
+      "matches_rfc6979_first_candidate_up_to_sign": true,
+      "effective_nonce_hex": "48b29e355781af91077b51c2a572561c0c99a6b8a8d439fd3bf287bc8d8f19b2"
+    },
+    {
+      "puzzle": 135,
+      "matches_rfc6979_first_candidate_up_to_sign": true,
+      "effective_nonce_hex": "68cf555f8daebd376d1ba509b0eed9d56a9abbf96605459b9b3b576ff5c9b092"
+    }
+  ],
+  "runtime": {
+    "python": "3.12.13",
+    "cryptography": "46.0.0"
+  },
+  "commands_executed": [
+    "python breach-review/single_signature_lattice.py --output breach-review/lattice-results.json",
+    "python breach-review/counterexamples.py --repo repo-review/source --output breach-review/counterexample-results.json"
+  ]
+}

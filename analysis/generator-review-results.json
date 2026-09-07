@@ -1,0 +1,77 @@
+{
+  "input_sha256": "54c355ba271d52083ddb0c68d4dd385002de50bfb89cb4ed772ec9983d9ebd8b",
+  "known_keys_verified_against_addresses": 82,
+  "stored_public_keys_verified": 82,
+  "verification_errors": [],
+  "negative_control": {
+    "description": "Official Electrum test MPK; no evidence linking it to the puzzle",
+    "source": "https://raw.githubusercontent.com/spesmilo/electrum/master/tests/test_wallet_vertical.py",
+    "mpk": "e9d4b7866dd1e91c862aebf62a49548c7dbf7bcc6e4b7b8c9da820c7737968df9c09d5a3e271dc814a29981f81b3faaf2737b551ef5dcc6189cf0f8252c442b3",
+    "results": [
+      {
+        "branch": 0,
+        "index_shift": -1,
+        "status": "incompatible",
+        "checked_indices": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "master_progressions": [],
+        "remaining_integer_candidates": 0,
+        "master_public_key_equality_checked": false
+      },
+      {
+        "branch": 0,
+        "index_shift": 0,
+        "status": "incompatible",
+        "checked_indices": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "master_progressions": [],
+        "remaining_integer_candidates": 0,
+        "master_public_key_equality_checked": false
+      },
+      {
+        "branch": 1,
+        "index_shift": -1,
+        "status": "incompatible",
+        "checked_indices": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "master_progressions": [],
+        "remaining_integer_candidates": 0,
+        "master_public_key_equality_checked": false
+      },
+      {
+        "branch": 1,
+        "index_shift": 0,
+        "status": "incompatible",
+        "checked_indices": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "master_progressions": [],
+        "remaining_integer_candidates": 0,
+        "master_public_key_equality_checked": false
+      }
+    ]
+  },
+  "limits": [
+    "No historically linked puzzle master public key or seed was found in this investigation.",
+    "The negative control does not exclude Electrum or any other wallet family.",
+    "Dataset contains 82 solved keys; the prior 83-key audit is not reproduced here.",
+    "No new puzzle key recovered; no live balance/status checks performed."
+  ]
+}

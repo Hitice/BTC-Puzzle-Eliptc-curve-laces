@@ -1,0 +1,52 @@
+[
+  {
+    "transaction": "tx-2019",
+    "input": 15,
+    "puzzle": 140,
+    "address": "1QKBaU6WAeycb3DbKbLBkX7vJiaS8r42Xo",
+    "pubkey": "031f6a332d3c5c4f2de2378c012f429cd109ba07d69690c6c701b6bb87860d6640",
+    "r": "e41046e4b1b7cff1a35f8d6b0eb3448a0403885b17dbf0a0d2ff634de6d03d68",
+    "s": "213396378381f50c084aef327f2b14893b0250a917335bd1fe95431c9d2451a3",
+    "z": "fc51df8026a78f2106970d089b81e2dad52d9a927edafd922f049c3efa3427ce"
+  },
+  {
+    "transaction": "tx-2019",
+    "input": 16,
+    "puzzle": 145,
+    "address": "19GpszRNUej5yYqxXoLnbZWKew3KdVLkXg",
+    "pubkey": "03afdda497369e219a2c1c369954a930e4d3740968e5e4352475bcffce3140dae5",
+    "r": "975bf9ee76637ce33f4539397ebb9fd2cd2cb77d79fccfefc291d8e4bd4464bb",
+    "s": "13ca9514a84bc640b2841c09d15f4d35b5d6f2cf484e69202ca589477fea1e2f",
+    "z": "100cd5c53eadad64b97cd46d3c7f2e8f02f5c55c4333f71585c149bd3a693eed"
+  },
+  {
+    "transaction": "tx-2019",
+    "input": 17,
+    "puzzle": 150,
+    "address": "1MUJSJYtGPVGkBCTqGspnxyHahpt5Te8jy",
+    "pubkey": "03137807790ea7dc6e97901c2bc87411f45ed74a5629315c4e4b03a0a102250c49",
+    "r": "f9746fbc71b4907756f69b3f55625d47b60ecd909233d3b1116860ebeafec6ef",
+    "s": "2db803a9ec7faf80dfbf78418102778cab6450b13549de1759fb88711241ac20",
+    "z": "b02bee27647fee6492d70d7a569ad594462ea022ff08df7ded497da5ed579541"
+  },
+  {
+    "transaction": "tx-2019",
+    "input": 18,
+    "puzzle": 155,
+    "address": "1AoeP37TmHdFh8uN72fu9AqgtLrUwcv2wJ",
+    "pubkey": "035cd1854cae45391ca4ec428cc7e6c7d9984424b954209a8eea197b9e364c05f6",
+    "r": "f09bcda859dc5400124aebf36be6333655f1d10ef96adfe335cabbbec865cd5c",
+    "s": "19fb464ad88a144592c5deeee49609ee255ddf3ee17a0df3adbcde69c03257c9",
+    "z": "84fdc53f18e9feec7c7f398e653ea001e3eb9c853c7f90aa597acacd12bfebfd"
+  },
+  {
+    "transaction": "tx-2019",
+    "input": 19,
+    "puzzle": 160,
+    "address": "1NBC8uXJy1GiJ6drkiZa1WuKn51ps7EPTv",
+    "pubkey": "02e0a8b039282faf6fe0fd769cfbc4b6b4cf8758ba68220eac420e32b91ddfa673",
+    "r": "59b071030ee30f7b32c6c6b5f4e89c6ebcada66ebc84c94c5f9a8adc7c4f8824",
+    "s": "2cb230880dd2dcb03c8dbf0674c372a5b65b4583c30b45ad9eccd7c0232c425f",
+    "z": "aa9b5f47c69338130fc9e949ef9965379d5f99652acaa660142f6d9a290d1154"
+  }
+]
