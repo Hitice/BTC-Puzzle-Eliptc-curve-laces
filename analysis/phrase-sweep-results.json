@@ -1,0 +1,118 @@
+{
+  "hypothesis": "H3 ramo de frases (seeds humanas) - primeira execucao",
+  "model": "puzzle_n = 2^(n-1) | (child_{base+n-1} mod 2^(n-1))",
+  "anchor": "puzzle #130, 129 bits, falso positivo 2^-129",
+  "phrase_sources": "dicionario do sistema (235.976 palavras x 4 variantes de caixa) + gerador combinatorio tematico",
+  "seed_modes": [
+    "sha256",
+    "sha256d",
+    "raw",
+    "bip39"
+  ],
+  "masks": [
+    "low",
+    "high",
+    "low_le"
+  ],
+  "families": [
+    "hashseq:sha256/be4",
+    "hashseq:sha256/le4",
+    "hashseq:sha256/str",
+    "hashseq:sha256d/be4",
+    "bip32:m/0/i",
+    "bip32:m/0h/i",
+    "bip32:m/i",
+    "bip32:m/ih",
+    "bip32:m/44h/0h/0h/0/i",
+    "hashchain:sha256"
+  ],
+  "positive_controls": [
+    {
+      "family": "hashseq",
+      "seed_mode": "sha256",
+      "phrase_recovered": true,
+      "tampered_rejected": true,
+      "phrases_tested": 401
+    },
+    {
+      "family": "hashseq",
+      "seed_mode": "bip39",
+      "phrase_recovered": true,
+      "tampered_rejected": true,
+      "phrases_tested": 401
+    },
+    {
+      "family": "bip32",
+      "seed_mode": "sha256",
+      "phrase_recovered": true,
+      "tampered_rejected": true,
+      "phrases_tested": 401
+    },
+    {
+      "family": "bip32",
+      "seed_mode": "bip39",
+      "phrase_recovered": true,
+      "tampered_rejected": true,
+      "phrases_tested": 401
+    },
+    {
+      "family": "hashchain",
+      "seed_mode": "sha256",
+      "phrase_recovered": true,
+      "tampered_rejected": true,
+      "phrases_tested": 401
+    },
+    {
+      "family": "hashchain",
+      "seed_mode": "bip39",
+      "phrase_recovered": true,
+      "tampered_rejected": true,
+      "phrases_tested": 401
+    }
+  ],
+  "controls_all_passed": true,
+  "total_anchor_tests": 116864880,
+  "anchor_survivors_total": 0,
+  "fully_confirmed": [],
+  "per_seed_mode": [
+    {
+      "seed_mode": "sha256",
+      "phrases_tested": 973874,
+      "combinations": 30,
+      "anchor_tests": 29216220,
+      "seconds": 329.4,
+      "anchor_survivors": {}
+    },
+    {
+      "seed_mode": "sha256d",
+      "phrases_tested": 973874,
+      "combinations": 30,
+      "anchor_tests": 29216220,
+      "seconds": 725.8,
+      "anchor_survivors": {}
+    },
+    {
+      "seed_mode": "raw",
+      "phrases_tested": 973874,
+      "combinations": 30,
+      "anchor_tests": 29216220,
+      "seconds": 355.7,
+      "anchor_survivors": {}
+    },
+    {
+      "seed_mode": "bip39",
+      "phrases_tested": 973874,
+      "combinations": 30,
+      "anchor_tests": 29216220,
+      "seconds": 441.8,
+      "anchor_survivors": {}
+    }
+  ],
+  "seconds": 1852.8,
+  "limitations": [
+    "Cobre SO as frases enumeradas: dicionario ingles com variantes de caixa e combinacoes tematicas. Nao cobre frases arbitrarias, outros idiomas, nem BIP39 com mnemonico desconhecido e passphrase escolhida.",
+    "Indice consecutive(base=0). Outros index-base/stride nao varridos aqui.",
+    "Familia electrum1 excluida: 100k SHA256 por candidato inviabiliza o espaco.",
+    "Ausencia de acerto exclui o espaco enumerado, NAO a hipotese H3."
+  ]
+}

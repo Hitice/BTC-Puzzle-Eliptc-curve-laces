@@ -1,0 +1,83 @@
+{
+  "formulation": "MPK + h_n*G - (P_n - 2^(n-1)G) == k_n * 2^(n-1)G, 0 <= k_n < ceil(N/2^(n-1))",
+  "why_it_is_exact": "k_n has only 2 admissible values at n=256 and 4 at n=255, so a single anchor is a complete accept/reject test; false positive 2/N.",
+  "anchors": [
+    {
+      "n": 256,
+      "k_candidates": 2
+    },
+    {
+      "n": 255,
+      "k_candidates": 4
+    },
+    {
+      "n": 254,
+      "k_candidates": 8
+    },
+    {
+      "n": 253,
+      "k_candidates": 16
+    },
+    {
+      "n": 252,
+      "k_candidates": 32
+    },
+    {
+      "n": 251,
+      "k_candidates": 64
+    },
+    {
+      "n": 250,
+      "k_candidates": 128
+    },
+    {
+      "n": 249,
+      "k_candidates": 256
+    },
+    {
+      "n": 248,
+      "k_candidates": 512
+    }
+  ],
+  "positive_controls": [
+    {
+      "trial": 0,
+      "true_mpk_accepted": true,
+      "wrong_shift_rejected": true,
+      "wrong_branch_rejected": true,
+      "perturbed_mpk_rejected": true
+    },
+    {
+      "trial": 1,
+      "true_mpk_accepted": true,
+      "wrong_shift_rejected": true,
+      "wrong_branch_rejected": true,
+      "perturbed_mpk_rejected": true
+    },
+    {
+      "trial": 2,
+      "true_mpk_accepted": true,
+      "wrong_shift_rejected": true,
+      "wrong_branch_rejected": true,
+      "perturbed_mpk_rejected": true
+    }
+  ],
+  "controls_all_passed": true,
+  "real_run": {
+    "candidate_pubkeys": 148,
+    "branches": 2,
+    "shift_range": [
+      -64,
+      64
+    ],
+    "combinations_tested": 38184,
+    "matches": []
+  },
+  "interpretation": "A match would yield the master public key and, with electrum_old_mpk.compatible(), the master private key progression. No match only excludes the tested candidates: this is a verifier, it does not search the MPK space.",
+  "limitations": [
+    "Assumes the repo mask model and an ADDITIVE wallet whose child offset is computable from public data (Electrum v1 / non-hardened BIP32 with known chaincode). Hardened derivation makes h_n unknowable and voids the test.",
+    "Only the Electrum v1 offset function is implemented here.",
+    "Index shift swept over a finite window; branch limited to 0 and 1.",
+    "No literature novelty claimed and no puzzle key recovered."
+  ]
+}

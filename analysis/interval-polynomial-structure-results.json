@@ -1,0 +1,146 @@
+{
+  "question": "Can F_I(X)=product_(j in I)(X-x(jG)) be built or evaluated without constructing all |I| factors?",
+  "curve": "secp256k1",
+  "experiment_1_build_without_enumeration": {
+    "identity": "Res_u(F_A(u), S3(u, x(sG), X)) = F_A(x(sG))^2 * F_{A+s}(X) * F_{A-s}(X)",
+    "s3_controls": [
+      {
+        "k1": 12345,
+        "k2": 67890,
+        "vanishes_on_sum": true,
+        "vanishes_on_difference": true,
+        "nonzero_on_unrelated": true
+      },
+      {
+        "k1": 2,
+        "k2": 3,
+        "vanishes_on_sum": true,
+        "vanishes_on_difference": true,
+        "nonzero_on_unrelated": true
+      },
+      {
+        "k1": 1267650600228229401496703205376,
+        "k2": 1237940039285380274899124229,
+        "vanishes_on_sum": true,
+        "vanishes_on_difference": true,
+        "nonzero_on_unrelated": true
+      }
+    ],
+    "pointwise_checks": [
+      {
+        "width": 8,
+        "random_evaluations": 6,
+        "identity_matches": 6
+      },
+      {
+        "width": 16,
+        "random_evaluations": 6,
+        "identity_matches": 6
+      },
+      {
+        "width": 32,
+        "random_evaluations": 6,
+        "identity_matches": 6
+      }
+    ],
+    "coefficient_rebuilds": [
+      {
+        "width": 8,
+        "input_degree": 8,
+        "output_degree": 16,
+        "coefficients_match_brute_force": true,
+        "scalar_multiplications_over_the_interval": 0,
+        "resultant_field_multiplications": 450
+      },
+      {
+        "width": 16,
+        "input_degree": 16,
+        "output_degree": 32,
+        "coefficients_match_brute_force": true,
+        "scalar_multiplications_over_the_interval": 0,
+        "resultant_field_multiplications": 1666
+      }
+    ],
+    "answer": "Yes for construction. F_{A+s}*F_{A-s} is obtained from the coefficients of F_A and the single value x(sG), with zero scalar multiplications over A. It gives no speedup: the output degree is 2|A|, so writing the result down already costs 2|A| coefficients and a shift-and-double chain to width W costs Omega(W).",
+    "literature": "S3 is Semaev third summation polynomial (ePrint 2004/031); the resultant elimination step is the standard index-calculus machinery of Gaudry and Diem. Not new."
+  },
+  "experiment_2_high_degree_with_fast_evaluation": {
+    "object": "division polynomial psi_n, degree ~n^2/2, evaluated in O(log n)",
+    "result": {
+      "ladder_matches_naive_recurrence_n_1_to_400": true,
+      "membership_decisions_all_correct": true,
+      "psi_N_vanishes_at_every_tested_point": true,
+      "evaluations": [
+        {
+          "n": "N",
+          "n_bits": 256,
+          "psi_degree_bits": 511,
+          "vanishes": true,
+          "expected_vanishes": true,
+          "field_multiplications": 12240
+        },
+        {
+          "n": "N-1",
+          "n_bits": 256,
+          "psi_degree_bits": 511,
+          "vanishes": false,
+          "expected_vanishes": false,
+          "field_multiplications": 12240
+        },
+        {
+          "n": "N+1",
+          "n_bits": 256,
+          "psi_degree_bits": 511,
+          "vanishes": false,
+          "expected_vanishes": false,
+          "field_multiplications": 12240
+        },
+        {
+          "n": "2N",
+          "n_bits": 257,
+          "psi_degree_bits": 513,
+          "vanishes": true,
+          "expected_vanishes": true,
+          "field_multiplications": 12288
+        },
+        {
+          "n": "3N",
+          "n_bits": 258,
+          "psi_degree_bits": 515,
+          "vanishes": true,
+          "expected_vanishes": true,
+          "field_multiplications": 12336
+        },
+        {
+          "n": "2^200",
+          "n_bits": 201,
+          "psi_degree_bits": 399,
+          "vanishes": false,
+          "expected_vanishes": false,
+          "field_multiplications": 9600
+        },
+        {
+          "n": "random",
+          "n_bits": 256,
+          "psi_degree_bits": 511,
+          "vanishes": false,
+          "expected_vanishes": false,
+          "field_multiplications": 12240
+        }
+      ]
+    },
+    "answer": "High degree is not the obstruction, confirming the lab note. psi_N has degree about 2^510 and is evaluated exactly in ~12k field multiplications, deciding membership in the n-torsion. The recurrence exists because the root set is a SUBGROUP, closed under the group law. An interval [L,L+W) has no such closure, so this construction does not transfer to F_I."
+  },
+  "conclusion": [
+    "The formulation in interval_polynomial_lab.py is correct and its cost audit is correct; the search is inside the evaluation, as reported there.",
+    "Building F_I without enumerating points is possible and known; it does not reduce cost because degree equals |I| and the coefficient list is the output.",
+    "A small arithmetic circuit for X -> F_I(X) would give interval-ECDLP in O(circuit_size * log W) field operations. Generic-group lower bounds are Omega(sqrt(W)) and the best known interval algorithm is Pollard kangaroo at ~2*sqrt(W) group operations. Such a circuit is therefore not a step toward breaking ECDLP: it IS breaking ECDLP.",
+    "Generic lower bounds do not formally exclude it, because F_I is evaluated on the field representation of x, outside the generic group model. That gap is exactly what summation-polynomial index calculus targets, and over prime fields such as secp256k1 those attacks have produced no improvement over sqrt(W)."
+  ],
+  "limitations": [
+    "Small widths (8, 16, 32) for the identity; it is an algebraic identity, not a statistical claim, and brute force is the reference.",
+    "Field-multiplication counts are not timing comparisons.",
+    "No impossibility proof for an arbitrary evaluation algorithm is claimed here.",
+    "No literature novelty claimed and no puzzle key recovered."
+  ]
+}
