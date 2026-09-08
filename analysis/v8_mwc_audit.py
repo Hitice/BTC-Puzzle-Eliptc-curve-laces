@@ -12,7 +12,6 @@ from pathlib import Path
 import subprocess
 import tempfile
 import time
-import z3
 
 MODELS = {'word32_be': (32, 'big'), 'word32_le': (32, 'little'),
           'word16_be': (16, 'big'), 'byte8': (8, 'big')}
@@ -41,6 +40,7 @@ def produce(a, b, model, count):
 
 
 def solve(values, width, timeout_ms, fixed_state=None):
+    import z3
     a0, b0 = z3.BitVecs('initial_a initial_b', 32)
     a, b = a0, b0
     solver = z3.SolverFor('QF_BV')
@@ -76,6 +76,7 @@ def byte_projection(values, timeout_ms, fixed_a=None):
     That carry requires (a & 1023) >= 1009. Relaxing b to allow either
     carry enlarges the solution set, so unsat still excludes the full model.
     """
+    import z3
     initial = z3.BitVec('projection_a', 32)
     a = initial
     solver = z3.SolverFor('QF_BV')
@@ -132,8 +133,11 @@ def reference_check(real_bytes):
 
 
 def main():
+    import z3
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--timeout-ms', type=int, default=15000)
+    parser.add_argument('--skip-byte-smt', action='store_true',
+                        help='Use the exhaustive native byte projection instead of repeating slow SMT queries')
     parser.add_argument('--output', type=Path, default=Path(__file__).with_name('v8-mwc-results.json'))
     args = parser.parse_args()
     if not 1 <= args.timeout_ms <= 60000:
@@ -145,6 +149,7 @@ def main():
     report = {'version': 'V8 3.14.5 recurrence and scaling; not the simplified V8 blog example',
               'source': 'https://raw.githubusercontent.com/v8/v8/3.14.5/src/v8.cc',
               'input_sha256': hashlib.sha256(source).hexdigest(),
+              'anchor_key_hex': f'{key:064x}', 'byte_smt_skipped': args.skip_byte_smt,
               'z3_version': z3.get_version_string(), 'timeout_ms_per_query': args.timeout_ms,
               'anchor': 130, 'known_low_bits_used': 128,
               'native_control': reference_check(observations(raw, 'byte8')), 'controls': [], 'real_results': [],
@@ -161,12 +166,13 @@ def main():
         changed = list(values)
         changed[-1] ^= 1
         assert solve(changed, width, args.timeout_ms, STARTS[1])['solver_status'] == 'unsat'
-        free = solve(values, width, args.timeout_ms)
+        skipped = {'solver_status': 'not_run', 'reason': 'Exhaustive native byte projection used'}
+        free = skipped if width == 8 and args.skip_byte_smt else solve(values, width, args.timeout_ms)
         assert free['solver_status'] != 'unsat', 'Known witness was incorrectly excluded'
         report['controls'].append({'model': model, 'fixed_positive': 'sat',
                                    'fixed_tampered': 'unsat', 'free_recovery': free})
         print(f'{model} synthetic recovery: {free["solver_status"]}', flush=True)
-        real = solve(observations(raw, model), width, args.timeout_ms)
+        real = skipped if width == 8 and args.skip_byte_smt else solve(observations(raw, model), width, args.timeout_ms)
         report['real_results'].append({'model': model, **real})
         checkpoint()
         print(f'{model} actual puzzle: {real["solver_status"]}', flush=True)
@@ -178,7 +184,14 @@ def main():
             assert carry in (0, 1) and (carry == 0 or low >= 1009)
     control_values = produce(*STARTS[1], 'byte8', 16)
     assert byte_projection(control_values, args.timeout_ms, STARTS[1][0])['solver_status'] == 'sat'
-    report['byte_projection'] = byte_projection(observations(raw, 'byte8'), args.timeout_ms)
+    report['byte_projection'] = skipped if args.skip_byte_smt else byte_projection(observations(raw, 'byte8'), args.timeout_ms)
+    report['conclusions'] = []
+    for result in report['real_results']:
+        native_excluded = (result['model'] == 'byte8' and
+                           report['native_control']['native_projection_real']['survivors'] == 0)
+        report['conclusions'].append({'model': result['model'],
+            'status': 'incompatible' if native_excluded or result['solver_status'] == 'unsat' else 'inconclusive',
+            'method': 'exhaustive_native_projection' if native_excluded else 'SMT'})
     checkpoint()
     print('byte8 necessary-condition projection:', report['byte_projection']['solver_status'], flush=True)
     print(args.output)

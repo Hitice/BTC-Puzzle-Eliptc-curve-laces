@@ -1,0 +1,64 @@
+{
+  "formulation": "F_I(X)=product_(j in I)(X-x(jG)) modulo p",
+  "curve": "secp256k1",
+  "controls": [
+    {
+      "bits": 4,
+      "width": 16,
+      "interval_start_hex": "0x80000000000000000000000000000003039",
+      "positive_controls": 10,
+      "all_keys_recovered": true,
+      "out_of_interval_controls_rejected": 4,
+      "sign_ambiguity_demonstrated": true,
+      "coefficients_stored": 111,
+      "precompute_field_multiplications": 199,
+      "precompute_base_scalar_multiplications": 1,
+      "precompute_point_additions": 15,
+      "membership_decisions": 4,
+      "query_field_multiplications": 15,
+      "final_scalar_verifications": 1
+    },
+    {
+      "bits": 6,
+      "width": 64,
+      "interval_start_hex": "0x80000000000000000000000000000003039",
+      "positive_controls": 15,
+      "all_keys_recovered": true,
+      "out_of_interval_controls_rejected": 4,
+      "sign_ambiguity_demonstrated": true,
+      "coefficients_stored": 575,
+      "precompute_field_multiplications": 2463,
+      "precompute_base_scalar_multiplications": 1,
+      "precompute_point_additions": 63,
+      "membership_decisions": 6,
+      "query_field_multiplications": 63,
+      "final_scalar_verifications": 1
+    },
+    {
+      "bits": 8,
+      "width": 256,
+      "interval_start_hex": "0x80000000000000000000000000000003039",
+      "positive_controls": 16,
+      "all_keys_recovered": true,
+      "out_of_interval_controls_rejected": 4,
+      "sign_ambiguity_demonstrated": true,
+      "coefficients_stored": 2815,
+      "precompute_field_multiplications": 34943,
+      "precompute_base_scalar_multiplications": 1,
+      "precompute_point_additions": 255,
+      "membership_decisions": 8,
+      "query_field_multiplications": 255,
+      "final_scalar_verifications": 1
+    }
+  ],
+  "result": "Exact membership and key recovery; no asymptotic improvement in this implementation.",
+  "cost_identity": "log2(W) decisions, but W/2+W/4+...+1=W-1 Horner field multiplications per query.",
+  "degree_obstruction": "For a half interval with W/2 distinct x-coordinates, any nonzero univariate polynomial vanishing on all of them has degree at least W/2. This constrains degree, not arithmetic-circuit size or every possible evaluation algorithm.",
+  "limitations": [
+    "Preprocessing enumerates all W public points in the synthetic interval.",
+    "All preprocessing, polynomial coefficients and final point verification must be counted.",
+    "Field multiplications and curve operations are different units; counts are not timing comparisons.",
+    "This experiment does not rule out a different representation or evaluation algorithm.",
+    "No claim of literature novelty and no new puzzle key recovered."
+  ]
+}

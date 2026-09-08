@@ -1,5 +1,5 @@
 {
-  "input_sha256": "54c355ba271d52083ddb0c68d4dd385002de50bfb89cb4ed772ec9983d9ebd8b",
+  "input_sha256": "8c46ace12a28da0cc34bce215e16008a320159fe2099267acc4f2dbeec7c6e87",
   "known_keys": 82,
   "self_tests": {
     "java_runtime": "openjdk version \"21.0.11\" 2026-04-21",
@@ -150,7 +150,7 @@
       "status": "incompatible"
     }
   ],
-  "elapsed_seconds": 2.890863584005274,
+  "elapsed_seconds": 3.5770495420438237,
   "limitations": [
     "No historical evidence linking java.util.Random to the puzzle.",
     "Only the four raw output layouts are tested; not SecureRandom or hashed outputs.",

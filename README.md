@@ -30,8 +30,10 @@ fora de brute-force e Kangaroo/BSGS**.
 ## Estado atual (one-liner)
 
 **Nenhuma chave nova recuperada; implementação do gerador ainda não identificada.**
-O único teste com poder contra a hipótese do gerador é enumerar a SEED mestre —
-`analysis/master_seed_sweep.py` faz isso (âncora de 129 bits no #130, controles 8/8).
+`analysis/master_seed_sweep.py` enumera seeds mestres nos modelos registrados.
+Também há testes exatos para construções com saída direta do Java Random e V8
+3.14.5 (H5/H6 em `HYPOTHESES.json`); eles não cobrem esses PRNGs como fontes de
+seed de uma derivação criptográfica posterior.
 As 82 chaves do conjunto local foram reconferidas contra endereços e pubkeys.
 A revisão registra resultados negativos para dois modelos restritos de nonce em
 cinco alvos; isso não demonstra segurança geral dos nonces. Estatística não identifica

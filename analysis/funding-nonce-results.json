@@ -1,0 +1,43 @@
+{
+  "verification_sha256": "ad9c56d8baee79165c8a50b43218c765c25dc9b294d278aecd5683953421022a",
+  "bound_inclusive": 65536,
+  "controls": {
+    "synthetic_signature_cases": 10,
+    "passed": true,
+    "boundary_inclusive": true,
+    "above_boundary_rejected": true,
+    "positive_negative_and_zero_relations": true
+  },
+  "funding_inputs": [
+    {
+      "txid": "08389f34c98c606322740c0be6a7125d9860bb8d5cb182c02f98461e5fa6cd15",
+      "input": 0
+    },
+    {
+      "txid": "5d45587cfd1d5b0fb826805541da7d94c61fe432259e68ee26f4a04544384164",
+      "input": 96
+    },
+    {
+      "txid": "7c432398c7631600af01695c9767eff109cbfae4f7ecccaff388043a474d4f1e",
+      "input": 0
+    },
+    {
+      "txid": "17e4e323cfbc68d7f0071cad09364e8193eedf8fefbcbd8a21b4b65717a4b3d3",
+      "input": 20
+    },
+    {
+      "txid": "12f34b58b04dfb0233ce889f674781c0e0c7ba95482cca469125af41a78d13b3",
+      "input": 0
+    }
+  ],
+  "funding_nonce_points_checked": 5,
+  "pairs_checked": 590,
+  "point_sum_difference_checks": 1180,
+  "small_nonce_matches": [],
+  "related_nonce_matches": [],
+  "limitations": [
+    "Only the stated bounded modular nonce models are covered.",
+    "Funding inputs do not establish creator identity or key-generator software.",
+    "A relation between nonces under distinct keys need not recover either key."
+  ]
+}

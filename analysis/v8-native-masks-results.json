@@ -1,0 +1,139 @@
+{
+  "source": "https://raw.githubusercontent.com/v8/v8/3.14.5/src/v8.cc",
+  "input_sha256": "8c46ace12a28da0cc34bce215e16008a320159fe2099267acc4f2dbeec7c6e87",
+  "native_source_sha256": "c4d6f16ff32b03313beed882eb5924368c01e8481fe5773d669d606b6d3d9a6b",
+  "anchor": 130,
+  "anchor_key_hex": "000000000000000000000000000000033e7665705359f04f28b88cf897c603c9",
+  "generator_layout": "32 consecutive floor(Math.random()*256) bytes",
+  "positive_controls": [
+    {
+      "seed_index": 0,
+      "mask": "low",
+      "known_bits": 128,
+      "true_projected_state_recovered": true,
+      "after_first_call_states_checked": 4747191,
+      "survivors": 1,
+      "scope": "Exhaustive necessary-condition projection; not full MWC state recovery",
+      "witness_a_after_first_call": 734377708
+    },
+    {
+      "seed_index": 0,
+      "mask": "low_le",
+      "known_bits": 128,
+      "true_projected_state_recovered": true,
+      "after_first_call_states_checked": 4747191,
+      "survivors": 1,
+      "scope": "Exhaustive necessary-condition projection; not full MWC state recovery",
+      "witness_a_after_first_call": 18273
+    },
+    {
+      "seed_index": 0,
+      "mask": "high",
+      "known_bits": 120,
+      "true_projected_state_recovered": true,
+      "after_first_call_states_checked": 4746152,
+      "survivors": 1,
+      "scope": "Exhaustive necessary-condition projection; not full MWC state recovery",
+      "witness_a_after_first_call": 333902529
+    },
+    {
+      "seed_index": 1,
+      "mask": "low",
+      "known_bits": 128,
+      "true_projected_state_recovered": true,
+      "after_first_call_states_checked": 4746152,
+      "survivors": 1,
+      "scope": "Exhaustive necessary-condition projection; not full MWC state recovery",
+      "witness_a_after_first_call": 244837667
+    },
+    {
+      "seed_index": 1,
+      "mask": "low_le",
+      "known_bits": 128,
+      "true_projected_state_recovered": true,
+      "after_first_call_states_checked": 4747191,
+      "survivors": 1,
+      "scope": "Exhaustive necessary-condition projection; not full MWC state recovery",
+      "witness_a_after_first_call": 404495788
+    },
+    {
+      "seed_index": 1,
+      "mask": "high",
+      "known_bits": 120,
+      "true_projected_state_recovered": true,
+      "after_first_call_states_checked": 4746152,
+      "survivors": 1,
+      "scope": "Exhaustive necessary-condition projection; not full MWC state recovery",
+      "witness_a_after_first_call": 138807880
+    },
+    {
+      "seed_index": 2,
+      "mask": "low",
+      "known_bits": 128,
+      "true_projected_state_recovered": true,
+      "after_first_call_states_checked": 4746152,
+      "survivors": 1,
+      "scope": "Exhaustive necessary-condition projection; not full MWC state recovery",
+      "witness_a_after_first_call": 792625837
+    },
+    {
+      "seed_index": 2,
+      "mask": "low_le",
+      "known_bits": 128,
+      "true_projected_state_recovered": true,
+      "after_first_call_states_checked": 4746326,
+      "survivors": 1,
+      "scope": "Exhaustive necessary-condition projection; not full MWC state recovery",
+      "witness_a_after_first_call": 1197586590
+    },
+    {
+      "seed_index": 2,
+      "mask": "high",
+      "known_bits": 120,
+      "true_projected_state_recovered": true,
+      "after_first_call_states_checked": 4746152,
+      "survivors": 1,
+      "scope": "Exhaustive necessary-condition projection; not full MWC state recovery",
+      "witness_a_after_first_call": 863636799
+    }
+  ],
+  "results": [
+    {
+      "mask": "low",
+      "known_bits": 128,
+      "first_observed_byte_index": 16,
+      "status": "incompatible",
+      "after_first_call_states_checked": 4747191,
+      "survivors": 0,
+      "scope": "Exhaustive necessary-condition projection; not full MWC state recovery",
+      "witness_a_after_first_call": null
+    },
+    {
+      "mask": "low_le",
+      "known_bits": 128,
+      "first_observed_byte_index": 0,
+      "status": "incompatible",
+      "after_first_call_states_checked": 4746152,
+      "survivors": 0,
+      "scope": "Exhaustive necessary-condition projection; not full MWC state recovery",
+      "witness_a_after_first_call": null
+    },
+    {
+      "mask": "high",
+      "known_bits": 120,
+      "first_observed_byte_index": 1,
+      "status": "incompatible",
+      "after_first_call_states_checked": 4746152,
+      "survivors": 0,
+      "scope": "Exhaustive necessary-condition projection; not full MWC state recovery",
+      "witness_a_after_first_call": null
+    }
+  ],
+  "limitations": [
+    "Only V8 3.14.5 native recurrence and three explicit masks.",
+    "No within-key extra calls, reseeding, hashes, ARC4, or HD derivation.",
+    "No historical evidence linking this generator to the puzzle.",
+    "A projection survivor is not a recovered full state or puzzle key."
+  ],
+  "native_reference_words_checked": 300
+}

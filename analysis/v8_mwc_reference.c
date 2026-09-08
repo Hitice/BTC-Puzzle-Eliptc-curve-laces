@@ -12,9 +12,11 @@ static int allowed_byte(uint32_t a, unsigned byte) {
 }
 
 static int scan_projection(const char *hex) {
-    unsigned observed[16];
-    if (strlen(hex) != 32) return 2;
-    for (int i = 0; i < 16; ++i)
+    unsigned observed[32];
+    size_t hex_length = strlen(hex);
+    if (hex_length < 2 || hex_length > 64 || hex_length % 2) return 2;
+    unsigned count = (unsigned)(hex_length / 2);
+    for (unsigned i = 0; i < count; ++i)
         if (sscanf(hex+2*i, "%2x", &observed[i]) != 1) return 2;
     const uint32_t maximum = 18273u*65535u + 65535u;
     uint64_t checked = 0, survivors = 0;
@@ -32,7 +34,7 @@ static int scan_projection(const char *hex) {
                 ++checked;
                 uint32_t a = first;
                 int valid = 1;
-                for (int j = 1; j < 16; ++j) {
+                for (unsigned j = 1; j < count; ++j) {
                     a = 18273u*(a & 65535u) + (a >> 16);
                     if (!allowed_byte(a, observed[j])) { valid = 0; break; }
                 }

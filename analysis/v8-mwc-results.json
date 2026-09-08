@@ -1,7 +1,9 @@
 {
   "version": "V8 3.14.5 recurrence and scaling; not the simplified V8 blog example",
   "source": "https://raw.githubusercontent.com/v8/v8/3.14.5/src/v8.cc",
-  "input_sha256": "54c355ba271d52083ddb0c68d4dd385002de50bfb89cb4ed772ec9983d9ebd8b",
+  "input_sha256": "8c46ace12a28da0cc34bce215e16008a320159fe2099267acc4f2dbeec7c6e87",
+  "anchor_key_hex": "000000000000000000000000000000033e7665705359f04f28b88cf897c603c9",
+  "byte_smt_skipped": true,
   "z3_version": "5.1.0",
   "timeout_ms_per_query": 15000,
   "anchor": 130,
@@ -43,7 +45,7 @@
       "fixed_tampered": "unsat",
       "free_recovery": {
         "solver_status": "sat",
-        "elapsed_seconds": 0.056192540971096605,
+        "elapsed_seconds": 0.07241074997000396,
         "witness_state_hex": [
           "12345678",
           "87654321"
@@ -57,7 +59,7 @@
       "fixed_tampered": "unsat",
       "free_recovery": {
         "solver_status": "sat",
-        "elapsed_seconds": 0.05340370803605765,
+        "elapsed_seconds": 0.08323679200839251,
         "witness_state_hex": [
           "e8575675",
           "87654321"
@@ -71,7 +73,7 @@
       "fixed_tampered": "unsat",
       "free_recovery": {
         "solver_status": "sat",
-        "elapsed_seconds": 0.6353852920001373,
+        "elapsed_seconds": 0.8960327499662526,
         "witness_state_hex": [
           "59955677",
           "9968f2e7"
@@ -84,9 +86,8 @@
       "fixed_positive": "sat",
       "fixed_tampered": "unsat",
       "free_recovery": {
-        "solver_status": "unknown",
-        "elapsed_seconds": 15.025291458994616,
-        "reason": "timeout"
+        "solver_status": "not_run",
+        "reason": "Exhaustive native byte projection used"
       }
     }
   ],
@@ -94,23 +95,22 @@
     {
       "model": "word32_be",
       "solver_status": "unsat",
-      "elapsed_seconds": 0.046516250004060566
+      "elapsed_seconds": 0.0566585409687832
     },
     {
       "model": "word32_le",
       "solver_status": "unsat",
-      "elapsed_seconds": 0.04888179199770093
+      "elapsed_seconds": 0.0742337919655256
     },
     {
       "model": "word16_be",
       "solver_status": "unsat",
-      "elapsed_seconds": 0.21745808300329372
+      "elapsed_seconds": 0.2932354579679668
     },
     {
       "model": "byte8",
-      "solver_status": "unknown",
-      "elapsed_seconds": 15.017348749970552,
-      "reason": "timeout"
+      "solver_status": "not_run",
+      "reason": "Exhaustive native byte projection used"
     }
   ],
   "limitations": [
@@ -120,9 +120,29 @@
     "unknown/timeout is inconclusive."
   ],
   "byte_projection": {
-    "solver_status": "unknown",
-    "elapsed_seconds": 15.01046416698955,
-    "scope": "Necessary conditions on state a only; sat is not a full witness",
-    "reason": "timeout"
-  }
+    "solver_status": "not_run",
+    "reason": "Exhaustive native byte projection used"
+  },
+  "conclusions": [
+    {
+      "model": "word32_be",
+      "status": "incompatible",
+      "method": "SMT"
+    },
+    {
+      "model": "word32_le",
+      "status": "incompatible",
+      "method": "SMT"
+    },
+    {
+      "model": "word16_be",
+      "status": "incompatible",
+      "method": "SMT"
+    },
+    {
+      "model": "byte8",
+      "status": "incompatible",
+      "method": "exhaustive_native_projection"
+    }
+  ]
 }

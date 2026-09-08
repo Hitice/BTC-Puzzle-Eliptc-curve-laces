@@ -36,17 +36,20 @@ TXS = [
 def parse_der(sig_hex):
     """Devolve (r, s, sighash, strict_der, minimal_ints)."""
     b = bytes.fromhex(sig_hex)
+    if not 9 <= len(b) <= 73:
+        raise ValueError('Invalid DER signature length')
     sighash = b[-1]
     body = b[:-1]
-    ok = len(body) >= 8 and body[0] == 0x30 and body[1] == len(body) - 2
+    ok = body[0] == 0x30 and body[1] == len(body) - 2
     i = 2
     ints = []
     minimal = True
     for _ in range(2):
-        if i >= len(body) or body[i] != 0x02:
-            ok = False
-            break
+        if i + 2 > len(body) or body[i] != 0x02:
+            raise ValueError('Missing DER integer')
         ln = body[i + 1]
+        if ln == 0 or i + 2 + ln > len(body):
+            raise ValueError('Truncated or empty DER integer')
         raw = body[i + 2:i + 2 + ln]
         if ln == 0 or (raw[0] & 0x80):
             minimal = False
@@ -56,29 +59,73 @@ def parse_der(sig_hex):
         i += 2 + ln
     if i != len(body):
         ok = False
-    r, s = (ints + [0, 0])[:2]
+    r, s = ints
     return r, s, sighash, ok, minimal
+
+
+def script_pushes(script_hex):
+    """Read push-only script bytes; do not trust explorer ASM formatting."""
+    raw, result, i = bytes.fromhex(script_hex), [], 0
+    while i < len(raw):
+        opcode = raw[i]
+        i += 1
+        if opcode <= 75:
+            size = opcode
+        elif opcode in (76, 77, 78):
+            width = 1 << (opcode-76)
+            if i+width > len(raw):
+                raise ValueError('Truncated PUSHDATA length')
+            size = int.from_bytes(raw[i:i+width], 'little')
+            i += width
+        else:
+            raise ValueError('Non-push opcode')
+        if i+size > len(raw):
+            raise ValueError('Truncated script push')
+        result.append(raw[i:i+size])
+        i += size
+    return result
+
+
+def signature_payload(vin):
+    kind = vin['prevout'].get('scriptpubkey_type')
+    if kind == 'p2pkh':
+        values = script_pushes(vin.get('scriptsig', ''))
+        origin = 'scriptsig'
+    elif kind == 'v0_p2wpkh':
+        if vin.get('scriptsig'):
+            raise ValueError('Native P2WPKH has nonempty scriptSig')
+        values = [bytes.fromhex(v) for v in vin.get('witness', [])]
+        origin = 'witness'
+    else:
+        raise ValueError(f'Unsupported input type: {kind}')
+    if len(values) != 2:
+        raise ValueError('Expected signature and public key')
+    sig, public = values
+    if not ((len(public) == 33 and public[0] in (2, 3)) or
+            (len(public) == 65 and public[0] == 4)):
+        raise ValueError('Invalid public key encoding')
+    return sig, public, origin
 
 
 def analyze(tx):
     vin, vout = tx["vin"], tx["vout"]
     sigs = []
     for k, v in enumerate(vin):
-        asm = v.get("scriptsig_asm", "")
-        push = [p for p in asm.split()
-                if len(p) > 60 and all(c in "0123456789abcdef" for c in p)]
         rec = {"index": k, "sequence": v.get("sequence"),
                "prev_address": v["prevout"].get("scriptpubkey_address"),
                "prev_value": v["prevout"]["value"],
                "prev_type": v["prevout"].get("scriptpubkey_type"),
                "scriptsig_len": len(bytes.fromhex(v.get("scriptsig", "") or ""))}
-        if len(push) >= 2:
-            r, s, sh, strict, minimal = parse_der(push[0])
+        try:
+            sig, public, origin = signature_payload(v)
+            r, s, sh, strict, minimal = parse_der(sig.hex())
             rec.update({"r": "%064x" % r, "s": "%064x" % s, "sighash": sh,
                         "low_s": s <= HALF_N, "strict_der": strict,
-                        "minimal_ints": minimal, "sig_len": len(push[0]) // 2,
-                        "pubkey_len": len(push[1]) // 2,
-                        "pubkey_compressed": len(push[1]) == 66})
+                        "minimal_ints": minimal, "sig_len": len(sig),
+                        "pubkey_len": len(public), 'signature_source': origin,
+                        "pubkey_compressed": len(public) == 33})
+        except ValueError as exc:
+            rec['signature_parse_error'] = str(exc)
         sigs.append(rec)
     signed = [s for s in sigs if "low_s" in s]
     values = [o["value"] for o in vout]
@@ -97,6 +144,8 @@ def analyze(tx):
         "indicators": {
             "all_sequences": sorted({s["sequence"] for s in sigs}),
             "signed_inputs": len(signed),
+            'unparsed_inputs': len(sigs)-len(signed),
+            'witness_signatures': sum(s.get('signature_source') == 'witness' for s in signed),
             "low_s_count": sum(1 for s in signed if s["low_s"]),
             "high_s_count": sum(1 for s in signed if not s["low_s"]),
             "strict_der_all": all(s["strict_der"] for s in signed) if signed else None,
