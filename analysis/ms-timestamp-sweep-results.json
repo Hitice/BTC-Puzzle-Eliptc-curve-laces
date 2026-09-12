@@ -1,0 +1,131 @@
+{
+  "hypothesis": "H3 ramo timestamp em milissegundos (nunca coberto)",
+  "anchor_tx_block_time": 1421345234,
+  "window": {
+    "lo_ms": 1418753234000,
+    "hi_ms": 1421345234000,
+    "days_before_tx": 30.0
+  },
+  "anchor": "puzzle #130, 129 bits, falso positivo 2^-129",
+  "positive_control": "herdado de master_seed_sweep.py --self-test (8/8) e de timestamp_ms_sweep.py --self-test (6 combinacoes x 3 assercoes)",
+  "combinations": 6,
+  "candidates_per_combination": 2592000000,
+  "total_candidates": 15552000000,
+  "total_hits": 0,
+  "results": [
+    {
+      "encoder": "ascii",
+      "family_args": [
+        "--family",
+        "hashseq",
+        "--hash",
+        "sha256",
+        "--index-enc",
+        "be4"
+      ],
+      "candidates": 2592000000,
+      "anchor_puzzle": 130,
+      "anchor_bits": 129,
+      "confirm_puzzles": 81,
+      "elapsed_s": 557.966,
+      "rate_per_s": 4645442.4,
+      "hits": []
+    },
+    {
+      "encoder": "ascii",
+      "family_args": [
+        "--family",
+        "hashseq",
+        "--hash",
+        "sha256",
+        "--index-enc",
+        "str"
+      ],
+      "candidates": 2592000000,
+      "anchor_puzzle": 130,
+      "anchor_bits": 129,
+      "confirm_puzzles": 81,
+      "elapsed_s": 600.788,
+      "rate_per_s": 4314335.6,
+      "hits": []
+    },
+    {
+      "encoder": "raw8be",
+      "family_args": [
+        "--family",
+        "hashseq",
+        "--hash",
+        "sha256",
+        "--index-enc",
+        "be4"
+      ],
+      "candidates": 2592000000,
+      "anchor_puzzle": 130,
+      "anchor_bits": 129,
+      "confirm_puzzles": 81,
+      "elapsed_s": 549.237,
+      "rate_per_s": 4719272.7,
+      "hits": []
+    },
+    {
+      "encoder": "raw8be",
+      "family_args": [
+        "--family",
+        "hashseq",
+        "--hash",
+        "sha256",
+        "--index-enc",
+        "str"
+      ],
+      "candidates": 2592000000,
+      "anchor_puzzle": 130,
+      "anchor_bits": 129,
+      "confirm_puzzles": 81,
+      "elapsed_s": 571.6,
+      "rate_per_s": 4534637.1,
+      "hits": []
+    },
+    {
+      "encoder": "sha256",
+      "family_args": [
+        "--family",
+        "hashseq",
+        "--hash",
+        "sha256",
+        "--index-enc",
+        "be4"
+      ],
+      "candidates": 2592000000,
+      "anchor_puzzle": 130,
+      "anchor_bits": 129,
+      "confirm_puzzles": 81,
+      "elapsed_s": 726.076,
+      "rate_per_s": 3569873.4,
+      "hits": []
+    },
+    {
+      "encoder": "sha256",
+      "family_args": [
+        "--family",
+        "hashseq",
+        "--hash",
+        "sha256",
+        "--index-enc",
+        "str"
+      ],
+      "candidates": 2592000000,
+      "anchor_puzzle": 130,
+      "anchor_bits": 129,
+      "confirm_puzzles": 81,
+      "elapsed_s": 850.659,
+      "rate_per_s": 3047050.8,
+      "hits": []
+    }
+  ],
+  "seconds": 92855.9,
+  "limitations": [
+    "Mascara low apenas; familias hashseq apenas. BIP32 (~800k/s) fica para a etapa 2.",
+    "Janela ancorada no block_time da tx; a carteira pode ser bem anterior.",
+    "Ausencia de acerto exclui o espaco enumerado, NAO a hipotese."
+  ]
+}

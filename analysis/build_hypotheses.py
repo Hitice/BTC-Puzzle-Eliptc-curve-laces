@@ -330,6 +330,19 @@ def main():
                                          'controls_all_passed', 'total_anchor_tests',
                                          'anchor_survivors_total', 'fully_confirmed',
                                          'seconds', 'limitations')}}
+            ms = os.path.join(HERE, 'ms-timestamp-sweep-results.json')
+            if os.path.exists(ms):
+                m = json.load(open(ms))
+                h["millisecond_timestamp_branch"] = {
+                    'evidence': 'analysis/ms-timestamp-sweep-results.json',
+                    'note': 'Ramo de timestamp em MILISSEGUNDOS, primeira execucao em 08/09/2026. '
+                            'A cobertura de inteiros do repo ia ate 2^32 e cobria segundos; um '
+                            'timestamp de 2015 em ms e ~1.42e12 (41 bits) e estava fora de tudo.',
+                    'scripts': ['timestamp_ms_sweep.py', 'run_ms_timestamp_sweeps.py'],
+                    'command': 'python3 -B analysis/run_ms_timestamp_sweeps.py 30',
+                    **{k: m[k] for k in ('window', 'anchor', 'positive_control', 'combinations',
+                                         'candidates_per_combination', 'total_candidates',
+                                         'total_hits', 'limitations')}}
             h["coverage"] = cov
             h["candidates_total"] = sum(r["candidates"] for r in cov)
             h["hits_total"] = sum(len(r["hits"] or []) for r in cov)

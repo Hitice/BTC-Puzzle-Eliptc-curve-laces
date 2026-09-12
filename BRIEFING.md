@@ -81,6 +81,7 @@ cobertura e resultado. **Atualize esse arquivo, não crie novos .md de conclusã
 | `analysis/verify_creator_signatures.py` | Reconstrói TXIDs, peso, taxas e verifica 121 assinaturas; controle oficial BIP143 e comparação com os cinco alvos da revisão |
 | `analysis/funding_nonce_audit.py` | Testa as cinco entradas de financiamento adicionais: nonce até 65.536 e somas/diferenças nesse limite em 590 pares. Controles sintéticos |
 | `analysis/interval_polynomial_lab.py` | H7: formulação exata de pertinência ao intervalo por polinômios; 41 controles em intervalos pequenos. Sem aceleração: preparação enumera W pontos e consulta custa W−1 multiplicações de campo |
+| `analysis/run_ms_timestamp_sweeps.py` | **H3, ramo timestamp em ms — antes fora de toda cobertura.** O ledger ia até `2³²` (segundos); 2015 em ms é ~1,42×10¹² (41 bits). Janela de 30 dias antes da tx de financiamento, 6 combinações, **15.552.000.000 candidatos, zero hits** |
 | `analysis/phrase_seed_sweep.py` + `run_phrase_sweeps.py` | **H3, ramo de frases — antes inexistente.** O sweep original só aceita faixas de inteiros; este cobre seeds humanas (dicionário 235.976 × 4 caixas + gerador temático) × 4 modos de seed × 10 famílias × 3 máscaras. Controles 6/6; 116.864.880 testes de âncora, zero sobreviventes |
 | `analysis/mpk_highindex_verifier.py` | **H8.** Teste exato de MPK usando as 96 pubkeys de #161–#256, sem nenhuma chave privada. Âncora #256 tem só 2 candidatos de `k` → falso positivo 2⁻²⁵⁵. Controles 12/12; 38.184 combinações varridas, zero. Fornece o `m*G == MPK` que faltava |
 | `analysis/interval_polynomial_structure.py` | H7, auditoria de estrutura. Constrói `F_{A+s}·F_{A−s}` a partir dos **coeficientes** de `F_A` via resultante com o S3 de Semaev, sem multiplicação escalar sobre A. Contraste: `psi_N`, grau ~2^510, avaliado em ~12k multiplicações |
@@ -182,6 +183,10 @@ resolvidos.
    × 3 máscaras = **116.864.880 testes de âncora, zero sobreviventes**, 31 min.
    Controles 6/6. Isso exclui o espaço enumerado, **não** o H3: falta frase
    arbitrária, outros idiomas, e BIP39 com mnemônico desconhecido.
+   *Ramo timestamp em ms, também inédito:* janela de 30 dias antes de
+   `block_time = 1421345234`, encoders `ascii`/`raw8be`/`sha256` × `hashseq`
+   be4/str, máscara `low` = **15.552.000.000 candidatos, zero hits** (~64 min
+   de CPU ativa). Faltam BIP32, máscaras `high`/`low_le` e janela maior.
 4. **H4 OSINT** — conta `saatoshi_rising`, financiamento de 2015
    `1Czoy8xtddvcGrEhUUCZDQ9QqdRfKh697F`, entrada adicional de 2017
    `1CENDvi6tmKGrR8RxqwURpX9WHbbKip1db`, origem do reforço de 2023, busca por

@@ -1,7 +1,7 @@
 {
  "rule": "Nenhuma hipotese pode ter status 'closed' sem positive_control.executed == true. Sem controle positivo o resultado e 'no-power', nao 'negativo'.",
- "generated": "2026-09-08",
- "commit": "221d4b4218453ed3428ec42ff6abd5c301ac6e2b",
+ "generated": "2026-09-12",
+ "commit": "d3846ccd6bff4fabfb639fbc25208ad786e2bc95",
  "entry_point": "BRIEFING.md",
  "hypotheses": [
   {
@@ -297,6 +297,102 @@
      "elapsed_s": 1017.549
     },
     {
+     "file": "analysis/sweeps/ms-ascii-hashseq-sha256-be4.json",
+     "family": "hashseq:sha256/be4",
+     "encoder": "ascii",
+     "mask": "low",
+     "index_map": "consecutive(base=0,stride=1)",
+     "range": [
+      1418753234000,
+      1421345234000
+     ],
+     "candidates": 2592000000,
+     "anchor_puzzle": 130,
+     "anchor_bits": 129,
+     "hits": [],
+     "elapsed_s": 557.966
+    },
+    {
+     "file": "analysis/sweeps/ms-ascii-hashseq-sha256-str.json",
+     "family": "hashseq:sha256/str",
+     "encoder": "ascii",
+     "mask": "low",
+     "index_map": "consecutive(base=0,stride=1)",
+     "range": [
+      1418753234000,
+      1421345234000
+     ],
+     "candidates": 2592000000,
+     "anchor_puzzle": 130,
+     "anchor_bits": 129,
+     "hits": [],
+     "elapsed_s": 600.788
+    },
+    {
+     "file": "analysis/sweeps/ms-raw8be-hashseq-sha256-be4.json",
+     "family": "hashseq:sha256/be4",
+     "encoder": "raw8be",
+     "mask": "low",
+     "index_map": "consecutive(base=0,stride=1)",
+     "range": [
+      1418753234000,
+      1421345234000
+     ],
+     "candidates": 2592000000,
+     "anchor_puzzle": 130,
+     "anchor_bits": 129,
+     "hits": [],
+     "elapsed_s": 549.237
+    },
+    {
+     "file": "analysis/sweeps/ms-raw8be-hashseq-sha256-str.json",
+     "family": "hashseq:sha256/str",
+     "encoder": "raw8be",
+     "mask": "low",
+     "index_map": "consecutive(base=0,stride=1)",
+     "range": [
+      1418753234000,
+      1421345234000
+     ],
+     "candidates": 2592000000,
+     "anchor_puzzle": 130,
+     "anchor_bits": 129,
+     "hits": [],
+     "elapsed_s": 571.6
+    },
+    {
+     "file": "analysis/sweeps/ms-sha256-hashseq-sha256-be4.json",
+     "family": "hashseq:sha256/be4",
+     "encoder": "sha256",
+     "mask": "low",
+     "index_map": "consecutive(base=0,stride=1)",
+     "range": [
+      1418753234000,
+      1421345234000
+     ],
+     "candidates": 2592000000,
+     "anchor_puzzle": 130,
+     "anchor_bits": 129,
+     "hits": [],
+     "elapsed_s": 726.076
+    },
+    {
+     "file": "analysis/sweeps/ms-sha256-hashseq-sha256-str.json",
+     "family": "hashseq:sha256/str",
+     "encoder": "sha256",
+     "mask": "low",
+     "index_map": "consecutive(base=0,stride=1)",
+     "range": [
+      1418753234000,
+      1421345234000
+     ],
+     "candidates": 2592000000,
+     "anchor_puzzle": 130,
+     "anchor_bits": 129,
+     "hits": [],
+     "elapsed_s": 850.659
+    },
+    {
      "file": "analysis/sweeps/nearmiss-hashseq-20bit.json",
      "family": "hashseq:sha256/be4",
      "encoder": "raw4be",
@@ -357,7 +453,32 @@
      "Ausencia de acerto exclui o espaco enumerado, NAO a hipotese H3."
     ]
    },
-   "candidates_total": 8696224467,
+   "millisecond_timestamp_branch": {
+    "evidence": "analysis/ms-timestamp-sweep-results.json",
+    "note": "Ramo de timestamp em MILISSEGUNDOS, primeira execucao em 08/09/2026. A cobertura de inteiros do repo ia ate 2^32 e cobria segundos; um timestamp de 2015 em ms e ~1.42e12 (41 bits) e estava fora de tudo.",
+    "scripts": [
+     "timestamp_ms_sweep.py",
+     "run_ms_timestamp_sweeps.py"
+    ],
+    "command": "python3 -B analysis/run_ms_timestamp_sweeps.py 30",
+    "window": {
+     "lo_ms": 1418753234000,
+     "hi_ms": 1421345234000,
+     "days_before_tx": 30.0
+    },
+    "anchor": "puzzle #130, 129 bits, falso positivo 2^-129",
+    "positive_control": "herdado de master_seed_sweep.py --self-test (8/8) e de timestamp_ms_sweep.py --self-test (6 combinacoes x 3 assercoes)",
+    "combinations": 6,
+    "candidates_per_combination": 2592000000,
+    "total_candidates": 15552000000,
+    "total_hits": 0,
+    "limitations": [
+     "Mascara low apenas; familias hashseq apenas. BIP32 (~800k/s) fica para a etapa 2.",
+     "Janela ancorada no block_time da tx; a carteira pode ser bem anterior.",
+     "Ausencia de acerto exclui o espaco enumerado, NAO a hipotese."
+    ]
+   },
+   "candidates_total": 24248224467,
    "hits_total": 0
   },
   {
