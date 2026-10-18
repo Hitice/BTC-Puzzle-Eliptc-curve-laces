@@ -3,3 +3,8 @@ __pycache__/
 analysis/sweeps/run.log
 analysis/phrase-sweep.log
 analysis/ms-timestamp-sweep.log
+analysis/sweeps/run-h2.log
+analysis/sweeps/run-h9.log
+analysis/sweeps/run-h10.log
+*.json.rerun
+analysis/sweeps/run-rerun.log

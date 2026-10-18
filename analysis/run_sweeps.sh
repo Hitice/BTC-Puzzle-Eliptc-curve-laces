@@ -9,7 +9,12 @@ J=${JOBS:-4}
 T0=1356998400
 T1=1421345235
 
-run() { echo "### $* :: $(date -u +%FT%TZ)"; nice -n 19 python3 analysis/master_seed_sweep.py --jobs $J "$@" ; }
+# Pula itens ja concluidos: o JSON de saida so e gravado ao fim da varredura.
+run() {
+  local o=${argv[${argv[(i)--output]}+1]}
+  if [[ -s $o ]]; then echo "### SKIP (ja existe $o) :: $*"; return 0; fi
+  echo "### $* :: $(date -u +%FT%TZ)"; nice -n 19 python3 analysis/master_seed_sweep.py --jobs $J "$@" ;
+}
 
 # 1) gerador ingenuo indexado, TODAS as seeds de 32 bits
 run --family hashseq --hash sha256  --index-enc be4 --encoder raw4be --range 0-0x100000000 --output $O/hashseq-sha256-be4-raw32.json

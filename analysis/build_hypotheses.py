@@ -193,6 +193,51 @@ STATIC = [
   "status": "open",
   "coverage": "PREENCHIDO AUTOMATICAMENTE"},
 
+ {"id": "H9-bx2-seed", "title": "Seed de `bx seed` do libbitcoin-explorer 2.0.0/2.1.0",
+  "statement": "As chaves vieram de `bx seed | bx hd-new | bx hd-private -i N` com bx 2.0.0 "
+               "(lancado 2014-12-13, 33 dias antes do financiamento). random_fill usa "
+               "std::default_random_engine semeado por UMA chamada de random_device (32 bits) e "
+               "byte = engine() % 255; padrao -b 128.",
+  "source": ["libbitcoin-explorer v2.0.0 aae99b2 src/utility/utility.cpp random_fill",
+             "libbitcoin-system e44cc97 (2014-12-13) src/wallet/hd_keys.cpp: BIP32 padrao, "
+             "HMAC-SHA512(key='Bitcoin seed', msg=seed), filho nao endurecido com K comprimido"],
+  "space": "libstdc++ minstd_rand0 e libc++ minstd_rand: estado s mod (2^31-1), 2^31-2 seeds em "
+           "qualquer plataforma; MSVC mt19937: 2^32. Caminhos m/i (padrao de hd-private), m/ih "
+           "(--hard), m/0/i; -b 128/192/256.",
+  "test": {"scripts": ["master_seed_sweep.py"],
+           "encoders": ["bx2-minstd0", "bx2-minstd", "bx2-mt19937", "bx2-minstd0-256", "bx2-minstd-256"]},
+  "positive_control": {"required": True, "executed": True,
+                       "result": "Encoders conferidos contra o random_fill compilado (clang/libc++): "
+                                 "1.756 comparacoes, 0 divergencias; vetores [rand.predef] ok. "
+                                 "Self-test: 4 controles H9 (m/i, m/ih, mt19937, m/0/i 256 bits)."},
+  "status": "open",
+  "coverage": "PREENCHIDO AUTOMATICAMENTE (encoders bx2-*)",
+  "note": "Scanners tipo Milksad derivam enderecos do filho cru; com a mascara do puzzle eles "
+          "nunca casariam, entao uma varredura geral do espaco bx 2.x nao cobre o puzzle.",
+  "next": "m/i com libsecp256k1 (Python puro ~30 h por engine); -b 192; mt19937 2^32."},
+
+ {"id": "H10-armory", "title": "Cadeia deterministica do Armory (wallet 1.35)",
+  "statement": "As chaves sao enderecos consecutivos de uma carteira Armory 0.88-0.93 cuja raiz "
+               "de 32 bytes veio de fonte enumeravel (restauracao com raiz escolhida).",
+  "source": ["etotheipi/BitcoinArmory 24550b6 (2015-01-15): ComputeChainedPrivateKey, "
+             "DeriveChaincodeFromRootKey, PyBtcWallet.createNewWallet"],
+  "model": "cc = HMAC256_armory(SHA256d(root), 'Derive Chaincode from Root Key') [chave completada "
+           "a 32 bytes, nao 64]; k_i = (SHA256d(pub65(k_{i-1})) XOR cc) * k_{i-1} mod n; k_{-1}=root",
+  "space": "encoders de 32 bytes (int256, sha256, mt256, frases); indice 0 = k_0 ou = root",
+  "test": {"scripts": ["master_seed_sweep.py"], "family": "armory"},
+  "positive_control": {"required": True, "executed": True,
+                       "result": "Cadeia confere com os vetores oficiais de pytest/testPyBtcAddress.py "
+                                 "(root aa*32, cc ee*32 -> addr1 0db5c1e9..., addr2 5db1314a...). "
+                                 "Self-test: 3 controles (sha256, root0/int256, base 3)."},
+  "evidence_against": "Armory 1.35 nao suporta chaves comprimidas (PyBtcAddress.isCompressed, "
+                      "qtdialogs 'Compressed key data recognized but not supported'); o "
+                      "financiamento de 2015 e os 256 enderecos sao comprimidos. Nao exclui gerar "
+                      "no Armory e montar enderecos/tx em outra ferramenta; reduz o prior.",
+  "limitations": "HMAC do chaincode replicado do codigo-fonte sem vetor oficial; carteiras "
+                 "anteriores a 1.35 tinham chaincode aleatorio (nao testavel).",
+  "status": "open",
+  "coverage": "PREENCHIDO AUTOMATICAMENTE (familia armory*)"},
+
  {"id": "H4-osint", "title": "Artefato publico do criador",
   "statement": "Existe artefato publico (post, gist, pastebin, carteira watch-only, metadados "
                "de transacao incompleta) que revela a implementacao, a MPK ou a seed.",
@@ -223,7 +268,11 @@ def sweep_coverage():
                      "range": d.get("range"), "candidates": d.get("candidates"),
                      "anchor_puzzle": d.get("anchor_puzzle"),
                      "anchor_bits": d.get("anchor_bits"),
-                     "hits": d.get("hits"), "elapsed_s": d.get("elapsed_s")})
+                     "hits": d.get("hits"), "elapsed_s": d.get("elapsed_s"),
+                     # sem o campo: varredura antiga, que descartava acerto so da ancora
+                     # e exigia as 82 chaves (modelo de carteira unica)
+                     "anchor_only_recorded": "anchor_only" in d,
+                     "skip_below": d.get("skip_below", 1)})
     return rows
 
 
@@ -343,6 +392,16 @@ def main():
                     **{k: m[k] for k in ('window', 'anchor', 'positive_control', 'combinations',
                                          'candidates_per_combination', 'total_candidates',
                                          'total_hits', 'limitations')}}
+        sub = None
+        if h["id"] == "H9-bx2-seed":
+            sub = [r for r in cov if (r["encoder"] or "").startswith("bx2-")]
+        if h["id"] == "H10-armory":
+            sub = [r for r in cov if (r["family"] or "").startswith("armory")]
+        if sub is not None:
+            h["coverage"] = sub
+            h["candidates_total"] = sum(r["candidates"] for r in sub)
+            h["hits_total"] = sum(len(r["hits"] or []) for r in sub)
+        if h["id"] == "H3-seed-sweep":
             h["coverage"] = cov
             h["candidates_total"] = sum(r["candidates"] for r in cov)
             h["hits_total"] = sum(len(r["hits"] or []) for r in cov)
