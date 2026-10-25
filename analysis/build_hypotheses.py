@@ -135,6 +135,22 @@ STATIC = [
                                "e verificar que os indicadores as separam."},
   "status": "open",
   "facts_extracted": [
+      "2026-10-20, cadeia de UTXOs (mempool.space + WalletExplorer): a entrada de 2015 "
+      "(1Czoy8, 32,9 BTC exatos) foi um SAQUE de um cluster de servico nao rotulado "
+      "(173uj.../13R2z..., 10k-29k txs, ativo ate 2026, que no mesmo dia depositou em "
+      "Bitstamp 3NTKgo e Bitfinex 12oeNT). Taxa de 1000 sat e troco para o proprio endereco "
+      "pertencem ao servico, NAO ao criador.",
+      "Transacoes de autoria do criador (2015, 2017, 2019, 2023): entrada preparada com o valor "
+      "exato, sem troco, taxa = resto (redonda), locktime 0, sequence 0xFFFFFFFF, low-S, DER "
+      "estrito. Inferencia: construcao de transacao bruta (estilo RPC/CLI), nao carteira grafica.",
+      "2017: a entrada extra 1CENDvi6 (NAO comprimida) foi financiada em 2017-04-27 04:29 UTC, "
+      "2 h antes do unico post de saatoshi_rising (06:41 UTC; conta criada 05:43; 1 post; "
+      "ultimo acesso 2019-06-09). Origem: 19ULc5j2 recebeu 83,2795 BTC em 2012-12-17 e ficou "
+      "parado ate 2017-04-07; + 1E7oEVrd (0,7224 BTC, 2014-08). Consolidados em 14axvQ "
+      "(nao comprimida) e depois 1CENDvi6. Todas as chaves pessoais do criador vistas em 2017 "
+      "sao NAO comprimidas; ele guarda BTC desde 2012.",
+      "2019: os 1000 sat vieram via cluster 3JjPf13R (271k txs, tipo exchange) -> 172Pq8 -> "
+      "1BXPwxki; 1PvaqLq rotulado 'CoinJoinMess' no WalletExplorer.",
       "2015: nVersion=1; 2017/2019/2023: nVersion=2. nSequence sempre 0xFFFFFFFF, locktime 0.",
       "2015: a UNICA assinatura e low-S -> sem informacao (50% por acaso). NAO tratar como fingerprint.",
       "2017: 97/97 low-S, compativel com normalizacao. A probabilidade 2^-97 pressupoe "
@@ -193,6 +209,15 @@ STATIC = [
   "status": "open",
   "coverage": "PREENCHIDO AUTOMATICAMENTE"},
 
+ {"id": "H3b-degenerate-seeds", "title": "Seeds degeneradas em todas as familias",
+  "statement": "A seed e trivial: bytes iguais, padroes repetidos, sequencias, hex em ASCII, senhas classicas, "
+               "inteiros pequenos em varias larguras/endianness (16.611 seeds).",
+  "test": {"scripts": ["degenerate_seed_sweep.py"], "families": 16,
+           "note": "ancora #130, offsets -4..+4, 3 mascaras; sequenciais (armory, hashchain, electrum1) em ordem"},
+  "positive_control": {"required": True, "executed": True, "result": "6 controles plantados (bip32, hashseq, "
+                       "hashchain, armory, electrum1, BIP44) recuperados, adulterados rejeitados."},
+  "status": "open", "coverage": "PREENCHIDO AUTOMATICAMENTE (familia degenerate*)"},
+
  {"id": "H9-bx2-seed", "title": "Seed de `bx seed` do libbitcoin-explorer 2.0.0/2.1.0",
   "statement": "As chaves vieram de `bx seed | bx hd-new | bx hd-private -i N` com bx 2.0.0 "
                "(lancado 2014-12-13, 33 dias antes do financiamento). random_fill usa "
@@ -214,7 +239,62 @@ STATIC = [
   "coverage": "PREENCHIDO AUTOMATICAMENTE (encoders bx2-*)",
   "note": "Scanners tipo Milksad derivam enderecos do filho cru; com a mascara do puzzle eles "
           "nunca casariam, entao uma varredura geral do espaco bx 2.x nao cobre o puzzle.",
-  "next": "m/i com libsecp256k1 (Python puro ~30 h por engine); -b 192; mt19937 2^32."},
+  "fast_sweeper": "analysis/fast/bx2_mi_sweep.c (libsecp256k1 + CommonCrypto): m/i, m/0/i, m/0h/i, "
+                  "offsets de indice -4..+4, mascaras low/high/low_le, so a ancora #130. Conferido "
+                  "contra o Python em 627 vetores (0 divergencias), 4 controles positivos, "
+                  "adulterados rejeitados. ~265 k cand/s sozinho. Fila: analysis/fast/run_h9_mi.sh; "
+                  "saidas analysis/sweeps/h9mi-*.txt (linha DONE = concluido).",
+  "excluded_by_source": "libbitcoin 1.x / sx newseed (2013-14): new_seed() usa OpenSSL BN_rand(128) "
+                        "(v1.0 src/deterministic_wallet.cpp) -> seed de 128 bits de CSPRNG, nao "
+                        "enumeravel. So o random_fill do bx 2.0 (Dec 2014) e fraco.",
+  "next": "-b 192; m/0h/0/i (bitcoinj) e m/44h/0h/0h/0/i com encoders bx2 no varredor em C."},
+
+ {"id": "H11-pyrandom-range", "title": "random do Python sorteando cada chave direto na faixa",
+  "statement": "O criador semeou `random` (inteiro, timestamp ou frase) e, para n = 1..256, "
+               "sorteou key_n em [2^(n-1), 2^n) (ou sorteou 256 bits e mascarou), sem carteira HD. "
+               "Formaliza a ideia do usuario de 'jogar moedas e fazer caber em cada faixa' com um "
+               "PRNG enumeravel. Nao e a 'deterministic wallet' declarada, mas e o que um script faz.",
+  "model": "7 variantes de sorteio (randrange py>=3.2, randrange py2.7, getrandbits(n)|2^(n-1), "
+           "getrandbits(n-1)|2^(n-1), fluxo getrandbits(256)+mascara, randrange(2^256)+mascara, "
+           "randint(1,N-1)+mascara) x ordem asc/desc x inicio #1/#5. Rejeicao no primeiro puzzle "
+           "resolvido que nao bate; reproduzir todos ate #130 e conclusivo.",
+  "space": "seed inteiro (timestamps em s; 0..2^24; 2^32 completo custa ~2 dias em Python), "
+           "frases com semeadura do Python 3 (str+sha512) e do Python 2.7 (hash de 64 bits)",
+  "test": {"scripts": ["pyrandom_range_sweep.py"], "command": "./analysis/run_sweeps_h11.sh"},
+  "positive_control": {"required": True, "executed": True,
+                       "result": "Self-test 28/28 (cada variante x ordem x inicio): seed plantada "
+                                 "recuperada, conjunto adulterado rejeitado, zero falsos; vetores "
+                                 "do hash de str do CPython 2.7 de 64 bits conferidos."},
+  "status": "open",
+  "coverage": "PREENCHIDO AUTOMATICAMENTE (familia pyrandom*)",
+  "limitations": "Variante random()*width (53 bits) excluida por inspecao: #55+ teriam bits baixos "
+                 "zerados. Java/JS sorteando por faixa ainda nao implementados (H5/H6 cobrem so "
+                 "a saida bruta antes da mascara)."},
+
+ {"id": "H12-prng-direct", "title": "PRNG nao criptografico da epoca como material direto de chave",
+  "statement": "As chaves sao saidas consecutivas de um PRNG de linguagem/plataforma de 2015 (libc rand/random "
+               "do glibc, MSVC e BSD/macOS; Math.random do V8 2013-2015 (MWC 18030) e do SpiderMonkey/Java "
+               "(LCG 48 bits); MT19937 com init_genrand (numpy, Ruby, std::mt19937) e mt_rand do PHP 5), "
+               "sem hash e sem HD, em layouts simples (bytes, nibbles, palavras; 32 bytes por chave ou so o "
+               "necessario; BE/LE; mascara low/high). Complementa H5 (Java, 4 layouts) e H6 (V8 3.14 nativo).",
+  "source": ["glibc random_r.c TYPE_3 (vetor srand(1) -> 1804289383...)", "MSVC rand (41 18467 6334...)",
+             "FreeBSD/macOS rand.c Park-Miller (16807 282475249...)", "V8 math.js MathRandom 2013-12/2015 "
+             "(MathImul(18030,...), x=(r0<<16)+(r1&0xFFFF))", "java.util.Random nextDouble (0.7275636800328681 "
+             "para seed 42)", "mt19937ar.c init_genrand(5489) -> 3499211612", "PHP 5 php_mt_reload com loBit(u) "
+             "(mt_srand(1) -> 1244335972; conferido contra php local em modo MT_RAND_PHP)"],
+  "space": "seed de 32 bits (2^32) para libc/V8/MT; LCG48 por RECUPERACAO DE ESTADO (unidade conhecida fixa "
+           "8 ou 26 bits do estado, enumeram-se os 40 ou 22 restantes). Janelas plausiveis primeiro.",
+  "test": {"scripts": ["fast/prng_layout_sweep.c", "fast/run_prng_layouts.sh", "fast/prng_done_to_json.py"],
+           "note": "so puzzles <= 128 (u128); qualquer HIT e confirmado em Python contra #130 e enderecos"},
+  "positive_control": {"required": True, "executed": True,
+                       "result": "Vetores classicos de todos os geradores; 70 combinacoes gerador x layout com "
+                                 "seed plantada recuperada e conjunto adulterado rejeitado; recuperacao de estado "
+                                 "LCG48 (word) 8/8 com adulterados rejeitados."},
+  "status": "open",
+  "coverage": "PREENCHIDO AUTOMATICAMENTE (familia prng-direct*)",
+  "limitations": "Nibble no LCG48 (2^44) nao enumerado; V8 word compara so os 16 bits altos de cada palavra "
+                 "(dependem de s0); outras versoes de Math.random (xorshift128+ de dez/2015 em diante) nao se "
+                 "aplicam a jan/2015."},
 
  {"id": "H10-armory", "title": "Cadeia deterministica do Armory (wallet 1.35)",
   "statement": "As chaves sao enderecos consecutivos de uma carteira Armory 0.88-0.93 cuja raiz "
@@ -247,6 +327,12 @@ STATIC = [
   "test": {"scripts": [], "note": "pesquisa manual/web; sem compute"},
   "positive_control": {"required": False, "note": "hipotese de busca, nao de teste estatistico"},
   "status": "open",
+  "facts_2026_10_20": [
+      "bitcointalk u=991321 saatoshi_rising: registrado 2017-04-27 05:43 UTC, 1 post (06:41 UTC, "
+      "msg18765941), ultimo acesso 2019-06-09, perfil vazio. Nunca assinou mensagem de prova.",
+      "O post diz 'when I next have an extended period of quiet and calm, to construct the new "
+      "transaction carefully' e elogia o 'large bitcoin collider'.",
+      "Fundos pessoais: 83,2795 BTC parados desde 2012-12-17 (19ULc5j2, nao comprimido)."],
   "note": "Unico caminho em que um unico achado encerra o problema. Custo zero de compute."},
 ]
 
@@ -393,6 +479,21 @@ def main():
                                          'candidates_per_combination', 'total_candidates',
                                          'total_hits', 'limitations')}}
         sub = None
+        if h["id"] == "H3b-degenerate-seeds":
+            sub = [r for r in cov if (r["family"] or "").startswith("degenerate")]
+            h["coverage"] = sub
+            h["candidates_total"] = sum(r["candidates"] for r in sub)
+            continue
+        if h["id"] == "H12-prng-direct":
+            sub = [r for r in cov if (r["family"] or "").startswith("prng-direct")]
+            h["coverage"] = sub
+            h["candidates_total"] = sum(r["candidates"] for r in sub)
+            continue
+        if h["id"] == "H11-pyrandom-range":
+            sub = [r for r in cov if (r["family"] or "").startswith("pyrandom")]
+            h["coverage"] = sub
+            h["candidates_total"] = sum(r["candidates"] for r in sub)
+            continue
         if h["id"] == "H9-bx2-seed":
             sub = [r for r in cov if (r["encoder"] or "").startswith("bx2-")]
         if h["id"] == "H10-armory":

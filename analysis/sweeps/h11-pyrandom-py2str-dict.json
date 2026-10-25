@@ -1,0 +1,18 @@
+{
+ "family": "pyrandom:py3-randrange+py2-randrange+grb-n-or+grb-n1-or+stream256+stream-rr256+stream-randintN",
+ "encoder": "py2str",
+ "mask": "range-direct",
+ "index_map": "orders=asc/desc;starts=1/5",
+ "index_base": 0,
+ "range": null,
+ "candidates": 973874,
+ "candidates_x_combos": 27268472,
+ "anchor_puzzle": "all solved <= 130 (sequential)",
+ "anchor_bits": 3633,
+ "confirm_puzzles": 82,
+ "elapsed_s": 418.2,
+ "rate_per_s": 2328.8,
+ "hits": [],
+ "anchor_only": [],
+ "hits_detail": []
+}

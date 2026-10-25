@@ -1,0 +1,16 @@
+{
+ "family": "prng-direct:lcg48-java-spidermonkey",
+ "encoder": "state-recovery",
+ "mask": "low|high",
+ "index_map": "stream(s256|fit;be|le)",
+ "index_base": 0,
+ "range": null,
+ "candidates": 1099511627776,
+ "combos": 1,
+ "layout": "unit=0 chunk=s256 order=be mask=low",
+ "elapsed_s": 244.0,
+ "hits": [],
+ "anchor_only": [],
+ "hits_detail": [],
+ "source_txt": "analysis/sweeps/prng/lcg48-recover-byte-s256-be-low.txt"
+}

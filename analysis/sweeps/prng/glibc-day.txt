@@ -1,0 +1,1 @@
+DONE gen=0 range=1421258834-1421431634 candidates=172800 combos=32 hits=0 elapsed_s=1

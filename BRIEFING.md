@@ -85,6 +85,9 @@ cobertura e resultado. **Atualize esse arquivo, não crie novos .md de conclusã
 | `analysis/phrase_seed_sweep.py` + `run_phrase_sweeps.py` | **H3, ramo de frases — antes inexistente.** O sweep original só aceita faixas de inteiros; este cobre seeds humanas (dicionário 235.976 × 4 caixas + gerador temático) × 4 modos de seed × 10 famílias × 3 máscaras. Controles 6/6; 116.864.880 testes de âncora, zero sobreviventes |
 | `analysis/mpk_highindex_verifier.py` | **H8.** Teste exato de MPK usando as 96 pubkeys de #161–#256, sem nenhuma chave privada. Âncora #256 tem só 2 candidatos de `k` → falso positivo 2⁻²⁵⁵. Controles 12/12; 38.184 combinações varridas, zero. Fornece o `m*G == MPK` que faltava |
 | `analysis/interval_polynomial_structure.py` | H7, auditoria de estrutura. Constrói `F_{A+s}·F_{A−s}` a partir dos **coeficientes** de `F_A` via resultante com o S3 de Semaev, sem multiplicação escalar sobre A. Contraste: `psi_N`, grau ~2^510, avaliado em ~12k multiplicações |
+| `analysis/fast/bx2_mi_sweep.c` | **H9, caminho `m/i`.** Varredor em C (libsecp256k1 + CommonCrypto) para seeds `bx seed` 2.0 em caminhos com último nível não endurecido; só a âncora #130, offsets −4..+4, 3 máscaras. 627/627 iguais ao Python, 4/4 controles. ~265 k cand/s |
+| `analysis/pyrandom_range_sweep.py` | **H11.** `random` do Python sorteando cada chave na própria faixa (7 variantes × asc/desc × início 1/5); seeds inteiras, frases Py3 e Py2. Controles 28/28 |
+| `analysis/run_chain.sh` | cadeia única: H9 (`run_sweeps_h9.sh`) → H10 → `rerun_old_sweeps.py` → fila base → H2 |
 | `analysis/status.py` | estado atual em um comando |
 
 Taxas medidas (M3, 8 processos): `hashseq` 5,3 M/s · BIP32 endurecido ~800 k/s ·
@@ -191,6 +194,31 @@ resolvidos.
    `1Czoy8xtddvcGrEhUUCZDQ9QqdRfKh697F`, entrada adicional de 2017
    `1CENDvi6tmKGrR8RxqwURpX9WHbbKip1db`, origem do reforço de 2023, busca por
    gist/pastebin de 2015 com script de 256 chaves. Custo zero de compute.
+
+5. **H9 `bx seed` (libbitcoin-explorer 2.0.0, lançado 33 dias antes do financiamento)** —
+   `random_fill` semeia `default_random_engine` com UMA chamada de `random_device` (32 bits)
+   e usa `engine() % 255`; verificado no código e contra C++ compilado. Caminhos
+   endurecidos (`m/ih`, `m/0h/i`) rodam em Python (`run_sweeps_h9.sh`). O caminho
+   **padrão** de `bx hd-private` é `m/i` (não endurecido, exige `k*G`): varredor em C
+   `analysis/fast/bx2_mi_sweep` (libsecp256k1), ~265 k cand/s, fila `analysis/fast/run_h9_mi.sh`,
+   saídas `analysis/sweeps/h9mi-*.txt`. `sx newseed` (libbitcoin 1.x, 2013-14) usava
+   `BN_rand(128)` do OpenSSL: não enumerável, excluído por leitura de fonte.
+6. **H10 Armory** — cadeia 1.35 com raiz enumerável (`run_sweeps_h10.sh`). Prior reduzido:
+   Armory não gera chaves comprimidas; mas as chaves pessoais do criador vistas em 2017 são
+   todas NÃO comprimidas (ver H1), então ele pode ter gerado no Armory e montado endereços
+   em outra ferramenta.
+7. **H11 `random` do Python sorteando direto na faixa** — ideia do usuário ("moedas por
+   faixa") formalizada: 7 variantes de sorteio × ordem × início, rejeição no primeiro puzzle
+   que não bate. `analysis/pyrandom_range_sweep.py`, controles 28/28, fila `run_sweeps_h11.sh`.
+   Java/JS por faixa ainda não implementados.
+
+**H1, fatos novos (2026-10-20, cadeia de UTXOs):** a entrada de 2015 foi um *saque* de um
+cluster de serviço (173uj/13R2z, dezenas de milhares de txs), logo a taxa de 1000 sat e o
+troco para si pertencem ao serviço. As transações de autoria do criador (2015, 2017, 2019,
+2023) seguem o mesmo molde: entrada preparada com valor exato, sem troco, taxa = resto,
+locktime 0, construção bruta. A entrada extra de 2017 (`1CENDvi6`, não comprimida) foi
+financiada 2 h antes do único post de `saatoshi_rising`, a partir de 83,28 BTC parados desde
+**2012-12-17**. Nada disso identifica o gerador; restringe o perfil (early adopter, CLI).
 
 ## 10. Probabilidades, sem enfeite
 

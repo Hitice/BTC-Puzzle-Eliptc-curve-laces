@@ -1,0 +1,27 @@
+{
+ "family": "bip32:m/0h/i",
+ "encoder": "ascii",
+ "mask": "low",
+ "index_map": "consecutive(base=0,stride=1)",
+ "index_base": 0,
+ "range": [
+  15012015,
+  15012016
+ ],
+ "candidates": 1,
+ "anchor_puzzle": 130,
+ "anchor_bits": 129,
+ "confirm_puzzles": 81,
+ "skip_below": 1,
+ "any_index": 0,
+ "any_index_min_n": null,
+ "elapsed_s": 1.395,
+ "rate_per_s": 0.7,
+ "hits": [],
+ "anchor_only": [],
+ "near_miss_bits": 0,
+ "near_miss_observed": 0,
+ "near_miss_expected": null,
+ "near_miss": [],
+ "hits_detail": []
+}

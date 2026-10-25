@@ -8,3 +8,5 @@ analysis/sweeps/run-h9.log
 analysis/sweeps/run-h10.log
 *.json.rerun
 analysis/sweeps/run-rerun.log
+analysis/sweeps/run-*.log
+analysis/sweeps/chain.log

@@ -1,0 +1,27 @@
+{
+ "family": "hashseq:sha256/be4",
+ "encoder": "raw4be",
+ "mask": "low",
+ "index_map": "consecutive(base=0,stride=1)",
+ "index_base": 0,
+ "range": [
+  338000,
+  340000
+ ],
+ "candidates": 2000,
+ "anchor_puzzle": 130,
+ "anchor_bits": 129,
+ "confirm_puzzles": 81,
+ "skip_below": 1,
+ "any_index": 0,
+ "any_index_min_n": null,
+ "elapsed_s": 0.149,
+ "rate_per_s": 13454.4,
+ "hits": [],
+ "anchor_only": [],
+ "near_miss_bits": 0,
+ "near_miss_observed": 0,
+ "near_miss_expected": null,
+ "near_miss": [],
+ "hits_detail": []
+}

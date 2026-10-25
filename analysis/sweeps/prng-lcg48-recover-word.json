@@ -1,0 +1,16 @@
+{
+ "family": "prng-direct:lcg48-java-spidermonkey",
+ "encoder": "state-recovery",
+ "mask": "low|high",
+ "index_map": "stream(s256|fit;be|le)",
+ "index_base": 0,
+ "range": null,
+ "candidates": 4194304,
+ "combos": 1,
+ "layout": "unit=2 chunk=fit order=le mask=high",
+ "elapsed_s": 1.0,
+ "hits": [],
+ "anchor_only": [],
+ "hits_detail": [],
+ "source_txt": "analysis/sweeps/prng/lcg48-recover-word.txt"
+}

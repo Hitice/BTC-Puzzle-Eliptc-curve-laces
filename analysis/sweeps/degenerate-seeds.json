@@ -1,0 +1,33 @@
+{
+ "family": "degenerate:hashseq:sha256/be4+hashseq:sha256/str+hashseq:sha256d/be4+hashseq:sha256/le4+hashchain:sha256+hashchain:sha256d+bip32:m/i+bip32:m/ih+bip32:m/0/i+bip32:m/0h/i+bip32:m/0h/0/i+bip32:m/44h/0h/0h/0/i+electrum1:branch0+electrum1:branch1+armory135+armory135:root0",
+ "encoder": "degenerate-seeds",
+ "mask": "low|high|low_le",
+ "index_map": "consecutive(base=-4..4)",
+ "index_base": 0,
+ "range": null,
+ "candidates": 265776,
+ "seeds": 16611,
+ "families": [
+  "hashseq:sha256/be4",
+  "hashseq:sha256/str",
+  "hashseq:sha256d/be4",
+  "hashseq:sha256/le4",
+  "hashchain:sha256",
+  "hashchain:sha256d",
+  "bip32:m/i",
+  "bip32:m/ih",
+  "bip32:m/0/i",
+  "bip32:m/0h/i",
+  "bip32:m/0h/0/i",
+  "bip32:m/44h/0h/0h/0/i",
+  "electrum1:branch0",
+  "electrum1:branch1",
+  "armory135",
+  "armory135:root0"
+ ],
+ "elapsed_s": 1832.4,
+ "rate_per_s": 145.0,
+ "hits": [],
+ "anchor_only": [],
+ "hits_detail": []
+}

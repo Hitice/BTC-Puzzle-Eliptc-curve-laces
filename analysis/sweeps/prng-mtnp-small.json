@@ -1,0 +1,19 @@
+{
+ "family": "prng-direct:mt19937-init_genrand(numpy/ruby)",
+ "encoder": "int32-seed",
+ "mask": "low|high",
+ "index_map": "stream(s256|fit;be|le)",
+ "index_base": 0,
+ "range": [
+  0,
+  1048576
+ ],
+ "candidates": 1048576,
+ "combos": 32,
+ "layout": "",
+ "elapsed_s": 1.0,
+ "hits": [],
+ "anchor_only": [],
+ "hits_detail": [],
+ "source_txt": "analysis/sweeps/prng/mtnp-small.txt"
+}

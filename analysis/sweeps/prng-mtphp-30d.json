@@ -1,0 +1,19 @@
+{
+ "family": "prng-direct:php5-mt_rand",
+ "encoder": "int32-seed",
+ "mask": "low|high",
+ "index_map": "stream(s256|fit;be|le)",
+ "index_base": 0,
+ "range": [
+  1418753234,
+  1423937234
+ ],
+ "candidates": 5184000,
+ "combos": 32,
+ "layout": "",
+ "elapsed_s": 3.0,
+ "hits": [],
+ "anchor_only": [],
+ "hits_detail": [],
+ "source_txt": "analysis/sweeps/prng/mtphp-30d.txt"
+}
